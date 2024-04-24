@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 import styled from "styled-components";
 import logo from "../assets/logo.jpg"
 
@@ -106,8 +107,12 @@ const Login = () => {
         </NavLeft>
         <NavRight>
           <BtnContainer>
+            <Anchor as={NavLink} to={"/"}>
             <LoginBtn>Sign In</LoginBtn>
+            </Anchor>
+            <Anchor as={NavLink} to={"/signup"}>
             <RegisterBtn>Sign Up</RegisterBtn>
+            </Anchor>
           </BtnContainer>
         </NavRight>
       </Navbar>
