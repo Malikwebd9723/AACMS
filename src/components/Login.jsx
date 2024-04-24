@@ -65,13 +65,19 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
+padding:10px 50px;
 `
 const H1 = styled.h1`
+padding: 10px 0 30px 0;
 font-size:30px;
 color:white;
 `
 const H6 = styled.h6`
+padding:10px 0;
+font-weight:600;
+font-size:15px;
 color:white;
+
 `
 const Form = styled.form`
 display:flex;
@@ -79,16 +85,19 @@ flex-direction:column;
 width:40%;
 `
 const Input = styled.input`
+font-weight:800;
 color:white;
-margin:10px;
-padding:10px;
+margin:12px;
+padding:12px;
 border:1px solid black;
 border-radius:30px;
 background: linear-gradient(rgba(39,39,39, 0.6), transparent);
 `
 const SubmitBtn = styled.button`
+font-weight:600;
+font-size:18px;
 margin:10px;
-padding:10px;
+padding:13px;
 border:1px solid black;
 border-radius:30px;
 `
