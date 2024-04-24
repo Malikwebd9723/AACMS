@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from "styled-components";
 import logo from "../assets/logo.jpg"
-
+import { NavLink } from 'react-router-dom';
 const Main = styled.section`
 min-height:100vh;
 display:flex;
@@ -117,7 +117,10 @@ const SignUp = () => {
    </NavLeft>
    <NavRight>
      <BtnContainer>
-       <LoginBtn>Sign In</LoginBtn>
+      <Anchor as={NavLink} to={'/'}>
+      <LoginBtn>Sign In</LoginBtn>
+      </Anchor>
+    
        <RegisterBtn>Sign Up</RegisterBtn>
      </BtnContainer>
    </NavRight>
