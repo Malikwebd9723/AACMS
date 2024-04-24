@@ -131,7 +131,7 @@ const Login = () => {
         <Input type='password' placeholder='Password'/>
         <SubmitBtn>Login</SubmitBtn>
       </Form>
-      <H6>forgot password?</H6>
+      <H6>Forgot password?</H6>
     </LoginContainer>
 
     </Main>
