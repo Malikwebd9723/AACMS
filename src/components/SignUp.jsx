@@ -75,12 +75,6 @@ padding: 10px 0 30px 0;
 font-size:30px;
 color:white;
 `
-const H6 = styled.h6`
-padding:10px 0;
-font-weight:600;
-font-size:15px;
-color:white;
-`
 const Form = styled.form`
 display:flex;
 flex-direction:column;
