@@ -102,6 +102,8 @@ border:1px solid black;
 border-radius:30px;
 `
 const Anchor = styled.a`
+color:white;
+text-decoration:none;
 `
 const Login = () => {
   return (
@@ -128,7 +130,7 @@ const Login = () => {
 
     {/* log in form start */}
     <LoginContainer>
-      <H6>Don`t have an account? <Anchor>Sign Up</Anchor> </H6>
+      <Anchor as={NavLink} to={"/signup"}>Don`t have an account? Sign Up</Anchor>
       <H1>Login</H1>
       <Form onSubmit={"/"}>
         <Input type='text' placeholder='Username or Email'/>

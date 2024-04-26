@@ -44,9 +44,9 @@ const LoginBtn = styled.button`
   padding:15px 50px;
   margin:10px;
   border-radius:30px;
-  background-color:white;
   border:none;
   color:black;
+  background: rgba(255, 255, 255, 0.4);
    font-size: 15px;
     font-weight: 500;
     color: black;
@@ -56,7 +56,7 @@ const RegisterBtn = styled.button`
   padding:15px 50px;
   margin:10px;
   border-radius:30px;
-  background: rgba(255, 255, 255, 0.4);
+  background-color:white;
   border:none;
   color:black;
 `
@@ -104,6 +104,8 @@ border:1px solid black;
 border-radius:30px;
 `
 const Anchor = styled.a`
+color:white;
+text-decoration:none;
 `
 const SignUp = () => {
   return (
@@ -117,18 +119,18 @@ const SignUp = () => {
    </NavLeft>
    <NavRight>
      <BtnContainer>
+       <RegisterBtn>Sign Up</RegisterBtn>
       <Anchor as={NavLink} to={'/'}>
       <LoginBtn>Sign In</LoginBtn>
       </Anchor>
     
-       <RegisterBtn>Sign Up</RegisterBtn>
      </BtnContainer>
    </NavRight>
  </Navbar>
 
   {/* Sign up in form start */}
   <SignupContainer>
-      <H6>Have an account? <Anchor>Login</Anchor> </H6>
+      <Anchor as={NavLink} to={"/"}>Have an account? Login</Anchor>
       <H1>Sign Up</H1>
       <Form onSubmit={"/"}>
         <Input type="text" placeholder='First Name' />
