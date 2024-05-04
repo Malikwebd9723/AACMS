@@ -3,7 +3,7 @@ import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Menu from "./components/dashboard/Menu";
 import ClientManagement from "./components/dashboard/ClientManagement"
-import AdminDashboard from "./components/dashboard/AdminDashboard";
+import AdminDashboard from "./components/dashboard/AdminDashboard"
 function App() {
   return (
       <>
