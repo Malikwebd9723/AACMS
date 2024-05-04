@@ -3,7 +3,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 
 const Main = styled.section`
-  min-height: 63.2vh;
+min-height: 90vh;
   display: flex;
 @media (max-width:800px){
       flex-direction: column;
@@ -12,6 +12,7 @@ const Main = styled.section`
 `
 const Navbar = styled.section`
 background-color: orange;
+flex:1;
 color:var(--white);
 border-top: 2px solid orange;
     position: sticky;
@@ -27,7 +28,6 @@ const HamNav = styled.section`
   background-color: grey;
   padding: 2vh;
   margin: 0;
-  border-top: 1px solid orange;
   display:flex;
 `
 const HamLeft = styled.section`
@@ -69,12 +69,12 @@ const Searchbar = styled.input`
 background:transparent;
 border:none;
 `
-const Icon = styled.span`
-display: none;
-    @media (max-width:800px){
-     display: block;
-    }
-`
+// const Icon = styled.span`
+// display: none;
+//     @media (max-width:800px){
+//      display: block;
+//     }
+// `
 const H4 = styled.h4`
 text-align: center;
 padding: 10px;
@@ -84,10 +84,10 @@ flex:2;
 const H5 = styled.h5`
 padding: 20px 10px 0px 10px;
 `
-const H6 = styled.h6`
-padding: 0 10px;
+// const H6 = styled.h6`
+// padding: 0 10px;
 
-`
+// `
 const Links = styled.section`
   display: flex;
   flex-direction: column;

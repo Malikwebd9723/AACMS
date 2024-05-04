@@ -1,10 +1,14 @@
 import React from 'react'
+import styled from 'styled-components'
 
+const Main = styled.section`
+flex:4;
+`
 const ClientManagement = () => {
   return (
-    <div>
-      <h1>client management</h1>
-    </div>
+<Main>
+  
+</Main>
   )
 }
 
