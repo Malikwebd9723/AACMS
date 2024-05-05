@@ -2,6 +2,14 @@ import styled from "styled-components"
 import { NavLink, Outlet } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import profilebg from "../../assets/zain.jpg"
+import TvIcon from '@mui/icons-material/Tv';
+import GroupsIcon from '@mui/icons-material/Groups';
+import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
+import GavelIcon from '@mui/icons-material/Gavel';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import SettingsIcon from '@mui/icons-material/Settings';
+
 const Main = styled.section`
 min-height: 90vh;
   display: flex;
@@ -10,9 +18,13 @@ min-height: 90vh;
     }
 
 `
+
 const Navbar = styled.section`
+
+
 overflow:auto;
 font-weight:600;
+
 	  transition:all 0.1s;
 	  background-color:#fff;
 	  box-shadow:0 0 30px 0 rgba(200 200 200 / 20%);
@@ -97,7 +109,7 @@ color:black;
 font-size:20px;
 font-weight:800;
 text-align:center;
-padding: 9px 40px 6px 5px;
+padding: 9px 18px 6px 5px;
 `
 const Links = styled.section`
   display: flex;
@@ -108,8 +120,8 @@ const Link = styled.a`
 color: var(--white);
 text-decoration: none;
 border-radius: 10px 0 0 0 ;
-padding: 8px;
-margin: 6px;
+padding: 6px;
+margin: 5px;
 transition: all 0.5s ease;
 &:hover{
   font-size: 17px;
@@ -143,17 +155,24 @@ const Menu = () => {
                     <img
                     src="https://img.freepik.com/free-vector/hand-drawn-advocate-logo-design_23-2150652384.jpg?size=338&ext=jpg&ga=GA1.1.1395880969.1710115200&semt=ais"
                     alt="Logo" 
-                    style={{ height: '100px' }} 
+                    style={{ height: '80px' }} 
       />
                         LAW OFFICE
                     </H5>
                     <Links>
+                    <TvIcon/>
                         <Link as={NavLink} to="/admin">DashBoard</Link>
+                        <GroupsIcon/>
                         <Link as={NavLink} to="/admin/clientManagement">Client Management</Link>
+                        <GavelIcon />
                         <Link as={NavLink} to="/">Client Judges Detail</Link>
+                        <CalendarMonthIcon/>
                         <Link as={NavLink} to="/">Hearing Dates</Link>
+                        <WorkOutlineIcon/>
                         <Link as={NavLink} to="/">Cases Details</Link>
+                        <AccountBalanceIcon />
                         <Link as={NavLink} to="/">Finance</Link>
+                        <SettingsIcon/>
                         <Link as={NavLink} to="/">Setting</Link>
 
 

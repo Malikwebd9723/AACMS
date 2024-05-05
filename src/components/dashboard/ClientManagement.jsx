@@ -1,60 +1,192 @@
 import React from 'react'
 import styled from 'styled-components'
-
-
-const HamNav = styled.section`
-  display: flex; 
-  text-align: center; 
-  flex-direction: row; 
-  align-items: center; 
-  justify-content: space-between; 
-  background-color: #353B48;
-  padding: 2vh;
-  margin: 0;
-  @media (max-width: 800px) {
-    flex-direction: column; 
-  }
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+const MainContainer = styled.section`
+background:#F5F5F5;
+flex:4;
+padding:15px;
+`
+const SubContainer = styled.section`
+display: flex;
+text-align: center;
+background-color: #353B48;
+padding: 2vh;
+margin: 0;
+display:flex;
 `
 const HamLeft = styled.section`
-  flex: 1; 
-  display: flex;
-  align-items: center;
+flex:1;
+display:flex;
+align-items:center;
 `
-
-const HamRight = styled.section`
-  flex: 1; 
-  display: flex;
-  align-items: center;
-  justify-content: flex-end; 
-`
-
 const H4 = styled.h4`
-  text-align: center;
-  padding: 10px;
-  margin: 0;
-  flex: 2;
+font-size:17px;
+color:white;
+font-weight:400;
 `
-
-const Addbtn = styled.button`
-  font-weight: 600;
-  font-size: 18px;
-  color: white;
-  background: transparent;
-  border: none;
-  cursor: pointer;
+const ButtonContainer = styled.section`
+display:flex;
+justify-content:space-between;
+align-items: center;
+text-transform: uppercase;
+text-align:center;
+padding: 7px 12px 7px 5px;
+background:#28A745;
+border-radius:3px;
+color:white;
 `
+const Addbtn = styled.section`
 
+font-size:12px;
+font-weight:600;
+`
+const ActivitiesContainer = styled.section`
+margin:20px 0px
+`
+const Table = styled.table`
+
+min-width:100%
+`
+const Thead = styled.thead`
+background:white;
+`
+const Tbody = styled.tbody`
+background:white;
+`
+const Tr = styled.tr`
+`
+const Th = styled.th`
+padding:10px;
+`
+const Td = styled.td`
+text-align:center;
+padding:10px;
+`
+const Action = styled.section`
+display:flex;
+justify-content:space-between;
+align-items: center;
+
+text-align:center;
+`
+const Delbtn = styled.section`
+
+
+`
+const Editbtn = styled.section`
+
+
+`
 const ClientManagement = () => {
   return (
     <>
-      <HamNav>
-        <HamLeft>
-          <H4>Manage Your Clients</H4>
-        </HamLeft>
-        <HamRight>
-          <Addbtn>Adds Clients</Addbtn>
-        </HamRight>
-      </HamNav>
+      <MainContainer>
+        <SubContainer>
+          <HamLeft>
+          <H4>Manage Law Office Details</H4>
+          </HamLeft>
+          <ButtonContainer>
+          <AddCircleOutlineIcon/>
+          <Addbtn>Add New Client</Addbtn>
+        </ButtonContainer>
+        </SubContainer>
+        
+        <ActivitiesContainer>
+                <Table>
+                    <Thead>
+                        <Tr>
+                            <Th>Name</Th>
+                            <Th>Client#</Th>
+                            <Th>Email</Th>
+                            <Th>Adresss</Th>
+                            <Th>Phone</Th>
+                            <Th>Action</Th>
+                        </Tr>
+                    </Thead>
+                    <Tbody>
+                        <Tr>
+                            <Td>John</Td>
+                            <Td>1</Td>
+                            <Td>4</Td>
+                            <Td>30/10/2024</Td>
+                            <Td>Due</Td>
+                            
+                            <Td>
+                            <Delbtn><DeleteIcon /></Delbtn><Editbtn><EditIcon/></Editbtn>
+                            </Td>
+                            
+                        
+                        </Tr>
+                    </Tbody>
+                    <Tbody>
+                        <Tr>
+                            <Td>John</Td>
+                            <Td>1</Td>
+                            <Td>4</Td>
+                            <Td>30/10/2024</Td>
+                            <Td>Due</Td>
+                            <Td>pending</Td>
+                        </Tr>
+                    </Tbody>
+                    <Tbody>
+                        <Tr>
+                            <Td>John</Td>
+                            <Td>1</Td>
+                            <Td>4</Td>
+                            <Td>30/10/2024</Td>
+                            <Td>Due</Td>
+                            <Td>pending</Td>
+                        </Tr>
+                    </Tbody>
+                    <Tbody>
+                        <Tr>
+                            <Td>John</Td>
+                            <Td>1</Td>
+                            <Td>4</Td>
+                            <Td>30/10/2024</Td>
+                            <Td>Due</Td>
+                            <Td>pending</Td>
+                        </Tr>
+                    </Tbody>
+                    <Tbody>
+                        <Tr>
+                            <Td>John</Td>
+                            <Td>1</Td>
+                            <Td>4</Td>
+                            <Td>30/10/2024</Td>
+                            <Td>Due</Td>
+                            <Td>pending</Td>
+                        </Tr>
+                    </Tbody>
+                    <Tbody>
+                        <Tr>
+                            <Td>John</Td>
+                            <Td>1</Td>
+                            <Td>4</Td>
+                            <Td>30/10/2024</Td>
+                            <Td>Due</Td>
+                            <Td>pending</Td>
+                        </Tr>
+                    </Tbody>
+                    <Tbody>
+                        <Tr>
+                            <Td>John</Td>
+                            <Td>1</Td>
+                            <Td>4</Td>
+                            <Td>30/10/2024</Td>
+                            <Td>Due</Td>
+                            <Td></Td>
+                        </Tr>
+                    </Tbody>
+
+                </Table>
+            </ActivitiesContainer>
+ 
+      </MainContainer>
+      
+       
     
     </>
   );
