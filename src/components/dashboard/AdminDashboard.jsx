@@ -8,16 +8,19 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
 const Main = styled.section`
-flex:4;
+background:#F5F5F5;
+flex:5;
 padding:20px
 `
 const CardContainer = styled.section`
+
 display:flex;
 align-items:center;
 justify-content:space-around;
 margin:20px 0px;
 `
 const Card = styled.section`
+background-color:white;
 flex:1;
 border-radius:10px;
 padding:10px;
@@ -55,11 +58,14 @@ font-size:35px;
 font-weight:400;
 `
 const Table = styled.table`
+
 min-width:100%
 `
 const Thead = styled.thead`
+background:white;
 `
 const Tbody = styled.tbody`
+background:white;
 `
 const Tr = styled.tr`
 `
@@ -141,6 +147,7 @@ const AdminDashboard = () => {
                             <Td>30/10/2024</Td>
                             <Td>Due</Td>
                             <Td>pending</Td>
+                        
                         </Tr>
                     </Tbody>
                     <Tbody>
