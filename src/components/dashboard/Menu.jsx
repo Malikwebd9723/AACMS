@@ -118,8 +118,8 @@ const Link = styled.a`
 color: var(--white);
 text-decoration: none;
 border-radius: 10px 0 0 0 ;
-padding: 5px;
-margin: 5px;
+padding: 8px;
+margin: 6px;
 transition: all 0.5s ease;
 &:hover{
   font-size: 17px;
@@ -141,7 +141,9 @@ const Menu = () => {
                     <H4>DASHBOARD</H4>
                 </HamCenter>
                 <HamRight>
-                    <HamIcon></HamIcon>
+                    <HamIcon>
+                        <img src="" alt="aacms\src\assets\zain.jpgrofile" style={{height:'100px'}} />
+                    </HamIcon>
                 </HamRight>
             </HamNav>
             <Main>
@@ -157,10 +159,11 @@ const Menu = () => {
                     <Links>
                         <Link as={NavLink} to="/admin">DashBoard</Link>
                         <Link as={NavLink} to="/admin/clientManagement">Client Management</Link>
-                        <Link as={NavLink} to="/">Students</Link>
-                        <Link as={NavLink} to="/">Students Applicant</Link>
-                        <Link as={NavLink} to="/">Teachers Applicant</Link>
-                        <Link as={NavLink} to="/">Settings</Link>
+                        <Link as={NavLink} to="/">Client Judges Detail</Link>
+                        <Link as={NavLink} to="/">Hearing Dates</Link>
+                        <Link as={NavLink} to="/">Cases Details</Link>
+                        <Link as={NavLink} to="/">Finance</Link>
+                        <Link as={NavLink} to="/">Setting</Link>
 
 
                     </Links>
