@@ -25,7 +25,7 @@ border-top: 2px solid orange;
 const HamNav = styled.section`
   display: flex;
   text-align: center;
-  background-color: grey;
+  background-color: #353B48;
   padding: 2vh;
   margin: 0;
   display:flex;
@@ -36,6 +36,7 @@ display:flex;
 align-items:center;
 `
 const HamCenter = styled.section`
+font-size:20px;
 flex:1;
 display:flex;
 align-items:center;
@@ -54,19 +55,23 @@ background-color:orange;
 border-radius:50%
 `
 const SearchContainer = styled.section`
-background:orange;
+background:#4A5263;
 display:flex;
 align-items:center;
-padding:7px;
+padding:9px;
 border-radius:50px;
-margin-left:10px
+margin-left:13px
 `
 const SecrchBtn = styled.button`
+font-weight:600;
+font-size:18px;
+color:white;
 background:transparent;
 border:none;
 `
 const Searchbar = styled.input`
 background:transparent;
+font-size:17px;
 border:none;
 `
 // const Icon = styled.span`
@@ -112,7 +117,7 @@ const Menu = () => {
                 <HamLeft>
                     <MenuIcon />
                     <SearchContainer>
-                        <Searchbar placeholder="search here" />
+                        <Searchbar placeholder="Search Here" />
                         <SecrchBtn>GO</SecrchBtn>
                     </SearchContainer>
                 </HamLeft>

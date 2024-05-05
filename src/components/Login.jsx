@@ -133,6 +133,7 @@ const Login = () => {
       <Anchor as={NavLink} to={"/signup"}>Don`t have an account? Sign Up</Anchor>
       <H1>Login</H1>
       <Form onSubmit={"/"}>
+  
         <Input type='text' placeholder='Username or Email'/>
         <Input type='password' placeholder='Password'/>
         <SubmitBtn>Login</SubmitBtn>
