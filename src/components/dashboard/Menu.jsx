@@ -11,10 +11,15 @@ min-height: 90vh;
 
 `
 const Navbar = styled.section`
-background-color: orange;
+overflow:auto;
+	  transition:all 0.1s;
+	  background-color:#fff;
+	  box-shadow:0 0 30px 0 rgba(200 200 200 / 20%);
+
 flex:1;
+
 color:var(--white);
-border-top: 2px solid orange;
+border-top: 2px solid white;
     position: sticky;
     left: 0;
     flex: 1;
@@ -22,6 +27,7 @@ border-top: 2px solid orange;
      display: none;
     }
 `
+
 const HamNav = styled.section`
   display: flex;
   text-align: center;
@@ -87,6 +93,11 @@ margin: 0;
 flex:2;
 `
 const H5 = styled.h5`
+text-transform:upercase;
+color:#ff7782;
+font-size:17px;
+font-weight:600;
+text-align:center;
 padding: 20px 10px 0px 10px;
 `
 // const H6 = styled.h6`
@@ -131,7 +142,7 @@ const Menu = () => {
             <Main>
                 <Navbar>
                     <H5>
-                        Admin
+                        LAW OFFICE
                     </H5>
                     <Links>
                         <Link as={NavLink} to="/admin">DashBoard</Link>
