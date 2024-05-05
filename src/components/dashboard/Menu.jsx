@@ -69,7 +69,7 @@ padding:9px;
 border-radius:50px;
 margin-left:13px
 `
-const SecrchBtn = styled.button`
+const SearchBtn = styled.button`
 font-weight:600;
 font-size:18px;
 color:white;
@@ -134,7 +134,8 @@ const Menu = () => {
                     <MenuIcon />
                     <SearchContainer>
                         <Searchbar placeholder="Search Here" />
-                        <SecrchBtn>GO</SecrchBtn>
+                        <SearchBtn>GO</SearchBtn>
+                       
                     </SearchContainer>
                 </HamLeft>
                 <HamCenter>
@@ -142,7 +143,7 @@ const Menu = () => {
                 </HamCenter>
                 <HamRight>
                     <HamIcon>
-                        <img src="" alt="aacms\src\assets\zain.jpgrofile" style={{height:'100px'}} />
+                        <img src="" alt="" style={{height:'100px'}} />
                     </HamIcon>
                 </HamRight>
             </HamNav>
