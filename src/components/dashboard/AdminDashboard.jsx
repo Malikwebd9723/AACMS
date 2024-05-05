@@ -9,7 +9,7 @@ import 'react-circular-progressbar/dist/styles.css';
 
 const Main = styled.section`
 background:#F5F5F5;
-flex:4;
+flex:5;
 padding:20px
 `
 const CardContainer = styled.section`

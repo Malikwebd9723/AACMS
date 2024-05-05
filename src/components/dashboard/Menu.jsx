@@ -12,6 +12,7 @@ min-height: 90vh;
 `
 const Navbar = styled.section`
 overflow:auto;
+font-weight:600;
 	  transition:all 0.1s;
 	  background-color:#fff;
 	  box-shadow:0 0 30px 0 rgba(200 200 200 / 20%);
@@ -93,12 +94,16 @@ margin: 0;
 flex:2;
 `
 const H5 = styled.h5`
-text-transform:upercase;
-color:#ff7782;
-font-size:17px;
-font-weight:600;
+display:flex;
+justify-content: space-between;
+align-items: center;
+text-transform: uppercase;
+
+color:black;
+font-size:20px;
+font-weight:800;
 text-align:center;
-padding: 20px 10px 0px 10px;
+padding: 9px 40px 6px 5px;
 `
 // const H6 = styled.h6`
 // padding: 0 10px;
@@ -142,6 +147,11 @@ const Menu = () => {
             <Main>
                 <Navbar>
                     <H5>
+                    <img
+                    src="https://img.freepik.com/free-vector/hand-drawn-advocate-logo-design_23-2150652384.jpg?size=338&ext=jpg&ga=GA1.1.1395880969.1710115200&semt=ais"
+                    alt="Logo" 
+                    style={{ height: '100px' }} 
+      />
                         LAW OFFICE
                     </H5>
                     <Links>
