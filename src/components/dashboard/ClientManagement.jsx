@@ -55,7 +55,7 @@ const ClientManagement = () => {
           <H4>Manage Your Clients</H4>
         </HamLeft>
         <HamRight>
-          <Addbtn>Add Clients</Addbtn>
+          <Addbtn>Adds Clients</Addbtn>
         </HamRight>
       </HamNav>
     
