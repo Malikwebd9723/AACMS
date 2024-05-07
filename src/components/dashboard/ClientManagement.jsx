@@ -64,20 +64,20 @@ const Td = styled.td`
 text-align:center;
 padding:10px;
 `
-const Action = styled.section`
-display:flex;
-justify-content:space-between;
-align-items: center;
 
-text-align:center;
-`
-const Delbtn = styled.section`
-
+const ButtonActionContainer = styled.section`
+  display: flex;
+  justify-content:center;
+  align-items: center;
 
 `
-const Editbtn = styled.section`
-
-
+  const StyledButton = styled.button`
+  display: flex;
+  align-items: center;
+  border: none; 
+  background-color: transparent; 
+cursor: pointer; 
+color:#4A5263;
 `
 const ClientManagement = () => {
   return (
@@ -109,13 +109,24 @@ const ClientManagement = () => {
                         <Tr>
                             <Td>John</Td>
                             <Td>1</Td>
-                            <Td>4</Td>
+                            <Td>u</Td>
                             <Td>30/10/2024</Td>
                             <Td>Due</Td>
                             
                             <Td>
-                            <Delbtn><DeleteIcon /></Delbtn><Editbtn><EditIcon/></Editbtn>
+                            <ButtonActionContainer>
+                            <StyledButton>
+                            <DeleteIcon />
+                            </StyledButton>
+                            <StyledButton>
+                            <EditIcon/>
+                            </StyledButton>
+                            </ButtonActionContainer>
                             </Td>
+                           
+                            
+                           
+                           
                             
                         
                         </Tr>
@@ -127,7 +138,16 @@ const ClientManagement = () => {
                             <Td>4</Td>
                             <Td>30/10/2024</Td>
                             <Td>Due</Td>
-                            <Td>pending</Td>
+                            <Td>
+                            <ButtonActionContainer>
+                            <StyledButton>
+                            <DeleteIcon />
+                            </StyledButton>
+                            <StyledButton>
+                            <EditIcon/>
+                            </StyledButton>
+                            </ButtonActionContainer>
+                            </Td>
                         </Tr>
                     </Tbody>
                     <Tbody>
@@ -137,7 +157,16 @@ const ClientManagement = () => {
                             <Td>4</Td>
                             <Td>30/10/2024</Td>
                             <Td>Due</Td>
-                            <Td>pending</Td>
+                            <Td>
+                            <ButtonActionContainer>
+                            <StyledButton>
+                            <DeleteIcon />
+                            </StyledButton>
+                            <StyledButton>
+                            <EditIcon/>
+                            </StyledButton>
+                            </ButtonActionContainer>
+                            </Td>
                         </Tr>
                     </Tbody>
                     <Tbody>
@@ -147,7 +176,16 @@ const ClientManagement = () => {
                             <Td>4</Td>
                             <Td>30/10/2024</Td>
                             <Td>Due</Td>
-                            <Td>pending</Td>
+                            <Td>
+                            <ButtonActionContainer>
+                            <StyledButton>
+                            <DeleteIcon />
+                            </StyledButton>
+                            <StyledButton>
+                            <EditIcon/>
+                            </StyledButton>
+                            </ButtonActionContainer>
+                            </Td>
                         </Tr>
                     </Tbody>
                     <Tbody>
@@ -157,7 +195,16 @@ const ClientManagement = () => {
                             <Td>4</Td>
                             <Td>30/10/2024</Td>
                             <Td>Due</Td>
-                            <Td>pending</Td>
+                            <Td>
+                            <ButtonActionContainer>
+                            <StyledButton>
+                            <DeleteIcon />
+                            </StyledButton>
+                            <StyledButton>
+                            <EditIcon/>
+                            </StyledButton>
+                            </ButtonActionContainer>
+                            </Td>
                         </Tr>
                     </Tbody>
                     <Tbody>
@@ -167,7 +214,16 @@ const ClientManagement = () => {
                             <Td>4</Td>
                             <Td>30/10/2024</Td>
                             <Td>Due</Td>
-                            <Td>pending</Td>
+                            <Td>
+                            <ButtonActionContainer>
+                            <StyledButton>
+                            <DeleteIcon />
+                            </StyledButton>
+                            <StyledButton>
+                            <EditIcon/>
+                            </StyledButton>
+                            </ButtonActionContainer>
+                            </Td>
                         </Tr>
                     </Tbody>
                     <Tbody>
@@ -177,7 +233,16 @@ const ClientManagement = () => {
                             <Td>4</Td>
                             <Td>30/10/2024</Td>
                             <Td>Due</Td>
-                            <Td></Td>
+                            <Td>
+                            <ButtonActionContainer>
+                            <StyledButton>
+                            <DeleteIcon />
+                            </StyledButton>
+                            <StyledButton>
+                            <EditIcon/>
+                            </StyledButton>
+                            </ButtonActionContainer>
+                            </Td>
                         </Tr>
                     </Tbody>
 
