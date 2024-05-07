@@ -165,7 +165,7 @@ const Menu = () => {
                         <GroupsIcon/>
                         <Link as={NavLink} to="/admin/clientManagement">Client Management</Link>
                         <GavelIcon />
-                        <Link as={NavLink} to="/">Client Judges Detail</Link>
+                        <Link as={NavLink} to="/admin/clientManagement/ClientsJudgesDetails">Clients Judges Details</Link>
                         <CalendarMonthIcon/>
                         <Link as={NavLink} to="/">Hearing Dates</Link>
                         <WorkOutlineIcon/>
