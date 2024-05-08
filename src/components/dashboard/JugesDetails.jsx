@@ -6,7 +6,7 @@ import EditIcon from '@mui/icons-material/Edit';
 const MainContainer = styled.section`
 background:#F5F5F5;
 flex:4;
-padding:15px;
+padding:20px;
 `
 const SubContainer = styled.section`
 display: flex;
