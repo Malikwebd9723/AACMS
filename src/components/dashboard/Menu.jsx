@@ -113,8 +113,12 @@ padding: 9px 18px 6px 5px;
 `
 const Links = styled.section`
   display: flex;
+  align items:center;
   flex-direction: column;
   padding: 10px;
+  
+		 
+
 `
 const Link = styled.a`
 color: var(--white);
@@ -127,6 +131,9 @@ transition: all 0.5s ease;
   font-size: 17px;
 }
 `
+
+
+ 
 
 const Menu = () => {
     return (
@@ -160,20 +167,20 @@ const Menu = () => {
                         LAW OFFICE
                     </H5>
                     <Links>
-                    <TvIcon/>
-                        <Link as={NavLink} to="/admin">DashBoard</Link>
-                        <GroupsIcon/>
-                        <Link as={NavLink} to="/admin/clientManagement">Client Management</Link>
-                        <GavelIcon />
-                        <Link as={NavLink} to="/admin/clientManagement/ClientsJudgesDetails">Clients Judges Details</Link>
-                        <CalendarMonthIcon/>
-                        <Link as={NavLink} to="/">Hearing Dates</Link>
-                        <WorkOutlineIcon/>
-                        <Link as={NavLink} to="/">Cases Details</Link>
-                        <AccountBalanceIcon />
-                        <Link as={NavLink} to="/">Finance</Link>
-                        <SettingsIcon/>
-                        <Link as={NavLink} to="/">Setting</Link>
+                   
+                        <Link as={NavLink} to="/admin"> <TvIcon/>DashBoard</Link>
+                    
+                        <Link as={NavLink} to="/admin/clientManagement"><GroupsIcon/>Client Management</Link>
+                       
+                        <Link as={NavLink} to="/admin/clientManagement/ClientsJudgesDetails"> <GavelIcon />Clients Judges Details</Link>
+                        
+                        <Link as={NavLink} to="/"><CalendarMonthIcon/>Hearing Dates</Link>
+                       
+                        <Link as={NavLink} to="/"> <WorkOutlineIcon/>Cases Details</Link>
+                        
+                        <Link as={NavLink} to="/"><AccountBalanceIcon />Finance</Link>
+                        
+                        <Link as={NavLink} to="/"><SettingsIcon/>Setting</Link>
 
 
                     </Links>
