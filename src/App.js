@@ -4,6 +4,7 @@ import SignUp from "./components/SignUp";
 import Menu from "./components/dashboard/Menu";
 import ClientManagement from "./components/dashboard/ClientManagement"
 import AdminDashboard from "./components/dashboard/AdminDashboard"
+import JudgesDatails from "./components/dashboard/JugesDetails";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
       <Route exact path="/admin" element={<Menu />} >
       <Route exact path="" element={<AdminDashboard/>}/>
         <Route exact path="clientManagement" element={<ClientManagement/>}/>
-     
+        <Route exact path="judgesDetails" element={<JudgesDatails/>}/>
       </Route>
       </Routes>
       </>

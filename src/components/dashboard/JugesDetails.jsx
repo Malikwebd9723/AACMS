@@ -79,7 +79,7 @@ const ButtonActionContainer = styled.section`
 cursor: pointer; 
 color:#4A5263;
 `
-const ClientManagement = () => {
+const JudgesDatails = () => {
   return (
     <>
       <MainContainer>
@@ -257,4 +257,4 @@ const ClientManagement = () => {
   );
 };
 
-export default ClientManagement;
+export default JudgesDatails;

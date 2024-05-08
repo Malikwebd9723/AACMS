@@ -24,13 +24,10 @@ const Navbar = styled.section`
 
 overflow:auto;
 font-weight:600;
-
-	  transition:all 0.1s;
-	  background-color:#fff;
-	  box-shadow:0 0 30px 0 rgba(200 200 200 / 20%);
-
+transition:all 0.1s;
+background-color:#fff;
+box-shadow:0 0 30px 0 rgba(200 200 200 / 20%);
 flex:1;
-
 color:var(--white);
 border-top: 2px solid white;
     position: sticky;
@@ -115,10 +112,6 @@ const Links = styled.section`
   display: flex;
   align items:center;
   flex-direction: column;
-  padding: 10px;
-  
-		 
-
 `
 const Link = styled.a`
 color: var(--white);
@@ -130,6 +123,17 @@ transition: all 0.5s ease;
 &:hover{
   font-size: 17px;
 }
+`
+const IconLinksContainer = styled.section`
+display:flex;
+flex-direction:"row";
+padding: 10px;
+`
+const IconContainer = styled.section`
+flex:1;
+`
+const LinksContainer = styled.section`
+flex:4;
 `
 
 
@@ -167,22 +171,71 @@ const Menu = () => {
                         LAW OFFICE
                     </H5>
                     <Links>
-                   
-                        <Link as={NavLink} to="/admin"> <TvIcon/>DashBoard</Link>
+
+                    <IconLinksContainer>
+                    <IconContainer>
+                        <TvIcon/> 
+                    </IconContainer>
+                    <LinksContainer>
+                        <Link as={NavLink} to="/admin">DashBoard</Link>
+                    </LinksContainer>
+                    </IconLinksContainer>
+
+
+                    <IconLinksContainer>
+                    <IconContainer>
+                        <GroupsIcon/> 
+                    </IconContainer>
+                    <LinksContainer>
+                    <Link as={NavLink} to="/admin/clientManagement">Client Management</Link>
+                    </LinksContainer>
+                    </IconLinksContainer>
                     
-                        <Link as={NavLink} to="/admin/clientManagement"><GroupsIcon/>Client Management</Link>
-                       
-                        <Link as={NavLink} to="/admin/clientManagement/ClientsJudgesDetails"> <GavelIcon />Clients Judges Details</Link>
-                        
-                        <Link as={NavLink} to="/"><CalendarMonthIcon/>Hearing Dates</Link>
-                       
-                        <Link as={NavLink} to="/"> <WorkOutlineIcon/>Cases Details</Link>
-                        
-                        <Link as={NavLink} to="/"><AccountBalanceIcon />Finance</Link>
-                        
-                        <Link as={NavLink} to="/"><SettingsIcon/>Setting</Link>
+                    <IconLinksContainer>
+                    <IconContainer>
+                        <GavelIcon/> 
+                    </IconContainer>
+                    <LinksContainer>
+                    <Link as={NavLink} to="/admin/judgesDetails"> Clients Judges Details</Link>
+                    </LinksContainer>
+                    </IconLinksContainer>
+
+                    <IconLinksContainer>
+                    <IconContainer>
+                        <CalendarMonthIcon/> 
+                    </IconContainer>
+                    <LinksContainer>
+                    <Link as={NavLink} to="/">Hearing Dates</Link>
+                    </LinksContainer>
+                    </IconLinksContainer>
 
 
+                    <IconLinksContainer>
+                    <IconContainer>
+                        <WorkOutlineIcon/> 
+                    </IconContainer>
+                    <LinksContainer>
+                    <Link as={NavLink} to="/">Cases Details</Link>
+                    </LinksContainer>
+                    </IconLinksContainer>
+                       
+                    <IconLinksContainer>
+                    <IconContainer>
+                        <AccountBalanceIcon/> 
+                    </IconContainer>
+                    <LinksContainer>
+                    <Link as={NavLink} to="/">Finance</Link>
+                    </LinksContainer>
+                    </IconLinksContainer>    
+
+                    <IconLinksContainer>
+                    <IconContainer>
+                        <SettingsIcon/> 
+                    </IconContainer>
+                    <LinksContainer>
+                    <Link as={NavLink} to="/">Setting</Link>
+                    </LinksContainer>
+                    </IconLinksContainer>  
                     </Links>
                 </Navbar>
                 <Outlet />
