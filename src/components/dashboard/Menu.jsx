@@ -106,7 +106,7 @@ color:black;
 font-size:20px;
 font-weight:800;
 text-align:center;
-padding: 9px 18px 6px 5px;
+padding: 10px 35px 25px 5px;
 `
 const Links = styled.section`
   display: flex;
