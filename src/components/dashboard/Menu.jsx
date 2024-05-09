@@ -205,7 +205,7 @@ const Menu = () => {
                         <CalendarMonthIcon/> 
                     </IconContainer>
                     <LinksContainer>
-                    <Link as={NavLink} to="/">Hearing Dates</Link>
+                    <Link as={NavLink} to="/admin/hearingDates">Hearing Dates</Link>
                     </LinksContainer>
                     </IconLinksContainer>
 
