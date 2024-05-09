@@ -6,6 +6,7 @@ import ClientManagement from "./components/dashboard/ClientManagement"
 import AdminDashboard from "./components/dashboard/AdminDashboard"
 import JudgesDatails from "./components/dashboard/JugesDetails";
 import HearingDates from "./components/dashboard/HearingDates";
+import CasesDetails from "./components/dashboard/CasesDetails";
 function App() {
   return (
       <>
@@ -17,6 +18,7 @@ function App() {
         <Route exact path="clientManagement" element={<ClientManagement/>}/>
         <Route exact path="judgesDetails" element={<JudgesDatails/>}/>
         <Route exact path="hearingDates" element={<HearingDates/>}/>
+        <Route exact path="casesDetails"element={<CasesDetails/>}/>
       </Route>
       </Routes>
       </>

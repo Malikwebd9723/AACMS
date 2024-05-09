@@ -215,7 +215,7 @@ const Menu = () => {
                         <WorkOutlineIcon/> 
                     </IconContainer>
                     <LinksContainer>
-                    <Link as={NavLink} to="/">Cases Details</Link>
+                    <Link as={NavLink} to="/admin/casesDetails">Cases Details</Link>
                     </LinksContainer>
                     </IconLinksContainer>
                        
