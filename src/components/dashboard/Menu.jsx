@@ -224,7 +224,7 @@ const Menu = () => {
                         <AccountBalanceIcon/> 
                     </IconContainer>
                     <LinksContainer>
-                    <Link as={NavLink} to="/">Finance</Link>
+                    <Link as={NavLink} to="/admin/finance">Finance</Link>
                     </LinksContainer>
                     </IconLinksContainer>    
 
