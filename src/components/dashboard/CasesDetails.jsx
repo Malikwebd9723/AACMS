@@ -98,8 +98,9 @@ const CasesDetails = () => {
                 <Table>
                     <Thead>
                         <Tr>
-                            <Th>Name</Th>
                             <Th>Client#</Th>
+                            <Th>Case Title</Th>
+                            <Th>Case Type</Th>
                             <Th>Case Status</Th>
                             <Th>Total Cases</Th>
                             <Th>Date Filed</Th>
@@ -112,9 +113,11 @@ const CasesDetails = () => {
                         <Tr>
                             <Td>John</Td>
                             <Td>1</Td>
+                            <Td>Criminal</Td>
                             <Td>pre-trial</Td>
                             <Td>30/10/2024</Td>
                             <Td>Due</Td>
+                            <Td>2</Td>
                             
                             <Td>
                             <ButtonActionContainer>
@@ -138,9 +141,11 @@ const CasesDetails = () => {
                         <Tr>
                             <Td>John</Td>
                             <Td>1</Td>
+                            <Td>Criminal</Td>
                             <Td>trial</Td>
                             <Td>30/10/2024</Td>
                             <Td>Due</Td>
+                            <Td>2</Td>
                             <Td>
                             <ButtonActionContainer>
                             <StyledButton>
@@ -157,9 +162,11 @@ const CasesDetails = () => {
                         <Tr>
                             <Td>John</Td>
                             <Td>1</Td>
+                            <Td>Criminal</Td>
                             <Td>settlement negotiations</Td>
                             <Td>30/10/2024</Td>
                             <Td>Due</Td>
+                            <Td>2</Td>
                             <Td>
                             <ButtonActionContainer>
                             <StyledButton>
@@ -176,9 +183,11 @@ const CasesDetails = () => {
                         <Tr>
                             <Td>John</Td>
                             <Td>1</Td>
+                            <Td>Criminal</Td>
                             <Td>4</Td>
                             <Td>30/10/2024</Td>
                             <Td>Due</Td>
+                            <Td>2</Td>
                             <Td>
                             <ButtonActionContainer>
                             <StyledButton>
@@ -195,9 +204,11 @@ const CasesDetails = () => {
                         <Tr>
                             <Td>John</Td>
                             <Td>1</Td>
+                            <Td>Criminal</Td>
                             <Td>4</Td>
                             <Td>30/10/2024</Td>
                             <Td>Due</Td>
+                            <Td>2</Td>
                             <Td>
                             <ButtonActionContainer>
                             <StyledButton>
@@ -214,9 +225,11 @@ const CasesDetails = () => {
                         <Tr>
                             <Td>John</Td>
                             <Td>1</Td>
+                            <Td>Criminal</Td>
                             <Td>4</Td>
                             <Td>30/10/2024</Td>
                             <Td>Due</Td>
+                            <Td>2</Td>
                             <Td>
                             <ButtonActionContainer>
                             <StyledButton>
@@ -233,9 +246,11 @@ const CasesDetails = () => {
                         <Tr>
                             <Td>John</Td>
                             <Td>1</Td>
+                            <Td>Criminal</Td>
                             <Td>4</Td>
                             <Td>30/10/2024</Td>
                             <Td>Due</Td>
+                            <Td>2</Td>
                             <Td>
                             <ButtonActionContainer>
                             <StyledButton>
