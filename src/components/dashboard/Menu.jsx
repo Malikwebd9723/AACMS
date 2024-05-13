@@ -233,7 +233,7 @@ const Menu = () => {
                         <SettingsIcon/> 
                     </IconContainer>
                     <LinksContainer>
-                    <Link as={NavLink} to="/">Setting</Link>
+                    <Link as={NavLink} to="/admin/settings">Setting</Link>
                     </LinksContainer>
                     </IconLinksContainer>  
                     </Links>

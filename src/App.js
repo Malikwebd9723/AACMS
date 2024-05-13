@@ -8,6 +8,7 @@ import JudgesDatails from "./components/dashboard/JugesDetails";
 import HearingDates from "./components/dashboard/HearingDates";
 import CasesDetails from "./components/dashboard/CasesDetails";
 import Finance from "./components/dashboard/Finance";
+import Settings from"./components/dashboard/Settings";
 function App() {
   return (
       <>
@@ -21,6 +22,7 @@ function App() {
         <Route exact path="hearingDates" element={<HearingDates/>}/>
         <Route exact path="casesDetails"element={<CasesDetails/>}/>
         <Route exact path="finance"element={<Finance/>}/>
+        <Route exact path="settings"element={<Settings/>}/>
       </Route>
       </Routes>
       </>
