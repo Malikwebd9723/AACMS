@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 const MainContainer = styled.section`
 background:#F5F5F5;
 flex:4;
@@ -37,8 +42,10 @@ background:#28A745;
 border-radius:3px;
 color:white;
 `
-const Addbtn = styled.section`
-
+const Addbtn = styled.button`
+background:transparent;
+border:none;
+color:white;
 font-size:12px;
 font-weight:600;
 `
@@ -59,6 +66,7 @@ const Tr = styled.tr`
 `
 const Th = styled.th`
 padding:10px;
+text-align:center;
 `
 const Td = styled.td`
 text-align:center;
@@ -80,16 +88,40 @@ cursor: pointer;
 color:#4A5263;
 `
 const ClientManagement = () => {
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+
   return (
     <>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add New Clients</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+            
+            </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
       <MainContainer>
         <SubContainer>
           <HamLeft>
           <H4>Manage Law Office Details</H4>
           </HamLeft>
           <ButtonContainer>
-          <AddCircleOutlineIcon/>
-          <Addbtn>Add New Client</Addbtn>
+          
+          <Addbtn onClick={handleShow}><AddCircleOutlineIcon/>Add New Client</Addbtn>
         </ButtonContainer>
         </SubContainer>
         

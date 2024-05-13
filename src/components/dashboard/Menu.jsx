@@ -9,6 +9,11 @@ import GavelIcon from '@mui/icons-material/Gavel';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import SettingsIcon from '@mui/icons-material/Settings';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { useState } from "react";
+
+
 
 const Main = styled.section`
 min-height: 90vh;
@@ -60,11 +65,12 @@ justify-content:center;
 `
 const HamRight = styled.section`
 display:flex;
+flex-direction:column;
 flex:1;
-align-items:center;
-justify-content:flex-end;
+align-items:flex-end;
+position:relative;
 `
-const HamIcon = styled.section`
+const HamIcon = styled.button`
 width:40px;
 height:40px;
 border-radius:20px;
@@ -96,6 +102,7 @@ text-align: center;
 padding: 10px;
 margin: 0;
 flex:2;
+color:white;
 `
 const H5 = styled.h5`
 display:flex;
@@ -135,16 +142,41 @@ flex:1;
 const LinksContainer = styled.section`
 flex:4;
 `
+const LogoutContainer = styled.section`
+border-radius:20px;
+background-color:white;
+padding:5px;
+display:flex;
+flex-direction:column;
+position:absolute;
+bottom:-100px;
+`
+const Profile = styled.button`
+Background:transparent;
+border-style: none;
+margin:5px;
+padding:3px;
+`
+const LogoutBtn = styled.button`
+Background:transparent;
+border-style: none;
+margin:5px;
+padding:3px;
+`
 
 
  
 
 const Menu = () => {
+    const[show,setShow]=useState(true);
+    const[navShow,setNavShow]=useState(false);
+    const[head,setHead] = useState("Dashboard");
+
     return (
         <>
             <HamNav>
                 <HamLeft>
-                    <MenuIcon />
+                    <MenuIcon style={{cursor:"pointer"}} onClick={()=>setNavShow(!navShow)}/>
                     <SearchContainer>
                         <Searchbar placeholder="Search Here" />
                         <SearchBtn>GO</SearchBtn>
@@ -152,16 +184,21 @@ const Menu = () => {
                     </SearchContainer>
                 </HamLeft>
                 <HamCenter>
-                    <H4>DASHBOARD</H4>
+                    <H4>{head}</H4>
                 </HamCenter>
                 <HamRight>
-                    <HamIcon>
+                    <HamIcon onClick={()=>setShow(!show)}>
                         <img src={profilebg} alt="" style={{height:'100%', width:"100%",borderRadius:"20px"}} />
                     </HamIcon>
+                    <LogoutContainer hidden={show}>
+                        
+                        <Profile><PersonOutlineIcon/>Profile</Profile>
+                        <LogoutBtn><LogoutIcon/>Logout</LogoutBtn>
+                    </LogoutContainer>
                 </HamRight>
             </HamNav>
             <Main>
-                <Navbar>
+                <Navbar hidden={navShow}>
                     <H5>
                     <img
                     src="https://img.freepik.com/free-vector/hand-drawn-advocate-logo-design_23-2150652384.jpg?size=338&ext=jpg&ga=GA1.1.1395880969.1710115200&semt=ais"
@@ -177,7 +214,7 @@ const Menu = () => {
                         <TvIcon/> 
                     </IconContainer>
                     <LinksContainer>
-                        <Link as={NavLink} to="/admin">DashBoard</Link>
+                        <Link as={NavLink} to="/admin" onClick={()=>setHead("DashBoard")}>DashBoard</Link>
                     </LinksContainer>
                     </IconLinksContainer>
 
@@ -187,7 +224,7 @@ const Menu = () => {
                         <GroupsIcon/> 
                     </IconContainer>
                     <LinksContainer>
-                    <Link as={NavLink} to="/admin/clientManagement">Client Management</Link>
+                    <Link as={NavLink} to="/admin/clientManagement" onClick={()=>setHead("Clients Management")}>Clients Management</Link>
                     </LinksContainer>
                     </IconLinksContainer>
                     
@@ -196,7 +233,7 @@ const Menu = () => {
                         <GavelIcon/> 
                     </IconContainer>
                     <LinksContainer>
-                    <Link as={NavLink} to="/admin/judgesDetails"> Clients Judges Details</Link>
+                    <Link as={NavLink} to="/admin/judgesDetails" onClick={()=>setHead("Clients Judges Details")}> Clients Judges Details</Link>
                     </LinksContainer>
                     </IconLinksContainer>
 
@@ -205,7 +242,7 @@ const Menu = () => {
                         <CalendarMonthIcon/> 
                     </IconContainer>
                     <LinksContainer>
-                    <Link as={NavLink} to="/admin/hearingDates">Hearing Dates</Link>
+                    <Link as={NavLink} to="/admin/hearingDates" onClick={()=>setHead("Hearing Dates")}>Hearing Dates</Link>
                     </LinksContainer>
                     </IconLinksContainer>
 
@@ -215,7 +252,7 @@ const Menu = () => {
                         <WorkOutlineIcon/> 
                     </IconContainer>
                     <LinksContainer>
-                    <Link as={NavLink} to="/admin/casesDetails">Cases Details</Link>
+                    <Link as={NavLink} to="/admin/casesDetails" onClick={()=>setHead("Cases Details")}>Cases Details</Link>
                     </LinksContainer>
                     </IconLinksContainer>
                        
@@ -224,7 +261,7 @@ const Menu = () => {
                         <AccountBalanceIcon/> 
                     </IconContainer>
                     <LinksContainer>
-                    <Link as={NavLink} to="/admin/finance">Finance</Link>
+                    <Link as={NavLink} to="/admin/finance" onClick={()=>setHead("Finance")}>Finance</Link>
                     </LinksContainer>
                     </IconLinksContainer>    
 
@@ -233,7 +270,7 @@ const Menu = () => {
                         <SettingsIcon/> 
                     </IconContainer>
                     <LinksContainer>
-                    <Link as={NavLink} to="/admin/settings">Setting</Link>
+                    <Link as={NavLink} to="/" onClick={()=>setHead("Setting")}>Setting</Link>
                     </LinksContainer>
                     </IconLinksContainer>  
                     </Links>

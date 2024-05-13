@@ -70,6 +70,7 @@ background:white;
 const Tr = styled.tr`
 `
 const Th = styled.th`
+text-align:center;
 padding:10px;
 `
 const Td = styled.td`

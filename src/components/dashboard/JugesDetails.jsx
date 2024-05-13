@@ -56,6 +56,7 @@ const Tbody = styled.tbody`
 const Tr = styled.tr``;
 const Th = styled.th`
   padding: 10px;
+  text-align: center;
 `;
 const Td = styled.td`
   text-align: center;
@@ -95,7 +96,6 @@ const JudgesDatails = () => {
               <Tr>
                 <Th>Client Number</Th>
                 <Th>Number of Cases</Th>
-                <Th>Judge Name</Th>
                 <Th>Court Number</Th>
                 <Th>Current Case No</Th>
                 <Th>Case Status</Th>
@@ -107,9 +107,7 @@ const JudgesDatails = () => {
               <Tr>
                 <Td>John</Td>
                 <Td>2</Td>
-                <Td>1</Td>
-                <Td>u</Td>
-
+                <Td>4</Td>
                 <Td>Due</Td>
                 <Td>Pending</Td>
                 <Td>
@@ -128,9 +126,7 @@ const JudgesDatails = () => {
               <Tr>
                 <Td>John</Td>
                 <Td>2</Td>
-                <Td>1</Td>
                 <Td>4</Td>
-
                 <Td>Due</Td>
                 <Td>Pending</Td>
                 <Td>
@@ -149,9 +145,7 @@ const JudgesDatails = () => {
               <Tr>
                 <Td>John</Td>
                 <Td>2</Td>
-                <Td>1</Td>
                 <Td>4</Td>
-
                 <Td>Due</Td>
                 <Td>Order</Td>
                 <Td>
@@ -170,10 +164,8 @@ const JudgesDatails = () => {
               <Tr>
                 <Td>John</Td>
                 <Td>1</Td>
-                <Td>1</Td>
                 <Td>4</Td>
-
-                <Td>Due</Td>
+               <Td>Due</Td>
                 <Td>Proceding</Td>
                 <Td>
                   <ButtonActionContainer>
@@ -191,9 +183,7 @@ const JudgesDatails = () => {
               <Tr>
                 <Td>John</Td>
                 <Td>1</Td>
-                <Td>1</Td>
                 <Td>4</Td>
-
                 <Td>Due</Td>
                 <Td>None</Td>
                 <Td>
@@ -212,9 +202,7 @@ const JudgesDatails = () => {
               <Tr>
                 <Td>John</Td>
                 <Td>3</Td>
-                <Td>1</Td>
                 <Td>4</Td>
-
                 <Td>Due</Td>
                 <Td>Pending</Td>
                 <Td>
@@ -233,9 +221,7 @@ const JudgesDatails = () => {
               <Tr>
                 <Td>John</Td>
                 <Td>4</Td>
-                <Td>1</Td>
                 <Td>4</Td>
-
                 <Td>Due</Td>
                 <Td>Pending</Td>
                 <Td>

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+// import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 const MainContainer = styled.section`
@@ -26,22 +26,22 @@ font-size:17px;
 color:white;
 font-weight:400;
 `
-const ButtonContainer = styled.section`
-display:flex;
-justify-content:space-between;
-align-items: center;
-text-transform: uppercase;
-text-align:center;
-padding: 7px 12px 7px 5px;
-background:#28A745;
-border-radius:3px;
-color:white;
-`
-const Addbtn = styled.section`
+// const ButtonContainer = styled.section`
+// display:flex;
+// justify-content:space-between;
+// align-items: center;
+// text-transform: uppercase;
+// text-align:center;
+// padding: 7px 12px 7px 5px;
+// background:#28A745;
+// border-radius:3px;
+// color:white;
+// `
+// const Addbtn = styled.section`
 
-font-size:12px;
-font-weight:600;
-`
+// font-size:12px;
+// font-weight:600;
+// `
 const ActivitiesContainer = styled.section`
 margin:20px 0px
 `
@@ -58,6 +58,7 @@ background:white;
 const Tr = styled.tr`
 `
 const Th = styled.th`
+text-align:center;
 padding:10px;
 `
 const Td = styled.td`
@@ -85,12 +86,12 @@ const Finance = () => {
       <MainContainer>
         <SubContainer>
           <HamLeft>
-          <H4>Manage Finance Record</H4>
+          <H4>Manage Finance Record</H4> 
           </HamLeft>
-          <ButtonContainer>
+          {/* <ButtonContainer>
           <AddCircleOutlineIcon/>
           <Addbtn>Add New Client</Addbtn>
-        </ButtonContainer>
+        </ButtonContainer> */}
         </SubContainer>
         
         <ActivitiesContainer>
