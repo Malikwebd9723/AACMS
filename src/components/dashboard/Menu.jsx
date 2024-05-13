@@ -38,6 +38,7 @@ border-top: 2px solid white;
     position: sticky;
     left: 0;
     flex: 1;
+   
     @media (max-width:800px){
      display: none;
     }
@@ -113,7 +114,10 @@ color:black;
 font-size:20px;
 font-weight:800;
 text-align:center;
-padding: 10px 35px 25px 5px;
+border-style: groove;
+padding: 8px 40px 8px 8px;
+
+
 `
 const Links = styled.section`
   display: flex;
