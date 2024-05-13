@@ -56,6 +56,7 @@ const Tbody = styled.tbody`
 const Tr = styled.tr``;
 const Th = styled.th`
   padding: 10px;
+  text-align:center;
 `;
 const Td = styled.td`
   text-align: center;
