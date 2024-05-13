@@ -27,7 +27,7 @@ height:100%;
 width:55%;
 `
 const LogoImg = styled.section`
-height:100%;
+height:72%;
 background-image: url(${logo});
 background-position: center;
 background-repeat: no-repeat;
@@ -41,7 +41,7 @@ justify-content:flex-end;
 const BtnContainer = styled.section`
 `
 const LoginBtn = styled.button`
-  padding:15px 50px;
+padding: 13px 30px;
   margin:10px;
   border-radius:30px;
   border:none;
@@ -53,7 +53,7 @@ const LoginBtn = styled.button`
 
 `
 const RegisterBtn = styled.button`
-  padding:15px 50px;
+padding: 13px 30px;
   margin:10px;
   border-radius:30px;
   background-color:white;

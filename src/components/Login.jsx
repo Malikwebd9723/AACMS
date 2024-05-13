@@ -27,7 +27,7 @@ height:100%;
 width:55%;
 `
 const LogoImg = styled.section`
-height:100%;
+height:72%;
 background-image: url(${logo});
 background-position: center;
 background-repeat: no-repeat;

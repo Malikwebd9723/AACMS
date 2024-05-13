@@ -6,6 +6,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Form } from 'react-router-dom';
 
 
 const MainContainer = styled.section`
@@ -87,6 +88,22 @@ const ButtonActionContainer = styled.section`
 cursor: pointer; 
 color:#4A5263;
 `
+const ContainerForm = styled.form`
+display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  
+`
+const Label = styled.label`
+font-weight:500;
+padding-bottom:10px;
+`
+const Input = styled.input`
+`
 const ClientManagement = () => {
 
     const [show, setShow] = useState(false);
@@ -102,8 +119,31 @@ const ClientManagement = () => {
           <Modal.Title>Add New Clients</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            
-            </Modal.Body>
+            <ContainerForm>
+            <Label htmlFor="name">FullName:</Label>
+            <Input />
+            <Label htmlFor="number">Client#</Label>
+            <Input />
+            <Label htmlFor="Email">Email</Label>
+            <Input />
+            <Label htmlFor="text">Address</Label>
+            <Input />
+            <Label htmlFor="text">Phone#</Label>
+            <Input />
+            <Label htmlFor="number">Number of Cases</Label>
+            <Input />
+            <Label htmlFor="number">Court Number</Label>
+            <Input />
+            <Label htmlFor="number">Current Case No</Label>
+            <Input />
+            <Label htmlFor="text">Case Status</Label>
+            <Input />
+            <Label htmlFor="date">Date Of Hearing</Label>
+            <Input />
+            <Label htmlFor="date">Reminder Date</Label>
+            <Input />
+            </ContainerForm>
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
@@ -288,5 +328,6 @@ const ClientManagement = () => {
     </>
   );
 };
+
 
 export default ClientManagement;
