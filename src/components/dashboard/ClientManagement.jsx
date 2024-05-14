@@ -6,7 +6,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Form } from 'react-router-dom';
+
 
 
 const MainContainer = styled.section`
@@ -136,12 +136,18 @@ const ClientManagement = () => {
             <Input />
             <Label htmlFor="number">Current Case No</Label>
             <Input />
-            <Label htmlFor="text">Case Status</Label>
+            <Label htmlFor="text">Case Title </Label>
+            <Input />      
+           <Label htmlFor="text"> Case Statuss</Label>
             <Input />
-            <Label htmlFor="date">Date Of Hearing</Label>
+            <Label htmlFor="text">Total Cases</Label>
             <Input />
-            <Label htmlFor="date">Reminder Date</Label>
+            <Label htmlFor="text">Case Type</Label>
             <Input />
+            <Label htmlFor="text">Date Filed</Label>
+            <Input />
+           
+          
             </ContainerForm>
         </Modal.Body>
         <Modal.Footer>
@@ -173,6 +179,7 @@ const ClientManagement = () => {
                             <Th>Client#</Th>
                             <Th>Email</Th>
                             <Th>Adresss</Th>
+                            <Th>CNIC</Th>
                             <Th>Phone</Th>
                             <Th>Action</Th>
                         </Tr>
@@ -183,6 +190,7 @@ const ClientManagement = () => {
                             <Td>1</Td>
                             <Td>u</Td>
                             <Td>30/10/2024</Td>
+                            <Td>------</Td>
                             <Td>Due</Td>
                             
                             <Td>
@@ -209,6 +217,7 @@ const ClientManagement = () => {
                             <Td>1</Td>
                             <Td>4</Td>
                             <Td>30/10/2024</Td>
+                            <Td>------</Td>
                             <Td>Due</Td>
                             <Td>
                             <ButtonActionContainer>
@@ -228,6 +237,7 @@ const ClientManagement = () => {
                             <Td>1</Td>
                             <Td>4</Td>
                             <Td>30/10/2024</Td>
+                            <Td>------</Td>
                             <Td>Due</Td>
                             <Td>
                             <ButtonActionContainer>
@@ -247,6 +257,7 @@ const ClientManagement = () => {
                             <Td>1</Td>
                             <Td>4</Td>
                             <Td>30/10/2024</Td>
+                            <Td>------</Td>
                             <Td>Due</Td>
                             <Td>
                             <ButtonActionContainer>
@@ -266,6 +277,7 @@ const ClientManagement = () => {
                             <Td>1</Td>
                             <Td>4</Td>
                             <Td>30/10/2024</Td>
+                            <Td>------</Td>
                             <Td>Due</Td>
                             <Td>
                             <ButtonActionContainer>
@@ -285,6 +297,7 @@ const ClientManagement = () => {
                             <Td>1</Td>
                             <Td>4</Td>
                             <Td>30/10/2024</Td>
+                            <Td>------</Td>
                             <Td>Due</Td>
                             <Td>
                             <ButtonActionContainer>
@@ -304,6 +317,7 @@ const ClientManagement = () => {
                             <Td>1</Td>
                             <Td>4</Td>
                             <Td>30/10/2024</Td>
+                            <Td>------</Td>
                             <Td>Due</Td>
                             <Td>
                             <ButtonActionContainer>
