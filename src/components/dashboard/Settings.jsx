@@ -38,34 +38,9 @@ const Textarea = styled.textarea`
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
 `
-
-const ProfileImage = styled.img`
-  max-width: 120px;
-`
-
-const ImageWrapper = styled.div`
-  display: flex;
-  align-items: center;
-`
-
-const ButtonWrapper = styled.div`
+const ButtonWrapper = styled.section`
   margin-left: 15px;
 `
-
-const Button = styled.a`
-  display: inline-block;
-  padding: 0.375rem 0.75rem;
-  margin-right: 0.5rem;
-  font-size: 20px;
-  color: rgba(1, 41, 112, 0.5);
-  line-height: 0;
-  transition: 0.3s;
-
-  &:hover {
-    color: #012970;
-  }
-`
-
 const ButtonSubmit = styled.button`
   display: inline-block;
   padding: 0.375rem 0.75rem;
@@ -93,12 +68,14 @@ const ButtonSubmit = styled.button`
   }
 `
 const CardContainer = styled.section`
+
 display:flex;
 align-items:center;
 justify-content:space-around;
 margin:20px 0px;
 `
 const Card = styled.section`
+
 background-color:white;
 flex:1;
 text-align:center;
@@ -123,21 +100,7 @@ const Settings = () => {
         </Card>
         <Card>
         <Form>
-   <Row>
-     <Label htmlFor="profileImage">Profile Image</Label>
-     <ImageWrapper>
-       <ProfileImage src="img\zain.jpg" alt="Profile" />
-       <ButtonWrapper>
-         <Button primary title="Upload new profile image">
-           <i className="material-icons">download</i>
-         </Button>
-         <Button title="Remove my profile image">
-           <i className="material-icons">delete</i>
-         </Button>
-       </ButtonWrapper>
-     </ImageWrapper>
-   </Row>
-
+  
    <Row>
      <Label htmlFor="fullName">Full Name</Label>
      <Input type="text" id="fullName" defaultValue="Kevin Anderson" />

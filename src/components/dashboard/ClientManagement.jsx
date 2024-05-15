@@ -8,9 +8,6 @@ import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
-
-
-
 const MainContainer = styled.section`
 background:#F5F5F5;
 flex:4;
