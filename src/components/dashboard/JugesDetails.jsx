@@ -95,6 +95,7 @@ const JudgesDatails = () => {
             <Thead>
               <Tr>
                 <Th>Client Number</Th>
+                <Th>Judge Name</Th>
                 <Th>Client Cases in Court</Th>
                 <Th>Court Number</Th>
                 <Th>Current Case No</Th>
@@ -106,6 +107,7 @@ const JudgesDatails = () => {
             <Tbody>
               <Tr>
                 <Td>John</Td>
+                <Td>Qazi Adnan</Td>
                 <Td>2</Td>
                 <Td>4</Td>
                 <Td>Due</Td>
@@ -125,6 +127,7 @@ const JudgesDatails = () => {
             <Tbody>
               <Tr>
                 <Td>John</Td>
+                <Td>Qazi Adnan</Td>
                 <Td>2</Td>
                 <Td>4</Td>
                 <Td>Due</Td>
@@ -144,6 +147,7 @@ const JudgesDatails = () => {
             <Tbody>
               <Tr>
                 <Td>John</Td>
+                <Td>Qazi Adnan</Td>
                 <Td>2</Td>
                 <Td>4</Td>
                 <Td>Due</Td>
@@ -163,6 +167,7 @@ const JudgesDatails = () => {
             <Tbody>
               <Tr>
                 <Td>John</Td>
+                <Td>Qazi Adnan</Td>
                 <Td>1</Td>
                 <Td>4</Td>
                <Td>Due</Td>
@@ -182,6 +187,7 @@ const JudgesDatails = () => {
             <Tbody>
               <Tr>
                 <Td>John</Td>
+                <Td>Qazi Adnan</Td>
                 <Td>1</Td>
                 <Td>4</Td>
                 <Td>Due</Td>
@@ -201,6 +207,7 @@ const JudgesDatails = () => {
             <Tbody>
               <Tr>
                 <Td>John</Td>
+                <Td>Qazi Adnan</Td>
                 <Td>3</Td>
                 <Td>4</Td>
                 <Td>Due</Td>
@@ -220,6 +227,7 @@ const JudgesDatails = () => {
             <Tbody>
               <Tr>
                 <Td>John</Td>
+                <Td>Qazi Adnan</Td>
                 <Td>4</Td>
                 <Td>4</Td>
                 <Td>Due</Td>

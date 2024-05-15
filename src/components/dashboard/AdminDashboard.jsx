@@ -118,7 +118,7 @@ const AdminDashboard = () => {
                     </CardIcon>
                         <H2>Fee Received</H2>
                     <CardContainerInner>
-                        <H2>90</H2>
+                        <H2>40</H2>
                         <ProgressContainer>
                         <CircularProgressbar value={90} styles={{height:30}} text='90%'/>
                         </ProgressContainer>
@@ -135,6 +135,7 @@ const AdminDashboard = () => {
                             <Th>Client Name</Th>
                             <Th>Client#</Th>
                             <Th>Court#</Th>
+                            <Th>Judge Name</Th>
                             <Th>Hearing Date</Th>
                             <Th>Payment</Th>
                             <Th>Status</Th>
@@ -142,9 +143,10 @@ const AdminDashboard = () => {
                     </Thead>
                     <Tbody>
                         <Tr>
-                            <Td>John</Td>
+                            <Td>Khuram</Td>
                             <Td>1</Td>
-                            <Td>4</Td>
+                            <Td>2</Td>
+                            <Td>Qazi Adnan</Td>
                             <Td>30/10/2024</Td>
                             <Td>Due</Td>
                             <Td>pending</Td>
@@ -153,12 +155,57 @@ const AdminDashboard = () => {
                     </Tbody>
                     <Tbody>
                         <Tr>
-                            <Td>John</Td>
-                            <Td>1</Td>
-                            <Td>4</Td>
-                            <Td>30/10/2024</Td>
+                            <Td>Uzair</Td>
+                            <Td>2</Td>
+                            <Td>3</Td>
+                            <Td>Qazi Adnan</Td>
+                            <Td>20/10/2024</Td>
                             <Td>Due</Td>
                             <Td>pending</Td>
+                        </Tr>
+                    </Tbody>
+                    <Tbody>
+                        <Tr>
+                            <Td>Hamza</Td>
+                            <Td>3</Td>
+                            <Td>5</Td>
+                            <Td>Qazi Adnan</Td>
+                            <Td>21/10/2024</Td>
+                            <Td>Due</Td>
+                            <Td>In proceding</Td>
+                        </Tr>
+                    </Tbody>
+                    <Tbody>
+                        <Tr>
+                            <Td>Muneeb</Td>
+                            <Td>4</Td>
+                            <Td>6</Td>
+                            <Td>Qazi Adnan</Td>
+                            <Td>1/10/2024</Td>
+                            <Td>Due</Td>
+                            <Td>Order</Td>
+                        </Tr>
+                    </Tbody>
+                    <Tbody>
+                        <Tr>
+                            <Td>Amir</Td>
+                            <Td>5</Td>
+                            <Td>1</Td>
+                            <Td>Qazi Adnan</Td>
+                            <Td>10/10/2024</Td>
+                            <Td>Due</Td>
+                            <Td>Settlement</Td>
+                        </Tr>
+                    </Tbody>
+                    <Tbody>
+                        <Tr>
+                            <Td>Ahmed</Td>
+                            <Td>6</Td>
+                            <Td>4</Td>
+                            <Td>Qazi Adnan</Td>
+                            <Td>12/10/2024</Td>
+                            <Td>Due</Td>
+                            <Td>Pre Trail</Td>
                         </Tr>
                     </Tbody>
                     <Tbody>
@@ -166,49 +213,10 @@ const AdminDashboard = () => {
                             <Td>John</Td>
                             <Td>1</Td>
                             <Td>4</Td>
+                            <Td>Qazi Adnan</Td>
                             <Td>30/10/2024</Td>
                             <Td>Due</Td>
-                            <Td>pending</Td>
-                        </Tr>
-                    </Tbody>
-                    <Tbody>
-                        <Tr>
-                            <Td>John</Td>
-                            <Td>1</Td>
-                            <Td>4</Td>
-                            <Td>30/10/2024</Td>
-                            <Td>Due</Td>
-                            <Td>pending</Td>
-                        </Tr>
-                    </Tbody>
-                    <Tbody>
-                        <Tr>
-                            <Td>John</Td>
-                            <Td>1</Td>
-                            <Td>4</Td>
-                            <Td>30/10/2024</Td>
-                            <Td>Due</Td>
-                            <Td>pending</Td>
-                        </Tr>
-                    </Tbody>
-                    <Tbody>
-                        <Tr>
-                            <Td>John</Td>
-                            <Td>1</Td>
-                            <Td>4</Td>
-                            <Td>30/10/2024</Td>
-                            <Td>Due</Td>
-                            <Td>pending</Td>
-                        </Tr>
-                    </Tbody>
-                    <Tbody>
-                        <Tr>
-                            <Td>John</Td>
-                            <Td>1</Td>
-                            <Td>4</Td>
-                            <Td>30/10/2024</Td>
-                            <Td>Due</Td>
-                            <Td>pending</Td>
+                            <Td>Trail</Td>
                         </Tr>
                     </Tbody>
 

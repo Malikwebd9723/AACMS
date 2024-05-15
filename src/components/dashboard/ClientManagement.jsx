@@ -130,6 +130,8 @@ const ClientManagement = () => {
             <Input />
             <Label htmlFor="text">Phone#</Label>
             <Input />
+            <Label htmlFor="text">Judge Name</Label>
+            <Input />
             <Label htmlFor="number">Number of Cases</Label>
             <Input />
             <Label htmlFor="number">Court Number</Label>
@@ -186,12 +188,12 @@ const ClientManagement = () => {
                     </Thead>
                     <Tbody>
                         <Tr>
-                            <Td>John</Td>
+                            <Td>Uzair</Td>
                             <Td>1</Td>
-                            <Td>u</Td>
-                            <Td>30/10/2024</Td>
-                            <Td>------</Td>
-                            <Td>Due</Td>
+                            <Td>Uzair@gmail.com</Td>
+                            <Td>Abbottabd</Td>
+                            <Td>123-312312-3213-1</Td>
+                            <Td>03174323123</Td>
                             
                             <Td>
                             <ButtonActionContainer>
@@ -213,12 +215,92 @@ const ClientManagement = () => {
                     </Tbody>
                     <Tbody>
                         <Tr>
-                            <Td>John</Td>
-                            <Td>1</Td>
+                            <Td>Ahmed</Td>
+                            <Td>2</Td>
+                            <Td>Ahmed@gmail.com</Td>
+                            <Td>Mansehra</Td>
+                            <Td>123-3213-433-1</Td>
+                            <Td>02312313</Td>
+                            <Td>
+                            <ButtonActionContainer>
+                            <StyledButton>
+                            <DeleteIcon />
+                            </StyledButton>
+                            <StyledButton>
+                            <EditIcon/>
+                            </StyledButton>
+                            </ButtonActionContainer>
+                            </Td>
+                        </Tr>
+                    </Tbody>
+                    <Tbody>
+                        <Tr>
+                            <Td>Khuram</Td>
+                            <Td>3</Td>
+                            <Td>Khuram@gmail.com</Td>
+                            <Td>swabi</Td>
+                            <Td>1231-3123-3123-1</Td>
+                            <Td>03231312312</Td>
+                            <Td>
+                            <ButtonActionContainer>
+                            <StyledButton>
+                            <DeleteIcon />
+                            </StyledButton>
+                            <StyledButton>
+                            <EditIcon/>
+                            </StyledButton>
+                            </ButtonActionContainer>
+                            </Td>
+                        </Tr>
+                    </Tbody>
+                    <Tbody>
+                        <Tr>
+                            <Td>Hamza</Td>
                             <Td>4</Td>
-                            <Td>30/10/2024</Td>
-                            <Td>------</Td>
-                            <Td>Due</Td>
+                            <Td>hamza@gmail.com</Td>
+                            <Td>College Doraha</Td>
+                            <Td>1312-123-3123-2</Td>
+                            <Td>0331231432</Td>
+                            <Td>
+                            <ButtonActionContainer>
+                            <StyledButton>
+                            <DeleteIcon />
+                            </StyledButton>
+                            <StyledButton>
+                            <EditIcon/>
+                            </StyledButton>
+                            </ButtonActionContainer>
+                            </Td>
+                        </Tr>
+                    </Tbody>
+                    <Tbody>
+                        <Tr>
+                            <Td>Amir</Td>
+                            <Td>5</Td>
+                            <Td>Amir@gmail.com</Td>
+                            <Td>Khaki road</Td>
+                            <Td>1231-313-123-1</Td>
+                            <Td>031231231</Td>
+                            <Td>
+                            <ButtonActionContainer>
+                            <StyledButton>
+                            <DeleteIcon />
+                            </StyledButton>
+                            <StyledButton>
+                            <EditIcon/>
+                            </StyledButton>
+                            </ButtonActionContainer>
+                            </Td>
+                        </Tr>
+                    </Tbody>
+                    <Tbody>
+                        <Tr>
+                            <Td>Khazir</Td>
+                            <Td>6</Td>
+                            <Td>khazir@gmail.com</Td>
+                            <Td>Haripur</Td>
+                            <Td>13123-31231-231-1</Td>
+                            <Td>031231231</Td>
                             <Td>
                             <ButtonActionContainer>
                             <StyledButton>
@@ -234,91 +316,11 @@ const ClientManagement = () => {
                     <Tbody>
                         <Tr>
                             <Td>John</Td>
-                            <Td>1</Td>
-                            <Td>4</Td>
-                            <Td>30/10/2024</Td>
-                            <Td>------</Td>
-                            <Td>Due</Td>
-                            <Td>
-                            <ButtonActionContainer>
-                            <StyledButton>
-                            <DeleteIcon />
-                            </StyledButton>
-                            <StyledButton>
-                            <EditIcon/>
-                            </StyledButton>
-                            </ButtonActionContainer>
-                            </Td>
-                        </Tr>
-                    </Tbody>
-                    <Tbody>
-                        <Tr>
-                            <Td>John</Td>
-                            <Td>1</Td>
-                            <Td>4</Td>
-                            <Td>30/10/2024</Td>
-                            <Td>------</Td>
-                            <Td>Due</Td>
-                            <Td>
-                            <ButtonActionContainer>
-                            <StyledButton>
-                            <DeleteIcon />
-                            </StyledButton>
-                            <StyledButton>
-                            <EditIcon/>
-                            </StyledButton>
-                            </ButtonActionContainer>
-                            </Td>
-                        </Tr>
-                    </Tbody>
-                    <Tbody>
-                        <Tr>
-                            <Td>John</Td>
-                            <Td>1</Td>
-                            <Td>4</Td>
-                            <Td>30/10/2024</Td>
-                            <Td>------</Td>
-                            <Td>Due</Td>
-                            <Td>
-                            <ButtonActionContainer>
-                            <StyledButton>
-                            <DeleteIcon />
-                            </StyledButton>
-                            <StyledButton>
-                            <EditIcon/>
-                            </StyledButton>
-                            </ButtonActionContainer>
-                            </Td>
-                        </Tr>
-                    </Tbody>
-                    <Tbody>
-                        <Tr>
-                            <Td>John</Td>
-                            <Td>1</Td>
-                            <Td>4</Td>
-                            <Td>30/10/2024</Td>
-                            <Td>------</Td>
-                            <Td>Due</Td>
-                            <Td>
-                            <ButtonActionContainer>
-                            <StyledButton>
-                            <DeleteIcon />
-                            </StyledButton>
-                            <StyledButton>
-                            <EditIcon/>
-                            </StyledButton>
-                            </ButtonActionContainer>
-                            </Td>
-                        </Tr>
-                    </Tbody>
-                    <Tbody>
-                        <Tr>
-                            <Td>John</Td>
-                            <Td>1</Td>
-                            <Td>4</Td>
-                            <Td>30/10/2024</Td>
-                            <Td>------</Td>
-                            <Td>Due</Td>
+                            <Td>7</Td>
+                            <Td>john@gmail.com</Td>
+                            <Td>uk</Td>
+                            <Td>-123312-21131-13</Td>
+                            <Td>+72313123</Td>
                             <Td>
                             <ButtonActionContainer>
                             <StyledButton>
