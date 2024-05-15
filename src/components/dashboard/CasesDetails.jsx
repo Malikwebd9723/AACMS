@@ -112,12 +112,12 @@ const CasesDetails = () => {
                     </Thead>
                     <Tbody>
                         <Tr>
-                            <Td>John</Td>
                             <Td>1</Td>
+                            <Td>Hamza vs Muneeb</Td>
                             <Td>Criminal</Td>
                             <Td>pre-trial</Td>
-                            <Td>30/10/2024</Td>
-                            <Td>Due</Td>
+                            <Td>1</Td>
+                            <Td>10/5/2024</Td>
                           
                             
                             <Td>

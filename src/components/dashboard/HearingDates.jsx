@@ -106,9 +106,9 @@ const HearingDates = () => {
                     </Thead>
                     <Tbody>
                         <Tr>
-                            <Td>John</Td>
                             <Td>1</Td>
-                            <Td>u</Td>
+                            <Td>1/5/2024</Td>
+                            <Td>30/4/2024</Td>
                             
                             
                             <Td>
@@ -131,9 +131,9 @@ const HearingDates = () => {
                     </Tbody>
                     <Tbody>
                         <Tr>
-                            <Td>John</Td>
-                            <Td>1</Td>
-                            <Td>4</Td>
+                            <Td>2</Td>
+                            <Td>5/5/20224</Td>
+                            <Td>2/5/2024</Td>
                            
                             <Td>
                             <ButtonActionContainer>
