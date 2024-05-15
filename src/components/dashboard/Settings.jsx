@@ -13,6 +13,7 @@ const Form = styled.form`
 const Row = styled.div`
   margin-bottom: 20px;
   font-size: 15px;
+  overflow:hidden;
 `
 
 const Label = styled.label`
@@ -113,16 +114,11 @@ const Settings = () => {
    <MainContainer>
     <CardContainer>
     <Card>
-   
             <Row>
-            <image src={profilebg} alt="Profile" style={{height:'100%', width:"100%",borderRadius:"20px"}} />
+            <img src={profilebg} alt="Profile" style={{height:'300px', width:"300px", borderRadius:"150px"}} />
+        </Row>
             <h2>Syed Zain ul Abidin</h2>
             <h3>Web Designer</h3>
-                
-             
-                
-          
-        </Row>
         
         </Card>
         <Card>
