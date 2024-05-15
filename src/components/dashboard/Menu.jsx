@@ -274,7 +274,7 @@ const Menu = () => {
                         <SettingsIcon/> 
                     </IconContainer>
                     <LinksContainer>
-                    <Link as={NavLink} to="/" onClick={()=>setHead("Setting")}>Setting</Link>
+                    <Link as={NavLink} to="/admin/settings" onClick={()=>setHead("Setting")}>Setting</Link>
                     </LinksContainer>
                     </IconLinksContainer>  
                     </Links>
