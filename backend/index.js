@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const nodemailer = require("nodemailer");
 const jwt = require("jsonwebtoken");
+require('dotenv').config()
 
 const app = express();
 const port = 8002;
@@ -12,8 +13,9 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+const DbConnect = process.env.MONGO_DB_PASS;
 mongoose
-    .connect(`mongodb+srv://developer9723usman:iZMcMcKbjEydMekw@cluster0.lemgu3v.mongodb.net/`)
+    .connect(`mongodb+srv://developer9723usman:${DbConnect}@cluster0.lemgu3v.mongodb.net/`)
     .then(() => {
         console.log("Connected to MongoDB");
     })
