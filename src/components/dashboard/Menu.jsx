@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { NavLink, Outlet } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
-import profilebg from "../../assets/zain.jpg"
+// import profilebg from "../../assets/zain.jpg"
 import TvIcon from '@mui/icons-material/Tv';
 import GroupsIcon from '@mui/icons-material/Groups';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
@@ -11,8 +11,9 @@ import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import SettingsIcon from '@mui/icons-material/Settings';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import LogoutIcon from '@mui/icons-material/Logout';
+import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import { useState } from "react";
-
+import profilebg from"../../assets/profile.jpg"
 
 
 const Main = styled.section`
@@ -72,6 +73,7 @@ align-items:flex-end;
 position:relative;
 `
 const HamIcon = styled.button`
+background:white;
 width:40px;
 height:40px;
 border-radius:20px;
@@ -192,6 +194,7 @@ const Menu = () => {
                 </HamCenter>
                 <HamRight>
                     <HamIcon onClick={()=>setShow(!show)}>
+                    
                         <img src={profilebg} alt="" style={{height:'100%', width:"100%",borderRadius:"20px"}} />
                     </HamIcon>
                     <LogoutContainer hidden={show}>

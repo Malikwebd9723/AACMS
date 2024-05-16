@@ -241,10 +241,10 @@ return (
               <Td>02312313</Td>
               <Td>
                 <ButtonActionContainer>
-                  <StyledButton>
+                  <StyledButton onClick={() => { confirmDeletion() }}>
                     <DeleteIcon />
                   </StyledButton>
-                  <StyledButton>
+                  <StyledButton onClick={()=>{setShow(!show)}}>
                     <EditIcon />
                   </StyledButton>
                 </ButtonActionContainer>
@@ -261,10 +261,10 @@ return (
               <Td>03231312312</Td>
               <Td>
                 <ButtonActionContainer>
-                  <StyledButton>
+                  <StyledButton onClick={() => { confirmDeletion() }}>
                     <DeleteIcon />
                   </StyledButton>
-                  <StyledButton>
+                  <StyledButton onClick={()=>{setShow(!show)}}>
                     <EditIcon />
                   </StyledButton>
                 </ButtonActionContainer>
@@ -281,10 +281,10 @@ return (
               <Td>0331231432</Td>
               <Td>
                 <ButtonActionContainer>
-                  <StyledButton>
+                  <StyledButton onClick={() => { confirmDeletion() }}>
                     <DeleteIcon />
                   </StyledButton>
-                  <StyledButton>
+                  <StyledButton onClick={()=>{setShow(!show)}}>
                     <EditIcon />
                   </StyledButton>
                 </ButtonActionContainer>
@@ -301,10 +301,10 @@ return (
               <Td>031231231</Td>
               <Td>
                 <ButtonActionContainer>
-                  <StyledButton>
+                  <StyledButton onClick={() => { confirmDeletion() }}>
                     <DeleteIcon />
                   </StyledButton>
-                  <StyledButton>
+                  <StyledButton onClick={()=>{setShow(!show)}}>
                     <EditIcon />
                   </StyledButton>
                 </ButtonActionContainer>
@@ -321,10 +321,10 @@ return (
               <Td>031231231</Td>
               <Td>
                 <ButtonActionContainer>
-                  <StyledButton>
+                  <StyledButton onClick={() => { confirmDeletion() }}>
                     <DeleteIcon />
                   </StyledButton>
-                  <StyledButton>
+                  <StyledButton onClick={()=>{setShow(!show)}}>
                     <EditIcon />
                   </StyledButton>
                 </ButtonActionContainer>
@@ -341,10 +341,10 @@ return (
               <Td>+72313123</Td>
               <Td>
                 <ButtonActionContainer>
-                  <StyledButton>
+                  <StyledButton onClick={() => { confirmDeletion() }}> 
                     <DeleteIcon />
                   </StyledButton>
-                  <StyledButton>
+                  <StyledButton onClick={()=>{setShow(!show)}}>
                     <EditIcon />
                   </StyledButton>
                 </ButtonActionContainer>
