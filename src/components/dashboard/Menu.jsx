@@ -1,7 +1,6 @@
 import styled from "styled-components"
 import { NavLink, Outlet } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
-// import profilebg from "../../assets/zain.jpg"
 import TvIcon from '@mui/icons-material/Tv';
 import GroupsIcon from '@mui/icons-material/Groups';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
@@ -11,7 +10,7 @@ import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import SettingsIcon from '@mui/icons-material/Settings';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import LogoutIcon from '@mui/icons-material/Logout';
-import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
+
 import { useState } from "react";
 import profilebg from"../../assets/profile.jpg"
 
@@ -132,10 +131,7 @@ text-decoration: none;
 border-radius: 10px 0 0 0 ;
 padding: 6px;
 margin: 5px;
-transition: all 0.5s ease;
-&:hover{
-  font-size: 17px;
-}
+
 `
 const IconLinksContainer = styled.section`
 display:flex;
@@ -199,7 +195,7 @@ const Menu = () => {
                     </HamIcon>
                     <LogoutContainer hidden={show}>
                         
-                        <Profile><PersonOutlineIcon/>Profile</Profile>
+                        <Profile><PersonOutlineIcon/><Link as={NavLink} to="/admin/profile" onClick={()=>setHead("profile")}>Profile</Link></Profile>
                         <LogoutBtn><LogoutIcon/>Logout</LogoutBtn>
                     </LogoutContainer>
                 </HamRight>
@@ -259,7 +255,7 @@ const Menu = () => {
                         <WorkOutlineIcon/> 
                     </IconContainer>
                     <LinksContainer>
-                    <Link as={NavLink} to="/admin/casesDetails" onClick={()=>setHead("Cases Details")}>Cases Details</Link>
+                    <Link as={NavLink} to="/admin/casesDetails" onClick={()=>setHead("Cases Details")}>Cases Information</Link>
                     </LinksContainer>
                     </IconLinksContainer>
                        
@@ -280,6 +276,9 @@ const Menu = () => {
                     <Link as={NavLink} to="/admin/settings" onClick={()=>setHead("Setting")}>Setting</Link>
                     </LinksContainer>
                     </IconLinksContainer>  
+                    
+
+                  
                     </Links>
                 </Navbar>
                 <Outlet />

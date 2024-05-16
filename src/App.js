@@ -9,6 +9,7 @@ import HearingDates from "./components/dashboard/HearingDates";
 import CasesDetails from "./components/dashboard/CasesDetails";
 import Finance from "./components/dashboard/Finance";
 import Settings from"./components/dashboard/Settings";
+import Profile from "./components/dashboard/Profile";
 function App() {
   return (
       <>
@@ -23,6 +24,7 @@ function App() {
         <Route exact path="casesDetails"element={<CasesDetails/>}/>
         <Route exact path="finance"element={<Finance/>}/>
         <Route exact path="settings"element={<Settings/>}/>
+        <Route exact path="profile"element={<Profile/>}/>
       </Route>
       </Routes>
       </>

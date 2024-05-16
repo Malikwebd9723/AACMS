@@ -86,28 +86,13 @@ const H4 = styled.h4`
 font-size: 20px;
 `
 
-const Settings = () => {
+const Profile = () => {
   return (
     <MainContainer>
       <CardContainer>
-        <Card>
-          <Row>
-            <H4>Settings</H4>
-          </Row>
-          <Label>Current Password</Label>
-          <Input type="password" id="password" />
-
-          <Label>New Password</Label>
-          <Input type="password" id="password" />
-          <Label>Confirm Password</Label>
-          <Input type="password" id="password" />
-            <ButtonWrapper>
-            <ButtonSubmit type="submit">Reset Password</ButtonSubmit>
-          </ButtonWrapper>
-        </Card>
+       
         <Card>
           <Form>
-            
             <Row><H4>Edit Profile</H4></Row>
             <Row>
               <Label htmlFor="fullName">Full Name</Label>
@@ -164,4 +149,4 @@ const Settings = () => {
   );
 };
 
-export default Settings;
+export default Profile;
