@@ -107,7 +107,7 @@ const Finance = () => {
                             <Th>Total Case Fee</Th>
                             <Th>Discount</Th>
                             <Th>Paid Fee</Th>
-                            <Th>Date</Th>
+                            <Th>Paid Fee Date</Th>
                             <Th>Action</Th>
                         </Tr>
                     </Thead>

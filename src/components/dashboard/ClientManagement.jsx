@@ -142,6 +142,8 @@ return (
           <Input />
           <Label htmlFor="number">Client#</Label>
           <Input />
+          <Label htmlFor="number">CNIC</Label>
+          <Input />
           <Label htmlFor="Email">Email</Label>
           <Input />
           <Label htmlFor="text">Address</Label>
@@ -165,8 +167,15 @@ return (
           <Label htmlFor="text">Case Type</Label>
           <Input />
           <Label htmlFor="text">Date Filed</Label>
+          <Input type="date" id="dateInput" />
+          <Label htmlFor="text">Total Case Fee</Label>
           <Input />
-
+          <Label htmlFor="text">Discount</Label>
+          <Input />
+          <Label htmlFor="text">Paid Fee</Label>
+          <Input />
+          <Label htmlFor="text">Paid Fee Date</Label>
+          <Input type="date" id="dateinput" />
 
         </ContainerForm>
       </Modal.Body>
