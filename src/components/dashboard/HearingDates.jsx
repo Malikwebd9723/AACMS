@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 const MainContainer = styled.section`
 background:#F5F5F5;
 flex:4;
@@ -80,17 +85,68 @@ const ButtonActionContainer = styled.section`
 cursor: pointer; 
 color:#4A5263;
 `
+const ContainerForm = styled.form`
+display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  
+`
+const Label = styled.label`
+font-weight:500;
+padding-bottom:10px;
+`
+const Input = styled.input`
+`
 const HearingDates = () => {
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+  
   return (
     <>
+   <Modal show={show} onHide={handleClose}>
+      <Modal.Header closeButton>
+        <Modal.Title>Add New Clients</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <ContainerForm>
+          <Label htmlFor="name">Client Number</Label>
+          <Input />
+          <Label htmlFor="dateInput">Date of Hearing</Label>
+          <Input
+            type="date"
+            id="dateInput"
+            />
+          <Label htmlFor="Email">Reminder Date</Label>
+          <Input
+            type="date"
+            id="dateInput"
+            />
+        </ContainerForm>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={handleClose}>
+          Close
+        </Button>
+        <Button variant="primary" onClick={handleClose}>
+          Save Changes
+        </Button>
+      </Modal.Footer>
+    </Modal>
+
       <MainContainer>
         <SubContainer>
           <HamLeft>
           <H4>Manage Law Office Clients Hearing Details</H4>
           </HamLeft>
           <ButtonContainer>
-          <AddCircleOutlineIcon/>
-          <Addbtn>Add Hearings Dates</Addbtn>
+          
+          <Addbtn  onClick={handleShow}><AddCircleOutlineIcon/>Add Hearings Dates</Addbtn>
         </ButtonContainer>
         </SubContainer>
         

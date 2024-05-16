@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+// import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 const MainContainer = styled.section`
@@ -26,21 +26,21 @@ const H4 = styled.h4`
   color: white;
   font-weight: 400;
 `;
-const ButtonContainer = styled.section`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-transform: uppercase;
-  text-align: center;
-  padding: 7px 12px 7px 5px;
-  background: #28a745;
-  border-radius: 3px;
-  color: white;
-`;
-const Addbtn = styled.section`
-  font-size: 12px;
-  font-weight: 600;
-`;
+// const ButtonContainer = styled.section`
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   text-transform: uppercase;
+//   text-align: center;
+//   padding: 7px 12px 7px 5px;
+//   background: #28a745;
+//   border-radius: 3px;
+//   color: white;
+// `;
+// const Addbtn = styled.section`
+//   font-size: 12px;
+//   font-weight: 600;
+// `;
 const ActivitiesContainer = styled.section`
   margin: 20px 0px;
 `;
@@ -84,10 +84,10 @@ const JudgesDatails = () => {
           <HamLeft>
             <H4>Manage Judges Details of Clients</H4>
           </HamLeft>
-          <ButtonContainer>
+          {/* <ButtonContainer>
             <AddCircleOutlineIcon />
             <Addbtn>Add New Record</Addbtn>
-          </ButtonContainer>
+          </ButtonContainer> */}
         </SubContainer>
 
         <ActivitiesContainer>
