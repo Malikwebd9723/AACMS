@@ -80,7 +80,11 @@ const ButtonActionContainer = styled.section`
 cursor: pointer; 
 color:#4A5263;
 `
+
 const Finance = () => {
+
+       
+          
   return (
     <>
       <MainContainer>
@@ -88,6 +92,7 @@ const Finance = () => {
           <HamLeft>
           <H4>Manage Finance Record</H4> 
           </HamLeft>
+       
           {/* <ButtonContainer>
           <AddCircleOutlineIcon/>
           <Addbtn>Add New Client</Addbtn>
