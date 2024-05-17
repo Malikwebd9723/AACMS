@@ -98,7 +98,7 @@ const JudgesDatails = () => {
                 <Th>Judge Name</Th>
                 <Th>Client Cases in Court</Th>
                 <Th>Court Number</Th>
-                <Th>Current Case No</Th>
+                {/* <Th>Current Case No</Th> */}
                 <Th>Case Status</Th>
 
                 <Th>Action</Th>
@@ -110,7 +110,7 @@ const JudgesDatails = () => {
                 <Td>Qazi Adnan</Td>
                 <Td>2</Td>
                 <Td>4</Td>
-                <Td>Due</Td>
+                {/* <Td>Due</Td> */}
                 <Td>Pending</Td>
                 <Td>
                   <ButtonActionContainer>
@@ -130,7 +130,7 @@ const JudgesDatails = () => {
                 <Td>Qazi Adnan</Td>
                 <Td>2</Td>
                 <Td>4</Td>
-                <Td>Due</Td>
+                {/* <Td>Due</Td> */}
                 <Td>Pending</Td>
                 <Td>
                   <ButtonActionContainer>
@@ -150,7 +150,7 @@ const JudgesDatails = () => {
                 <Td>Qazi Adnan</Td>
                 <Td>2</Td>
                 <Td>4</Td>
-                <Td>Due</Td>
+                {/* <Td>Due</Td> */}
                 <Td>Order</Td>
                 <Td>
                   <ButtonActionContainer>
@@ -170,7 +170,7 @@ const JudgesDatails = () => {
                 <Td>Qazi Adnan</Td>
                 <Td>1</Td>
                 <Td>4</Td>
-               <Td>Due</Td>
+               {/* <Td>Due</Td> */}
                 <Td>Proceding</Td>
                 <Td>
                   <ButtonActionContainer>
@@ -190,7 +190,7 @@ const JudgesDatails = () => {
                 <Td>Qazi Adnan</Td>
                 <Td>1</Td>
                 <Td>4</Td>
-                <Td>Due</Td>
+                {/* <Td>Due</Td> */}
                 <Td>None</Td>
                 <Td>
                   <ButtonActionContainer>
@@ -210,7 +210,7 @@ const JudgesDatails = () => {
                 <Td>Qazi Adnan</Td>
                 <Td>3</Td>
                 <Td>4</Td>
-                <Td>Due</Td>
+                {/* <Td>Due</Td> */}
                 <Td>Pending</Td>
                 <Td>
                   <ButtonActionContainer>
@@ -230,7 +230,7 @@ const JudgesDatails = () => {
                 <Td>Qazi Adnan</Td>
                 <Td>4</Td>
                 <Td>4</Td>
-                <Td>Due</Td>
+                {/* <Td>Due</Td> */}
                 <Td>Pending</Td>
                 <Td>
                   <ButtonActionContainer>

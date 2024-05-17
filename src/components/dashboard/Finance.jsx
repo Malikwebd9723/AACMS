@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-// import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 const MainContainer = styled.section`
@@ -127,6 +127,9 @@ const Finance = () => {
                             <StyledButton>
                             <EditIcon/>
                             </StyledButton>
+                            <StyledButton>
+                                <AddCircleOutlineIcon/>
+                            </StyledButton>
                             </ButtonActionContainer>
                             </Td>
                            
@@ -152,24 +155,8 @@ const Finance = () => {
                             <StyledButton>
                             <EditIcon/>
                             </StyledButton>
-                            </ButtonActionContainer>
-                            </Td>
-                        </Tr>
-                    </Tbody>
-                    <Tbody>
-                        <Tr>
-                            <Td>John</Td>
-                            <Td>1</Td>
-                            <Td>4</Td>
-                            <Td>30/10/2024</Td>
-                            <Td>Due</Td>
-                            <Td>
-                            <ButtonActionContainer>
                             <StyledButton>
-                            <DeleteIcon />
-                            </StyledButton>
-                            <StyledButton>
-                            <EditIcon/>
+                                <AddCircleOutlineIcon/>
                             </StyledButton>
                             </ButtonActionContainer>
                             </Td>
@@ -190,24 +177,8 @@ const Finance = () => {
                             <StyledButton>
                             <EditIcon/>
                             </StyledButton>
-                            </ButtonActionContainer>
-                            </Td>
-                        </Tr>
-                    </Tbody>
-                    <Tbody>
-                        <Tr>
-                            <Td>John</Td>
-                            <Td>1</Td>
-                            <Td>4</Td>
-                            <Td>30/10/2024</Td>
-                            <Td>Due</Td>
-                            <Td>
-                            <ButtonActionContainer>
                             <StyledButton>
-                            <DeleteIcon />
-                            </StyledButton>
-                            <StyledButton>
-                            <EditIcon/>
+                                <AddCircleOutlineIcon/>
                             </StyledButton>
                             </ButtonActionContainer>
                             </Td>
@@ -228,6 +199,9 @@ const Finance = () => {
                             <StyledButton>
                             <EditIcon/>
                             </StyledButton>
+                            <StyledButton>
+                                <AddCircleOutlineIcon/>
+                            </StyledButton>
                             </ButtonActionContainer>
                             </Td>
                         </Tr>
@@ -246,6 +220,53 @@ const Finance = () => {
                             </StyledButton>
                             <StyledButton>
                             <EditIcon/>
+                            </StyledButton>
+                            <StyledButton>
+                                <AddCircleOutlineIcon/>
+                            </StyledButton>
+                            </ButtonActionContainer>
+                            </Td>
+                        </Tr>
+                    </Tbody>
+                    <Tbody>
+                        <Tr>
+                            <Td>John</Td>
+                            <Td>1</Td>
+                            <Td>4</Td>
+                            <Td>30/10/2024</Td>
+                            <Td>Due</Td>
+                            <Td>
+                            <ButtonActionContainer>
+                            <StyledButton>
+                            <DeleteIcon />
+                            </StyledButton>
+                            <StyledButton>
+                            <EditIcon/>
+                            </StyledButton>
+                            <StyledButton>
+                                <AddCircleOutlineIcon/>
+                            </StyledButton>
+                            </ButtonActionContainer>
+                            </Td>
+                        </Tr>
+                    </Tbody>
+                    <Tbody>
+                        <Tr>
+                            <Td>John</Td>
+                            <Td>1</Td>
+                            <Td>4</Td>
+                            <Td>30/10/2024</Td>
+                            <Td>Due</Td>
+                            <Td>
+                            <ButtonActionContainer>
+                            <StyledButton>
+                            <DeleteIcon />
+                            </StyledButton>
+                            <StyledButton>
+                            <EditIcon/>
+                            </StyledButton>
+                            <StyledButton>
+                                <AddCircleOutlineIcon/>
                             </StyledButton>
                             </ButtonActionContainer>
                             </Td>
