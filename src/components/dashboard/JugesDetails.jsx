@@ -99,7 +99,7 @@ const JudgesDatails = () => {
                 <Th>Client Cases in Court</Th>
                 <Th>Court Number</Th>
                 {/* <Th>Current Case No</Th> */}
-                <Th>Case Status</Th>
+                <Th>Court Actions</Th>
 
                 <Th>Action</Th>
               </Tr>
