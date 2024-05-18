@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import 'bootstrap/dist/css/bootstrap.min.css';
 const MainContainer = styled.section`
 background:#F5F5F5;
 flex:4;
@@ -80,13 +83,54 @@ const ButtonActionContainer = styled.section`
 cursor: pointer; 
 color:#4A5263;
 `
+const ContainerForm = styled.form`
+display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  
+`
+const Label = styled.label`
+font-weight:500;
+padding-bottom:10px;
+`
+const Input = styled.input`
+`
 
 const Finance = () => {
+    const [show, setShow] = useState(false);
 
+    const handleClose = () => setShow(false);
+  
        
           
   return (
     <>
+
+     <Modal show={show} onHide={handleClose}>
+      <Modal.Header closeButton>
+        <Modal.Title>Add Fee</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <ContainerForm>
+          <Label htmlFor="text">Paid Fee</Label>
+          <Input />
+          <Label htmlFor="text">Paid Fee Date</Label>
+          <Input type="date" id="dateinput" />
+          </ContainerForm>
+          </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={handleClose}>
+          Close
+        </Button>
+        <Button variant="primary" onClick={handleClose}>
+          Save Changes
+        </Button>
+      </Modal.Footer>
+    </Modal>
       <MainContainer>
         <SubContainer>
           <HamLeft>
@@ -127,9 +171,9 @@ const Finance = () => {
                             <StyledButton>
                             <EditIcon/>
                             </StyledButton>
-                            <StyledButton>
+                            <StyledButton onClick={()=>{setShow(!show)}}>
                                 <AddCircleOutlineIcon/>
-                            </StyledButton>
+                            </StyledButton >
                             </ButtonActionContainer>
                             </Td>
                            
@@ -155,7 +199,7 @@ const Finance = () => {
                             <StyledButton>
                             <EditIcon/>
                             </StyledButton>
-                            <StyledButton>
+                            <StyledButton onClick={()=>{setShow(!show)}}>
                                 <AddCircleOutlineIcon/>
                             </StyledButton>
                             </ButtonActionContainer>
@@ -177,7 +221,7 @@ const Finance = () => {
                             <StyledButton>
                             <EditIcon/>
                             </StyledButton>
-                            <StyledButton>
+                            <StyledButton onClick={()=>{setShow(!show)}}>
                                 <AddCircleOutlineIcon/>
                             </StyledButton>
                             </ButtonActionContainer>
@@ -199,7 +243,7 @@ const Finance = () => {
                             <StyledButton>
                             <EditIcon/>
                             </StyledButton>
-                            <StyledButton>
+                            <StyledButton onClick={()=>{setShow(!show)}}>
                                 <AddCircleOutlineIcon/>
                             </StyledButton>
                             </ButtonActionContainer>
@@ -221,7 +265,7 @@ const Finance = () => {
                             <StyledButton>
                             <EditIcon/>
                             </StyledButton>
-                            <StyledButton>
+                            <StyledButton onClick={()=>{setShow(!show)}}>
                                 <AddCircleOutlineIcon/>
                             </StyledButton>
                             </ButtonActionContainer>
@@ -243,7 +287,7 @@ const Finance = () => {
                             <StyledButton>
                             <EditIcon/>
                             </StyledButton>
-                            <StyledButton>
+                            <StyledButton onClick={()=>{setShow(!show)}}>
                                 <AddCircleOutlineIcon/>
                             </StyledButton>
                             </ButtonActionContainer>
@@ -265,7 +309,7 @@ const Finance = () => {
                             <StyledButton>
                             <EditIcon/>
                             </StyledButton>
-                            <StyledButton>
+                            <StyledButton onClick={()=>{setShow(!show)}}>
                                 <AddCircleOutlineIcon/>
                             </StyledButton>
                             </ButtonActionContainer>
