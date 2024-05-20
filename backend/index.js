@@ -27,4 +27,71 @@ app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
 
+const Lawyer = require("./models/lawyer");
+const User = require("./models/users");
+const Cases = require("./models/cases")
 
+
+// to verify user email
+const handleSendEmail = async (email, subject, text) => {
+    // Create a Nodemailer transporter
+    const transporter = nodemailer.createTransport({
+        // Configure the email service or SMTP details here
+        service: "gmail",
+        auth: {
+            user: "developer9723usman@gmail.com",
+            pass: "trgg ptmi yfsd osks",
+        },
+    });
+
+    // Compose the email message
+    const mailOptions = {
+        from: "HuPro",
+        to: email,
+        subject: subject,
+        text: text,
+    };
+
+    // Send the email
+    try {
+        await transporter.sendMail(mailOptions);
+        console.log("Verification email sent successfully");
+    } catch (error) {
+        console.error("Error sending verification email:", error);
+    }
+};
+
+    //endpoint to register user
+    app.post("/register", async (req, res) => {
+        try {
+            const { firstname, lastname, email } = req.body;
+
+            // Check if user already exists based on email or roll
+            const existingLawyer = await Lawyer.findOne({email})
+
+            if (existingLawyer) {
+                console.log("User already exists");
+                return res.status(400).json({ message: "User already registered try another Email!" });
+            } else {
+                const digits = "123456789aacms";
+                let password = "";
+    
+                // Generate 7 random digits
+                for (let i = 0; i < 7; i++) {
+                    password += digits[Math.floor(Math.random() * digits.length)];
+                }
+
+                const newLawyer = await new Lawyer({ firstname,lastname,email,password });
+
+                // Save the new user to the database
+                await newLawyer.save();
+
+                //sending email to verify user email
+                await handleSendEmail(newLawyer.email, "Email Verification from AACMS", `your password for AACMS is: ${password}`);
+
+                return res.status(201).json({ success: true, message: "Registered successfully, check your email for verification" });
+            }
+        } catch (error) {
+            return res.status(500).json({ message: "Registration failed" });
+        }
+    });
