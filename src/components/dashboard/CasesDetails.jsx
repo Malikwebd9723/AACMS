@@ -113,7 +113,7 @@ const CasesDetails = () => {
                     <Tbody>
                         <Tr>
                             <Td>1</Td>
-                            <Td>Hamza vs Muneeb</Td>
+                            <Td>Uzair vs Muneeb</Td>
                             <Td>Criminal</Td>
                             <Td>pre-trial</Td>
                             <Td>1</Td>
@@ -140,12 +140,12 @@ const CasesDetails = () => {
                     </Tbody>
                     <Tbody>
                         <Tr>
-                            <Td>John</Td>
-                            <Td>1</Td>
-                            <Td>Criminal</Td>
+                            <Td>2</Td>
+                            <Td>Hamza vs Uzair</Td>
+                            <Td>Faujdari </Td>
                             <Td>trial</Td>
+                            <Td>2</Td>
                             <Td>30/10/2024</Td>
-                            <Td>Due</Td>
                            
                             <Td>
                             <ButtonActionContainer>
@@ -161,12 +161,12 @@ const CasesDetails = () => {
                     </Tbody>
                     <Tbody>
                         <Tr>
-                            <Td>John</Td>
-                            <Td>1</Td>
-                            <Td>Criminal</Td>
+                            <Td>3</Td>
+                            <Td>Muneeb vs Taj</Td>
+                            <Td>dewani </Td>
                             <Td>settlement negotiations</Td>
+                            <Td>1</Td>
                             <Td>30/10/2024</Td>
-                            <Td>Due</Td>
                            
                             <Td>
                             <ButtonActionContainer>
@@ -182,12 +182,12 @@ const CasesDetails = () => {
                     </Tbody>
                     <Tbody>
                         <Tr>
-                            <Td>John</Td>
-                            <Td>1</Td>
-                            <Td>Criminal</Td>
                             <Td>4</Td>
+                            <Td>hira vs Gul Zaman</Td>
+                            <Td>Family Case</Td>
+                            <Td>pre-trial</Td>
+                            <Td>3</Td>
                             <Td>30/10/2024</Td>
-                            <Td>Due</Td>
                            
                             <Td>
                             <ButtonActionContainer>
@@ -203,12 +203,12 @@ const CasesDetails = () => {
                     </Tbody>
                     <Tbody>
                         <Tr>
-                            <Td>John</Td>
-                            <Td>1</Td>
-                            <Td>Criminal</Td>
-                            <Td>4</Td>
+                            <Td>5</Td>
+                            <Td>hira vs Gul Zaman</Td>
+                            <Td>Family Case</Td>
+                            <Td>pre-trial</Td>
+                            <Td>3</Td>
                             <Td>30/10/2024</Td>
-                            <Td>Due</Td>
                         
                             <Td>
                             <ButtonActionContainer>
@@ -224,12 +224,12 @@ const CasesDetails = () => {
                     </Tbody>
                     <Tbody>
                         <Tr>
-                            <Td>John</Td>
-                            <Td>1</Td>
-                            <Td>Criminal</Td>
-                            <Td>4</Td>
+                            <Td>6</Td>
+                            <Td>Hamza vs Uzair</Td>
+                            <Td>Faujdari </Td>
+                            <Td>trial</Td>
+                            <Td>2</Td>
                             <Td>30/10/2024</Td>
-                            <Td>Due</Td>
                         
                             <Td>
                             <ButtonActionContainer>
@@ -245,12 +245,12 @@ const CasesDetails = () => {
                     </Tbody>
                     <Tbody>
                         <Tr>
-                            <Td>John</Td>
-                            <Td>1</Td>
-                            <Td>Criminal</Td>
-                            <Td>4</Td>
+                            <Td>7</Td>
+                            <Td>Hamza vs Uzair</Td>
+                            <Td>Faujdari </Td>
+                            <Td>trial</Td>
+                            <Td>2</Td>
                             <Td>30/10/2024</Td>
-                            <Td>Due</Td>
                             
                             <Td>
                             <ButtonActionContainer>

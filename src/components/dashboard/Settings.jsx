@@ -111,20 +111,20 @@ const Settings = () => {
             <Row><H4>Edit Profile</H4></Row>
             <Row>
               <Label htmlFor="fullName">Full Name</Label>
-              <Input type="text" id="fullName" defaultValue="Kevin Anderson" />
+              <Input type="text" id="fullName" placeholder="Enter Your Full Name" />
             </Row>
 
             <Row>
               <Label htmlFor="about">About</Label>
               <Textarea
                 id="about"
-                defaultValue="Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde."
+                placeholder="Tell Me About Us"
               />
             </Row>
 
             <Row>
               <Label htmlFor="Country">Country</Label>
-              <Input type="text" id="Country" defaultValue="USA" />
+              <Input type="text" id="Country" placeholder="Enter Your Country" />
             </Row>
 
             <Row>
@@ -132,7 +132,7 @@ const Settings = () => {
               <Input
                 type="text"
                 id="Address"
-                defaultValue="A108 Adam Street, New York, NY 535022"
+                placeholder="Enter Your Address"
               />
             </Row>
 
@@ -141,7 +141,7 @@ const Settings = () => {
               <Input
                 type="text"
                 id="Phone"
-                defaultValue="(436) 486-3538 x29071"
+                placeholder="Enter Your Phone Number"
               />
             </Row>
 
@@ -150,7 +150,7 @@ const Settings = () => {
               <Input
                 type="email"
                 id="Email"
-                defaultValue="k.anderson@example.com"
+                placeholder="Enter your Email"
               />
             </Row>
 
