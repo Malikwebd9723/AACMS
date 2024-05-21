@@ -118,8 +118,6 @@ const Finance = () => {
         <ContainerForm>
           <Label htmlFor="text">Paid Fee</Label>
           <Input />
-          <Label htmlFor="text">Paid Fee Date</Label>
-          <Input type="date" id="dateinput" />
           </ContainerForm>
           </Modal.Body>
       <Modal.Footer>
