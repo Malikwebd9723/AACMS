@@ -130,7 +130,7 @@ const SignUp = () => {
         <Input type="text" placeholder='First Name' />
         <Input type="text" placeholder='Last Name' />
         <Input type='text' placeholder='Username or Email'/>
-        <Input type='password' placeholder='Password'/>
+        {/* <Input type='password' placeholder='Password'/> */}
         <SubmitBtn>Register</SubmitBtn>
       </Form>
     </SignupContainer>

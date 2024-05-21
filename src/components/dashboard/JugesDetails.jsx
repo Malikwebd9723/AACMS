@@ -82,7 +82,7 @@ const JudgesDatails = () => {
       <MainContainer>
         <SubContainer>
           <HamLeft>
-            <H4>Manage Judges Details of Clients</H4>
+            <H4>Manage Your Client Court Details</H4>
           </HamLeft>
           {/* <ButtonContainer>
             <AddCircleOutlineIcon />
@@ -96,7 +96,7 @@ const JudgesDatails = () => {
               <Tr>
                 <Th>Client Number</Th>
                 <Th>Judge Name</Th>
-                {/* <Th>Client Cases in Court</Th> */}
+                <Th>Court Name</Th>
                 <Th>Court Number</Th>
                 {/* <Th>Current Case No</Th> */}
                 <Th>Court Actions</Th>
@@ -108,7 +108,7 @@ const JudgesDatails = () => {
               <Tr>
                 <Td>1</Td>
                 <Td>Qazi Adnan</Td>
-                {/* <Td>2</Td> */}
+                <Td>additonal judge</Td>
                 <Td>4</Td>
                 {/* <Td>Due</Td> */}
                 <Td>Pending</Td>
@@ -128,7 +128,7 @@ const JudgesDatails = () => {
               <Tr>
                 <Td>2</Td>
                 <Td>Qazi Adnan</Td>
-                {/* <Td>2</Td> */}
+                <Td>2</Td>
                 <Td>4</Td>
                 {/* <Td>Due</Td> */}
                 <Td>Pending</Td>
@@ -148,7 +148,7 @@ const JudgesDatails = () => {
               <Tr>
                 <Td>3</Td>
                 <Td>Qazi Adnan</Td>
-                {/* <Td>2</Td> */}
+                <Td>2</Td>
                 <Td>3</Td>
                 {/* <Td>Due</Td> */}
                 <Td>Order</Td>
@@ -168,7 +168,7 @@ const JudgesDatails = () => {
               <Tr>
                 <Td>4</Td>
                 <Td>Qazi Adnan</Td>
-                {/* <Td>1</Td> */}
+                <Td>1</Td>
                 <Td>5</Td>
                {/* <Td>Due</Td> */}
                 <Td>Proceding</Td>
@@ -188,7 +188,7 @@ const JudgesDatails = () => {
               <Tr>
                 <Td>5</Td>
                 <Td>Qazi Adnan</Td>
-                {/* <Td>1</Td> */}
+                <Td>1</Td>
                 <Td>8</Td>
                 {/* <Td>Due</Td> */}
                 <Td>None</Td>
@@ -208,7 +208,7 @@ const JudgesDatails = () => {
               <Tr>
                 <Td>6</Td>
                 <Td>Qazi Adnan</Td>
-                {/* <Td>3</Td> */}
+                <Td>3</Td>
                 <Td>2</Td>
                 {/* <Td>Due</Td> */}
                 <Td>Pending</Td>
@@ -228,7 +228,7 @@ const JudgesDatails = () => {
               <Tr>
                 <Td>7</Td>
                 <Td>Qazi Adnan</Td>
-                {/* <Td>4</Td> */}
+                <Td>4</Td>
                 <Td>9</Td>
                 {/* <Td>Due</Td> */}
                 <Td>Pending</Td>
