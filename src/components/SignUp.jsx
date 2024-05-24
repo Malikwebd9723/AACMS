@@ -1,9 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom';
+import React, { useContext, useState } from 'react'
 import styled from "styled-components";
-import logo from "../assets/logo.jpg";
+import logo from "../assets/logo.jpg"
+import { NavLink } from 'react-router-dom';
 import { Context } from '../context/States';
-
 const Main = styled.section`
 min-height:100vh;
 display:flex;
@@ -23,7 +22,7 @@ filter;blur(5px);
 `
 const NavLeft = styled.section`
 flex:1;
-`
+` 
 const Logo = styled.section`
 height:100%;
 width:55%;
@@ -43,25 +42,28 @@ justify-content:flex-end;
 const BtnContainer = styled.section`
 `
 const LoginBtn = styled.button`
-  padding:15px 50px;
+padding: 13px 30px;
+  margin:10px;
+  border-radius:30px;
+  border:none;
+  color:black;
+  background: rgba(255, 255, 255, 0.4);
+   font-size: 15px;
+    font-weight: 500;
+    color: black;
+
+`
+const RegisterBtn = styled.button`
+padding: 13px 30px;
   margin:10px;
   border-radius:30px;
   background-color:white;
   border:none;
   color:black;
 `
-const RegisterBtn = styled.button`
-  padding:15px 50px;
-  margin:10px;
-  border-radius:30px;
-  background: rgba(255, 255, 255, 0.4);
-  border:none;
-  color:black;
-`
+// Signup section styling starts here
 
-// login section styling starts here
-
-const LoginContainer = styled.section`
+const  SignupContainer = styled.section`
 flex:3;
 display:flex;
 flex-direction:column;
@@ -73,13 +75,6 @@ const H1 = styled.h1`
 padding: 10px 0 30px 0;
 font-size:30px;
 color:white;
-`
-const H6 = styled.h6`
-padding:10px 0;
-font-weight:600;
-font-size:15px;
-color:white;
-
 `
 const Form = styled.form`
 display:flex;
@@ -107,72 +102,63 @@ const Anchor = styled.a`
 color:white;
 text-decoration:none;
 `
-
-
-
-
-const Login = () => {
-  const context = useContext(Context);
-  const { checkLoggedInStatus, handleLogin } = context;
-  useEffect(() => {
-    checkLoggedInStatus()
-  })
-
+const SignUp = () => {
   const [cred, setCred] = useState({
+    firstname: "",
+    lastname: "",
     email: "",
-    password: "",
   })
 
-  const callLogin = (e) => {
+  const context = useContext(Context);
+  const { handleRegister } = context;
+
+  const callRegister = (e) => {
     e.preventDefault();
-    if (cred.email!=="" && cred.password!=="") {
-      handleLogin({ email: cred.email, password: cred.password });
-    }
-    else{
+    if (cred.firstname!=="" && cred.lastname!=="" && cred.email!=="") {
+      handleRegister({firstname:cred.firstname,lastname:cred.lastname,email:cred.email});
+    } else {
       alert("Fill all the fields correctly!")
     }
   }
   const setCredentials = (e) => {
     setCred({ ...cred, [e.target.name]: e.target.value })
   }
-
   return (
     <Main>
       {/* navbar section */}
-      <Navbar>
-        <NavLeft>
-          <Logo>
-            <LogoImg />
-          </Logo>
-        </NavLeft>
-        <NavRight>
-          <BtnContainer>
-            <Anchor as={NavLink} to={'/'}>
-              <LoginBtn>Sign In</LoginBtn>
-            </Anchor>
-            <Anchor as={NavLink} to={'SignUp'}>
-              <RegisterBtn>Sign Up</RegisterBtn>
-            </Anchor>
-          </BtnContainer>
-        </NavRight>
-      </Navbar>
+   <Navbar>
+   <NavLeft>
+     <Logo>
+       <LogoImg/>
+     </Logo>
+   </NavLeft>
+   <NavRight>
+     <BtnContainer>
+       <RegisterBtn>Sign Up</RegisterBtn>
+      <Anchor as={NavLink} to={'/'}>
+      <LoginBtn>Sign In</LoginBtn>
+      </Anchor>
+    
+     </BtnContainer>
+   </NavRight>
+ </Navbar>
 
-
-      {/* log in form start */}
-      <LoginContainer>
-        <Anchor as={NavLink} to={"/signup"}>Don`t have an account? Sign Up</Anchor>
-        <H1>Login</H1>
-        <Form onSubmit={callLogin}>
-
-          <Input onChange={setCredentials} name='email' type='text' placeholder='Email' />
-          <Input onChange={setCredentials} name='password' type='password' placeholder='Password' />
-          <SubmitBtn>Login</SubmitBtn>
-        </Form>
-        <H6>Forgot password?</H6>
-      </LoginContainer>
+  {/* Sign up in form start */}
+  <SignupContainer>
+      <Anchor as={NavLink} to={"/"}>Have an account? Login</Anchor>
+      <H1>Sign Up</H1>
+      <Form onSubmit={callRegister}>
+        <Input onChange={setCredentials} name='firstname' type="text" placeholder='First Name' />
+        <Input onChange={setCredentials} name='lastname' type="text" placeholder='Last Name' />
+        <Input onChange={setCredentials} name='email' type='text' placeholder='Username or Email'/>
+        {/* <Input type='password' placeholder='Password'/> */}
+        <SubmitBtn>Register</SubmitBtn>
+      </Form>
+    </SignupContainer>
 
     </Main>
+   
   )
 }
 
-export default Login
+export default SignUp
