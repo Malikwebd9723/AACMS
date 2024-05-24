@@ -28,7 +28,10 @@ app.listen(port, () => {
 });
 
 
-<<<<<<< HEAD
+
+const Lawyer = require("./models/lawyer");
+const User = require("./models/users");
+const Cases = require("./models/cases")
 
 // to verify user email
 const handleSendEmail = async (email, subject, text) => {
@@ -170,5 +173,3 @@ app.post("/updatePass", async (req, res) => {
         return res.status(500).json({ message: "Server Error!" });
     }
 });
-=======
->>>>>>> 5da51cdcae94827d5e1a3d8834bf90a05589c697

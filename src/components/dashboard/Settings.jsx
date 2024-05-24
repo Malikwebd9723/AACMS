@@ -144,7 +144,6 @@ const Settings = () => {
             
             <Row><H4>Edit Profile</H4></Row>
             <Row>
-<<<<<<< HEAD
               <Label htmlFor="firstname">First Name</Label>
               <Input onChange={setCredentials} type="text" id="firstname" name="firstname" defaultValue={user.firstname} />
             </Row>
@@ -155,40 +154,6 @@ const Settings = () => {
                 id="lastname"
                 name="lastname"
                 defaultValue={user.lastname}
-=======
-              <Label htmlFor="fullName">Full Name</Label>
-              <Input type="text" id="fullName" placeholder="Enter Your Full Name" />
-            </Row>
-
-            <Row>
-              <Label htmlFor="about">About</Label>
-              <Textarea
-                id="about"
-                placeholder="Tell Me About Us"
-              />
-            </Row>
-
-            <Row>
-              <Label htmlFor="Country">Country</Label>
-              <Input type="text" id="Country" placeholder="Enter Your Country" />
-            </Row>
-
-            <Row>
-              <Label htmlFor="Address">Address</Label>
-              <Input
-                type="text"
-                id="Address"
-                placeholder="Enter Your Address"
-              />
-            </Row>
-
-            <Row>
-              <Label htmlFor="Phone">Phone</Label>
-              <Input
-                type="text"
-                id="Phone"
-                placeholder="Enter Your Phone Number"
->>>>>>> 5da51cdcae94827d5e1a3d8834bf90a05589c697
               />
             </Row>
 
@@ -197,12 +162,8 @@ const Settings = () => {
               <Input
                 type="email"
                 id="Email"
-<<<<<<< HEAD
                 name="email"
                 value={user.email}
-=======
-                placeholder="Enter your Email"
->>>>>>> 5da51cdcae94827d5e1a3d8834bf90a05589c697
               />
             </Row>
 
