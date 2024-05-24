@@ -1,9 +1,7 @@
-import React, { useContext, useState } from 'react'
+import React from 'react'
 import styled from "styled-components";
 import logo from "../assets/logo.jpg"
 import { NavLink } from 'react-router-dom';
-import { Context } from "../context/States";
-
 const Main = styled.section`
 min-height:100vh;
 display:flex;
@@ -23,7 +21,7 @@ filter;blur(5px);
 `
 const NavLeft = styled.section`
 flex:1;
-`
+` 
 const Logo = styled.section`
 height:100%;
 width:55%;
@@ -64,7 +62,7 @@ padding: 13px 30px;
 `
 // Signup section styling starts here
 
-const SignupContainer = styled.section`
+const  SignupContainer = styled.section`
 flex:3;
 display:flex;
 flex-direction:column;
@@ -104,6 +102,7 @@ color:white;
 text-decoration:none;
 `
 const SignUp = () => {
+<<<<<<< HEAD
   const [cred, setCred] = useState({
     firstname: "",
     lastname: "",
@@ -124,40 +123,43 @@ const SignUp = () => {
   const setCredentials = (e) => {
     setCred({ ...cred, [e.target.name]: e.target.value })
   }
+=======
+>>>>>>> 5da51cdcae94827d5e1a3d8834bf90a05589c697
   return (
     <Main>
       {/* navbar section */}
-      <Navbar>
-        <NavLeft>
-          <Logo>
-            <LogoImg />
-          </Logo>
-        </NavLeft>
-        <NavRight>
-          <BtnContainer>
-            <RegisterBtn>Sign Up</RegisterBtn>
-            <Anchor as={NavLink} to={'/'}>
-              <LoginBtn>Sign In</LoginBtn>
-            </Anchor>
+   <Navbar>
+   <NavLeft>
+     <Logo>
+       <LogoImg/>
+     </Logo>
+   </NavLeft>
+   <NavRight>
+     <BtnContainer>
+       <RegisterBtn>Sign Up</RegisterBtn>
+      <Anchor as={NavLink} to={'/'}>
+      <LoginBtn>Sign In</LoginBtn>
+      </Anchor>
+    
+     </BtnContainer>
+   </NavRight>
+ </Navbar>
 
-          </BtnContainer>
-        </NavRight>
-      </Navbar>
-
-      {/* Sign up in form start */}
-      <SignupContainer>
-        <Anchor as={NavLink} to={"/"}>Have an account? Login</Anchor>
-        <H1>Sign Up</H1>
-        <Form onSubmit={callRegister}>
-          <Input onChange={setCredentials} name="firstname" type="text" placeholder='First Name' />
-          <Input onChange={setCredentials} name="lastname" type="text" placeholder='Last Name' />
-          <Input onChange={setCredentials} name="email" type='text' placeholder='User Email' />
-          <SubmitBtn type='submit'>Register</SubmitBtn>
-        </Form>
-      </SignupContainer>
+  {/* Sign up in form start */}
+  <SignupContainer>
+      <Anchor as={NavLink} to={"/"}>Have an account? Login</Anchor>
+      <H1>Sign Up</H1>
+      <Form onSubmit={"/"}>
+        <Input type="text" placeholder='First Name' />
+        <Input type="text" placeholder='Last Name' />
+        <Input type='text' placeholder='Username or Email'/>
+        {/* <Input type='password' placeholder='Password'/> */}
+        <SubmitBtn>Register</SubmitBtn>
+      </Form>
+    </SignupContainer>
 
     </Main>
-
+   
   )
 }
 
