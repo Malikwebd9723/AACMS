@@ -61,37 +61,114 @@ const handleSendEmail = async (email, subject, text) => {
     }
 };
 
-    //endpoint to register user
-    app.post("/register", async (req, res) => {
-        try {
-            const { firstname, lastname, email } = req.body;
+//endpoint to register user
+app.post("/register", async (req, res) => {
+    try {
+        const { firstname, lastname, email } = req.body;
 
-            // Check if user already exists based on email or roll
-            const existingLawyer = await Lawyer.findOne({email})
+        // Check if user already exists based on email or roll
+        const existingLawyer = await Lawyer.findOne({ email })
 
-            if (existingLawyer) {
-                console.log("User already exists");
-                return res.status(400).json({ message: "User already registered try another Email!" });
-            } else {
-                const digits = "123456789aacms";
-                let password = "";
-    
-                // Generate 7 random digits
-                for (let i = 0; i < 7; i++) {
-                    password += digits[Math.floor(Math.random() * digits.length)];
-                }
+        if (existingLawyer) {
+            console.log("User already exists");
+            return res.status(400).json({ message: "User already registered try another Email!" });
+        } else {
+            const digits = "123456789aacms";
+            let password = "";
 
-                const newLawyer = await new Lawyer({ firstname,lastname,email,password });
-
-                // Save the new user to the database
-                await newLawyer.save();
-
-                //sending email to verify user email
-                await handleSendEmail(newLawyer.email, "Email Verification from AACMS", `your password for AACMS is: ${password}`);
-
-                return res.status(201).json({ success: true, message: "Registered successfully, check your email for verification" });
+            // Generate 7 random digits
+            for (let i = 0; i < 7; i++) {
+                password += digits[Math.floor(Math.random() * digits.length)];
             }
-        } catch (error) {
-            return res.status(500).json({ message: "Registration failed" });
+
+            const newLawyer = await new Lawyer({ firstname, lastname, email, password });
+
+            // Save the new user to the database
+            await newLawyer.save();
+
+            //sending email to verify user email
+            await handleSendEmail(newLawyer.email, "Email Verification from AACMS", `your password for AACMS is: ${password}`);
+
+            return res.status(201).json({ success: true, message: "Registered successfully, check your email for verification" });
         }
-    });
+    } catch (error) {
+        return res.status(500).json({ message: "Server Error. Registration failed!" });
+    }
+});
+
+//endpoint to login user
+app.post("/login", async (req, res) => {
+    try {
+        const { email, password } = req.body;
+
+        // Check if user already exists based on email or roll
+        const existingLawyer = await Lawyer.findOne({ email })
+
+        if (existingLawyer && existingLawyer.password === password) {
+            return res.status(500).json({ success: true, message: "Logged in successfully!", userId: existingLawyer._id });
+        } else {
+            return res.status(201).json({ message: "No user found!" });
+        }
+    } catch (error) {
+        return res.status(500).json({ message: "Server Error. Faild to login!" });
+    }
+});
+
+//endpoint to login user
+app.post("/profileData", async (req, res) => {
+    try {
+        const {id} = req.body;
+
+        // Check if user already exists based on email or roll
+        const existingLawyer = await Lawyer.findOne({ _id:id })
+
+        if (existingLawyer) {
+            return res.status(500).json({ success: true,user:existingLawyer});
+        } else {
+            return res.status(201).json({ message: "No user found!" });
+        }
+    } catch (error) {
+        return res.status(500).json({ message: "Server Error!" });
+    }
+});
+
+//endpoint to login user
+app.post("/updateProfile", async (req, res) => {
+    try {
+        const {id,firstname,lastname} = req.body;
+
+        // Check if user already exists based on email or roll
+        const existingLawyer = await Lawyer.findOne({_id:id})
+
+        if (existingLawyer) {
+            existingLawyer.firstname = firstname;
+            existingLawyer.lastname = lastname;
+            await existingLawyer.save();
+            return res.status(500).json({ success: true,message:"Profile updated successfully!"});
+        } else {
+            return res.status(201).json({ message: "Faild to update profile,Try other email!" });
+        }
+    } catch (error) {
+        return res.status(500).json({ message: "Server Error!" });
+    }
+});
+
+//endpoint to login user
+app.post("/updatePass", async (req, res) => {
+    try {
+        const {id,oldPass ,newPass} = req.body;
+
+        // Check if user already exists based on email or roll
+        const existingLawyer = await Lawyer.findOne({_id:id})
+
+        if (existingLawyer && existingLawyer.password == oldPass) {
+            existingLawyer.password = newPass
+            await existingLawyer.save();
+            return res.status(500).json({ success: true,message:"Password updated!"});
+        } else {
+            return res.status(201).json({ message: "Current password is incorrect!" });
+        }
+    } catch (error) {
+        return res.status(500).json({ message: "Server Error!" });
+    }
+});

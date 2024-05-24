@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
+    lawyer: {
+        type: String,
+        required: true,
+    },
     fullname: {
         type: String,
         required: true,

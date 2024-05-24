@@ -115,7 +115,11 @@ const SignUp = () => {
 
   const callRegister = (e) => {
     e.preventDefault();
-    handleRegister({firstname:cred.firstname,lastname:cred.lastname,email:cred.email});
+    if (cred.firstname!=="" && cred.lastname!=="" && cred.email!=="") {
+      handleRegister({firstname:cred.firstname,lastname:cred.lastname,email:cred.email});
+    } else {
+      alert("Fill all the fields correctly!")
+    }
   }
   const setCredentials = (e) => {
     setCred({ ...cred, [e.target.name]: e.target.value })
