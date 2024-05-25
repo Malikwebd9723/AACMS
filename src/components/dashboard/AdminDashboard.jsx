@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from "styled-components"
 import Footer from '../Footer';
 import GroupsIcon from '@mui/icons-material/Groups';
@@ -6,6 +6,7 @@ import StackedLineChartIcon from '@mui/icons-material/StackedLineChart';
 import PriceCheckIcon from '@mui/icons-material/PriceCheck';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import { Context } from '../../context/States';
 
 const Main = styled.section`
 background:#F5F5F5;
@@ -79,151 +80,102 @@ padding:10px;
 `
 
 const AdminDashboard = () => {
+    //  get today date
+    const fullDate = new Date();
+    const today = fullDate.getDate();
+    const month = fullDate.getMonth() + 1;
+    const year = fullDate.getFullYear();
+    const date = `${year}-${month < 10 ? '0' + month : month}-${today}`;
+    console.log(date);
+
+    const context = useContext(Context);
+    const { cases, clients } = context;
     return (
         <>
-        <Main>
-            <CardContainer>
+            <Main>
+                <CardContainer>
 
-                <Card>
-                    <CardIcon>
-                        <GroupsIcon />
-                    </CardIcon>
+                    <Card>
+                        <CardIcon>
+                            <GroupsIcon />
+                        </CardIcon>
                         <H2>Total Clients</H2>
-                    <CardContainerInner>
-                        <H2>50</H2>
-                        <ProgressContainer>
-                        <CircularProgressbar value={50} styles={{height:30}} text='50%'/>
-                        </ProgressContainer>
-                    </CardContainerInner>
-                    <H6>Last 24 Hours</H6>
-                </Card>
+                        <CardContainerInner>
+                            <H2>50</H2>
+                            <ProgressContainer>
+                                <CircularProgressbar value={50} styles={{ height: 30 }} text='50%' />
+                            </ProgressContainer>
+                        </CardContainerInner>
+                        <H6>Last 24 Hours</H6>
+                    </Card>
 
-                <Card>
-                    <CardIcon>
-                        <StackedLineChartIcon />
-                    </CardIcon>
+                    <Card>
+                        <CardIcon>
+                            <StackedLineChartIcon />
+                        </CardIcon>
                         <H2>Total Cases</H2>
-                    <CardContainerInner>
-                        <H2>70</H2>
-                        <ProgressContainer>
-                        <CircularProgressbar value={70} styles={{height:30}} text='70%'/>
-                        </ProgressContainer>
-                    </CardContainerInner>
-                    <H6>Last 24 Hours</H6>
-                </Card>
+                        <CardContainerInner>
+                            <H2>70</H2>
+                            <ProgressContainer>
+                                <CircularProgressbar value={70} styles={{ height: 30 }} text='70%' />
+                            </ProgressContainer>
+                        </CardContainerInner>
+                        <H6>Last 24 Hours</H6>
+                    </Card>
 
-                <Card>
-                    <CardIcon>
-                        <PriceCheckIcon />
-                    </CardIcon>
+                    <Card>
+                        <CardIcon>
+                            <PriceCheckIcon />
+                        </CardIcon>
                         <H2>Fee Received</H2>
-                    <CardContainerInner>
-                        <H2>40</H2>
-                        <ProgressContainer>
-                        <CircularProgressbar value={90} styles={{height:30}} text='90%'/>
-                        </ProgressContainer>
-                    </CardContainerInner>
-                    <H6>Last 24 Hours</H6>
-                </Card>
+                        <CardContainerInner>
+                            <H2>40</H2>
+                            <ProgressContainer>
+                                <CircularProgressbar value={90} styles={{ height: 30 }} text='90%' />
+                            </ProgressContainer>
+                        </CardContainerInner>
+                        <H6>Last 24 Hours</H6>
+                    </Card>
 
-            </CardContainer>
-            <ActivitiesContainer>
-                <H1>Todays Activities</H1>
-                <Table>
-                    <Thead>
-                        <Tr>
-                            <Th>Client Name</Th>
-                            <Th>Client#</Th>
-                            <Th>Court#</Th>
-                            <Th>Judge Name</Th>
-                            <Th>Hearing Date</Th>
-                            <Th>Payment</Th>
-                            <Th>Status</Th>
-                        </Tr>
-                    </Thead>
-                    <Tbody>
-                        <Tr>
-                            <Td>Khuram</Td>
-                            <Td>1</Td>
-                            <Td>2</Td>
-                            <Td>Qazi Adnan</Td>
-                            <Td>30/10/2024</Td>
-                            <Td>Due</Td>
-                            <Td>pending</Td>
-                        
-                        </Tr>
-                    </Tbody>
-                    <Tbody>
-                        <Tr>
-                            <Td>Uzair</Td>
-                            <Td>2</Td>
-                            <Td>3</Td>
-                            <Td>Qazi Adnan</Td>
-                            <Td>20/10/2024</Td>
-                            <Td>Due</Td>
-                            <Td>pending</Td>
-                        </Tr>
-                    </Tbody>
-                    <Tbody>
-                        <Tr>
-                            <Td>Hamza</Td>
-                            <Td>3</Td>
-                            <Td>5</Td>
-                            <Td>Qazi Adnan</Td>
-                            <Td>21/10/2024</Td>
-                            <Td>Due</Td>
-                            <Td>In proceding</Td>
-                        </Tr>
-                    </Tbody>
-                    <Tbody>
-                        <Tr>
-                            <Td>Muneeb</Td>
-                            <Td>4</Td>
-                            <Td>6</Td>
-                            <Td>Qazi Adnan</Td>
-                            <Td>1/10/2024</Td>
-                            <Td>Due</Td>
-                            <Td>Order</Td>
-                        </Tr>
-                    </Tbody>
-                    <Tbody>
-                        <Tr>
-                            <Td>Amir</Td>
-                            <Td>5</Td>
-                            <Td>1</Td>
-                            <Td>Qazi Adnan</Td>
-                            <Td>10/10/2024</Td>
-                            <Td>Due</Td>
-                            <Td>Settlement</Td>
-                        </Tr>
-                    </Tbody>
-                    <Tbody>
-                        <Tr>
-                            <Td>Ahmed</Td>
-                            <Td>6</Td>
-                            <Td>4</Td>
-                            <Td>Qazi Adnan</Td>
-                            <Td>12/10/2024</Td>
-                            <Td>Due</Td>
-                            <Td>Pre Trail</Td>
-                        </Tr>
-                    </Tbody>
-                    <Tbody>
-                        <Tr>
-                            <Td>John</Td>
-                            <Td>1</Td>
-                            <Td>4</Td>
-                            <Td>Qazi Adnan</Td>
-                            <Td>30/10/2024</Td>
-                            <Td>Due</Td>
-                            <Td>Trail</Td>
-                        </Tr>
-                    </Tbody>
-
-                </Table>
-            </ActivitiesContainer>
-        </Main>
-        <Footer/>
+                </CardContainer>
+                <ActivitiesContainer>
+                    <H1>Todays Activities</H1>
+                    {cases.length !== 0 ?
+                        <Table>
+                            <Thead>
+                                <Tr>
+                                    <Th>Client Name</Th>
+                                    <Th>Client Number</Th>
+                                    <Th>Court Number</Th>
+                                    <Th>Judge Name</Th>
+                                    <Th>Hearing Date</Th>
+                                    <Th>Payment</Th>
+                                    <Th>Status</Th>
+                                </Tr>
+                            </Thead>
+                            {cases.map((item) => {
+                                return (
+                                    item.hearingDate == date ? <Tbody>
+                                        <Tr>
+                                            <Td>{clients.map((e) => {
+                                                return (
+                                                    e._id == item.userId ? e.name : ""
+                                                )
+                                            })}</Td>
+                                            <Td>{item.userId}</Td>
+                                            <Td>{item.courtNumber}</Td>
+                                            <Td>{item.judge}</Td>
+                                            <Td>{item.hearingDate}</Td>
+                                            <Td>{item.paidFee}</Td>
+                                            <Td>{item.caseStatus}</Td>
+                                        </Tr>
+                                    </Tbody> : "No Activities!"
+                                )
+                            })}
+                        </Table> : <h3>No Record to display!</h3>}
+                </ActivitiesContainer>
+            </Main >
+            <Footer />
         </>
     )
 }

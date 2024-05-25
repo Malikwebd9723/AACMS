@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -8,6 +8,7 @@ import Modal from 'react-bootstrap/Modal';
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Context } from '../../context/States';
 const MainContainer = styled.section`
 background:#F5F5F5;
 flex:4;
@@ -77,7 +78,7 @@ const ButtonActionContainer = styled.section`
   align-items: center;
 
 `
-  const StyledButton = styled.button`
+const StyledButton = styled.button`
   display: flex;
   align-items: center;
   border: none; 
@@ -102,90 +103,95 @@ padding-bottom:10px;
 const Input = styled.input`
 `
 const HearingDates = () => {
-    const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-  
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const context = useContext(Context);
+  const { cases } = context;
+
   return (
     <>
-   <Modal show={show} onHide={handleClose}>
-      <Modal.Header closeButton>
-        <Modal.Title>Add New Clients</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <ContainerForm>
-          <Label htmlFor="name">Client Number</Label>
-          <Input />
-          <Label htmlFor="dateInput">Date of Hearing</Label>
-          <Input
-            type="date"
-            id="dateInput"
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add New Clients</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <ContainerForm>
+            <Label htmlFor="name">Client Number</Label>
+            <Input />
+            <Label htmlFor="dateInput">Date of Hearing</Label>
+            <Input
+              type="date"
+              id="dateInput"
             />
-          <Label htmlFor="Email">Reminder Date</Label>
-          <Input
-            type="date"
-            id="dateInput"
+            <Label htmlFor="Email">Reminder Date</Label>
+            <Input
+              type="date"
+              id="dateInput"
             />
-        </ContainerForm>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-          Close
-        </Button>
-        <Button variant="primary" onClick={handleClose}>
-          Save Changes
-        </Button>
-      </Modal.Footer>
-    </Modal>
+          </ContainerForm>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
 
       <MainContainer>
         <SubContainer>
           <HamLeft>
-          <H4>Manage Law Office Clients Hearing Details</H4>
+            <H4>Manage Law Office Clients Hearing Details</H4>
           </HamLeft>
           <ButtonContainer>
-          
-          <Addbtn  onClick={handleShow}><AddCircleOutlineIcon/>Add Hearings Dates</Addbtn>
-        </ButtonContainer>
+
+            <Addbtn onClick={handleShow}><AddCircleOutlineIcon />Add Hearings Dates</Addbtn>
+          </ButtonContainer>
         </SubContainer>
-        
+
         <ActivitiesContainer>
-                <Table>
-                    <Thead>
-                        <Tr>
-                            <Th>Client Number</Th>
-                            <Th>Date Of Hearing</Th>
-                            <Th>Reminder Date</Th>
-                            <Th>Action</Th>
-                        </Tr>
-                    </Thead>
-                    <Tbody>
-                        <Tr>
-                            <Td>1</Td>
-                            <Td>1/5/2024</Td>
-                            <Td>30/4/2024</Td>
-                            
-                            
-                            <Td>
-                            <ButtonActionContainer>
-                            <StyledButton>
+          <Table>
+            <Thead>
+              <Tr>
+                <Th>Client Number</Th>
+                <Th>Date Of Hearing</Th>
+                <Th>Action</Th>
+              </Tr>
+            </Thead>
+            {cases.length !== 0 ?
+              cases.map((item) => {
+                return (
+                  <Tbody>
+                    <Tr>
+                      <Td>{item.userId}</Td>
+                      <Td>{item.hearingDate}</Td>
+                      <Td>
+                        <ButtonActionContainer>
+                          <StyledButton>
                             <DeleteIcon />
-                            </StyledButton>
-                            <StyledButton>
-                            <EditIcon/>
-                            </StyledButton>
-                            </ButtonActionContainer>
-                            </Td>
-                        </Tr>
-                    </Tbody>
-                </Table>
-            </ActivitiesContainer>
- 
+                          </StyledButton>
+                          <StyledButton>
+                            <EditIcon />
+                          </StyledButton>
+                        </ButtonActionContainer>
+                      </Td>
+                    </Tr>
+                  </Tbody>
+                )
+              })
+:""}
+          </Table>
+        </ActivitiesContainer>
+
       </MainContainer>
-      
-       
-    
+
+
+
     </>
   );
 };
