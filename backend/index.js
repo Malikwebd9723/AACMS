@@ -219,15 +219,13 @@ app.post("/getClients", async (req, res) => {
 //endpoint to get register user
 app.post("/addRecord", async (req, res) => {
     try {
-        const { userId, judge, courtNumber, courtAction, caseTitle, caseStatus, caseType, totalFee, discount, paidFee,hearingDate } = req.body;
+        const { userId,lawyerId, judge, courtNumber, courtAction, caseTitle, caseStatus, caseType, totalFee, discount, paidFee,hearingDate } = req.body;
         const user = await User.findOne({_id:userId})
 
         if (user) {
-            const totalcases = parseInt(user.totalCases);
-
-            user.totalCases = totalcases+1;
+            user.totalCases = user.totalCases+1;
             await user.save();
-            const newRecord = await new Case({userId, judge, courtNumber, courtAction, caseTitle, caseStatus, caseType, totalFee, discount, paidFee,hearingDate});
+            const newRecord = await new Case({userId,lawyerId, judge, courtNumber, courtAction, caseTitle, caseStatus, caseType, totalFee, discount, paidFee,hearingDate});
             await newRecord.save();
             return res.status(201).json({success:true,message:"case field"})
         } else {
@@ -235,5 +233,22 @@ app.post("/addRecord", async (req, res) => {
         }
     } catch (error) {
         return res.status(500).json({ message: "Server Error!" });
+    }
+});
+
+//endpoint to get register user
+app.post("/getCases", async (req, res) => {
+    try {
+        const {lawyerId} = req.body;
+
+        const cases = await Case.find({lawyerId})
+
+        if (cases) {
+            return res.status(200).json({ success: true,cases});
+        } else {
+            return res.status(400).json({ message: "No clients found!" });
+        }
+    } catch (error) {
+        return res.status(500).json({ message: "Server Error. Registration failed!" });
     }
 });

@@ -7,6 +7,7 @@ const States = ({ children }) => {
     const navigation = useNavigate()
     const [user, setUser] = useState([]);
     const [clients, setClients] = useState([]);
+    const [cases, setCases] = useState([]);
     const host = "http://localhost:8002";
 
     const handleRegister = async ({ firstname, lastname, email }) => {
@@ -174,7 +175,6 @@ const States = ({ children }) => {
             const json = await response.json();
             if (json.success) {
                 await setClients(json.clients)
-                console.log(clients);
             } else {
                 console.log(json.message);
 
@@ -185,6 +185,29 @@ const States = ({ children }) => {
         }
     }
 
+
+    const handleGetCases = async () => {
+        try {
+            const lawyerId = await localStorage.getItem("userId");
+            const response = await fetch(`${host}/getCases`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ lawyerId })
+            });
+            const json = await response.json();
+            if (json.success) {
+                await setCases(json.cases)
+            } else {
+                console.log(json.message);
+
+            }
+
+        } catch (error) {
+            alert("Server Error. Registeration failed!")
+        }
+    }
 
     const handleAddRecord = async ({
         userId,
@@ -199,16 +222,18 @@ const States = ({ children }) => {
         paidFee,
         hearingDate }) => {
         try {
+            const lawyerId = await localStorage.getItem("userId");
             const response = await fetch(`${host}/addRecord`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ userId, judge, courtNumber, courtAction, caseTitle, caseStatus, caseType, totalFee, discount, paidFee, hearingDate })
+                body: JSON.stringify({ userId,lawyerId, judge, courtNumber, courtAction, caseTitle, caseStatus, caseType, totalFee, discount, paidFee, hearingDate })
             });
             const json = await response.json();
             if (json.success) {
                 console.log("add record done");
+                handleGetCases()
             } else {
                 console.log(json.message);
 
@@ -221,7 +246,7 @@ const States = ({ children }) => {
 
 
     return (
-        <Context.Provider value={{ handleRegister, handleLogin, getProfileData, user, checkLoggedInStatus, handleLogout, handleUpdateProfile, handleUpdatePass, handleRegisterClient, handleGetClients, clients, handleAddRecord }}>
+        <Context.Provider value={{ handleRegister, handleLogin, getProfileData, user, checkLoggedInStatus, handleLogout, handleUpdateProfile, handleUpdatePass, handleRegisterClient, handleGetClients, clients, handleAddRecord,handleGetCases,cases }}>
             {children}
         </Context.Provider>
     );

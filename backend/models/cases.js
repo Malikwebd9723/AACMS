@@ -5,6 +5,10 @@ const casesSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    lawyerId: {
+        type: String,
+        required: true,
+    },
     caseTitle: {
         type: String,
         required: true,

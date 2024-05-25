@@ -27,8 +27,8 @@ const userSchema = new mongoose.Schema({
         required: true,
     },
     totalCases:{
-        type:String,
-        default:"",
+        type:Number,
+        default:0,
     },
     //   password: {
     //     type: String,

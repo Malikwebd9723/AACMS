@@ -342,6 +342,7 @@ const ClientManagement = () => {
                   <Th>Adresss</Th>
                   <Th>CNIC</Th>
                   <Th>Phone</Th>
+                  <Th>Total Cases</Th>
                   <Th>Action</Th>
                 </Tr>
               </Thead>
@@ -355,6 +356,7 @@ const ClientManagement = () => {
                       <Td>{item.address}</Td>
                       <Td>{item.cnic}</Td>
                       <Td>{item.phone}</Td>
+                      <Td>{item.totalCases}</Td>
 
                       <Td>
                         <ButtonActionContainer>

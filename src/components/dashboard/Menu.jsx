@@ -176,10 +176,11 @@ const Menu = () => {
     const [head, setHead] = useState("Dashboard");
 
     const context = useContext(Context);
-    const { handleLogout, getProfileData,handleGetClients } = context;
+    const { handleLogout, getProfileData,handleGetClients,handleGetCases } = context;
     useEffect(() => {
         getProfileData()
         handleGetClients()
+        handleGetCases()
     },[])
     return (
         <>

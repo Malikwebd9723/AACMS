@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 // import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import { Context } from "../../context/States";
 const MainContainer = styled.section`
   background: #f5f5f5;
   flex: 4;
@@ -77,6 +78,8 @@ const StyledButton = styled.button`
   color: #4a5263;
 `;
 const JudgesDatails = () => {
+  const context = useContext(Context);
+  const { cases } = context;
   return (
     <>
       <MainContainer>
@@ -91,160 +94,43 @@ const JudgesDatails = () => {
         </SubContainer>
 
         <ActivitiesContainer>
+{cases.length!==0?
           <Table>
-            <Thead>
-              <Tr>
-                <Th>Client Number</Th>
-                <Th>Judge Name</Th>
-                <Th>Court Name</Th>
-                <Th>Court Number</Th>
-                {/* <Th>Current Case No</Th> */}
-                <Th>Court Actions</Th>
-
-                <Th>Action</Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              <Tr>
-                <Td>1</Td>
-                <Td>Qazi Adnan</Td>
-                <Td>additonal judge</Td>
-                <Td>4</Td>
-                {/* <Td>Due</Td> */}
-                <Td>Pending</Td>
-                <Td>
-                  <ButtonActionContainer>
-                    <StyledButton>
-                      <DeleteIcon />
-                    </StyledButton>
-                    <StyledButton>
-                      <EditIcon />
-                    </StyledButton>
-                  </ButtonActionContainer>
-                </Td>
-              </Tr>
-            </Tbody>
-            <Tbody>
-              <Tr>
-                <Td>2</Td>
-                <Td>Qazi Adnan</Td>
-                <Td>2</Td>
-                <Td>4</Td>
-                {/* <Td>Due</Td> */}
-                <Td>Pending</Td>
-                <Td>
-                  <ButtonActionContainer>
-                    <StyledButton>
-                      <DeleteIcon />
-                    </StyledButton>
-                    <StyledButton>
-                      <EditIcon />
-                    </StyledButton>
-                  </ButtonActionContainer>
-                </Td>
-              </Tr>
-            </Tbody>
-            <Tbody>
-              <Tr>
-                <Td>3</Td>
-                <Td>Qazi Adnan</Td>
-                <Td>2</Td>
-                <Td>3</Td>
-                {/* <Td>Due</Td> */}
-                <Td>Order</Td>
-                <Td>
-                  <ButtonActionContainer>
-                    <StyledButton>
-                      <DeleteIcon />
-                    </StyledButton>
-                    <StyledButton>
-                      <EditIcon />
-                    </StyledButton>
-                  </ButtonActionContainer>
-                </Td>
-              </Tr>
-            </Tbody>
-            <Tbody>
-              <Tr>
-                <Td>4</Td>
-                <Td>Qazi Adnan</Td>
-                <Td>1</Td>
-                <Td>5</Td>
-               {/* <Td>Due</Td> */}
-                <Td>Proceding</Td>
-                <Td>
-                  <ButtonActionContainer>
-                    <StyledButton>
-                      <DeleteIcon />
-                    </StyledButton>
-                    <StyledButton>
-                      <EditIcon />
-                    </StyledButton>
-                  </ButtonActionContainer>
-                </Td>
-              </Tr>
-            </Tbody>
-            <Tbody>
-              <Tr>
-                <Td>5</Td>
-                <Td>Qazi Adnan</Td>
-                <Td>1</Td>
-                <Td>8</Td>
-                {/* <Td>Due</Td> */}
-                <Td>None</Td>
-                <Td>
-                  <ButtonActionContainer>
-                    <StyledButton>
-                      <DeleteIcon />
-                    </StyledButton>
-                    <StyledButton>
-                      <EditIcon />
-                    </StyledButton>
-                  </ButtonActionContainer>
-                </Td>
-              </Tr>
-            </Tbody>
-            <Tbody>
-              <Tr>
-                <Td>6</Td>
-                <Td>Qazi Adnan</Td>
-                <Td>3</Td>
-                <Td>2</Td>
-                {/* <Td>Due</Td> */}
-                <Td>Pending</Td>
-                <Td>
-                  <ButtonActionContainer>
-                    <StyledButton>
-                      <DeleteIcon />
-                    </StyledButton>
-                    <StyledButton>
-                      <EditIcon />
-                    </StyledButton>
-                  </ButtonActionContainer>
-                </Td>
-              </Tr>
-            </Tbody>
-            <Tbody>
-              <Tr>
-                <Td>7</Td>
-                <Td>Qazi Adnan</Td>
-                <Td>4</Td>
-                <Td>9</Td>
-                {/* <Td>Due</Td> */}
-                <Td>Pending</Td>
-                <Td>
-                  <ButtonActionContainer>
-                    <StyledButton>
-                      <DeleteIcon />
-                    </StyledButton>
-                    <StyledButton>
-                      <EditIcon />
-                    </StyledButton>
-                  </ButtonActionContainer>
-                </Td>
-              </Tr>
-            </Tbody>
-          </Table>
+          <Thead>
+            <Tr>
+              <Th>Client Number</Th>
+              <Th>Judge Name</Th>
+              <Th>Court Number</Th>
+              <Th>Court Actions</Th>
+              <Th>Case Status</Th>
+              <Th>Action</Th>
+            </Tr>
+          </Thead>
+          {cases.map((item) => {
+            return (
+              <Tbody>
+                <Tr>
+                  <Td>{item.userId}</Td>
+                  <Td>{item.judge}</Td>
+                  <Td>{item.courtNumber}</Td>
+                  <Td>{item.courtAction}</Td>
+                  {/* <Td>Due</Td> */}
+                  <Td>{item.caseStatus}</Td>
+                  <Td>
+                    <ButtonActionContainer>
+                      <StyledButton>
+                        <DeleteIcon />
+                      </StyledButton>
+                      <StyledButton>
+                        <EditIcon />
+                      </StyledButton>
+                    </ButtonActionContainer>
+                  </Td>
+                </Tr>
+              </Tbody>
+            )
+          })}
+        </Table>:<h3>No Record to display!</h3>}
         </ActivitiesContainer>
       </MainContainer>
     </>
