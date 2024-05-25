@@ -31,7 +31,7 @@ app.listen(port, () => {
 
 const Lawyer = require("./models/lawyer");
 const User = require("./models/users");
-const Cases = require("./models/cases")
+const Case = require("./models/cases")
 
 // to verify user email
 const handleSendEmail = async (email, subject, text) => {
@@ -168,6 +168,70 @@ app.post("/updatePass", async (req, res) => {
             return res.status(500).json({ success: true,message:"Password updated!"});
         } else {
             return res.status(201).json({ message: "Current password is incorrect!" });
+        }
+    } catch (error) {
+        return res.status(500).json({ message: "Server Error!" });
+    }
+});
+
+
+
+//endpoint to register user
+app.post("/registerClient", async (req, res) => {
+    try {
+        const {lawyer,name,email,address,cnic,phone} = req.body;
+
+        // Check if user already exists based on email or roll
+        const existingUser = await User.findOne({ cnic })
+
+        if (existingUser) {
+            return res.status(400).json({ message: "User already registered with this CNIC!" });
+        } else {
+            const newUser = await new User({ lawyer,name,email,address,cnic,phone });
+
+            // Save the new user to the database
+            newUser.save();
+
+            return res.status(201).json({ success: true, message: "User registered successfully!" });
+        }
+    } catch (error) {
+        return res.status(500).json({ message: "Server Error. Registration failed!" });
+    }
+});
+
+//endpoint to get register user
+app.post("/getClients", async (req, res) => {
+    try {
+        const {lawyerId} = req.body;
+
+        const users = await User.find({lawyer:lawyerId})
+
+        if (users) {
+            return res.status(200).json({ success: true,clients:users});
+        } else {
+            return res.status(400).json({ message: "No clients found!" });
+        }
+    } catch (error) {
+        return res.status(500).json({ message: "Server Error. Registration failed!" });
+    }
+});
+
+//endpoint to get register user
+app.post("/addRecord", async (req, res) => {
+    try {
+        const { userId, judge, courtNumber, courtAction, caseTitle, caseStatus, caseType, totalFee, discount, paidFee,hearingDate } = req.body;
+        const user = await User.findOne({_id:userId})
+
+        if (user) {
+            const totalcases = parseInt(user.totalCases);
+
+            user.totalCases = totalcases+1;
+            await user.save();
+            const newRecord = await new Case({userId, judge, courtNumber, courtAction, caseTitle, caseStatus, caseType, totalFee, discount, paidFee,hearingDate});
+            await newRecord.save();
+            return res.status(201).json({success:true,message:"case field"})
+        } else {
+            return res.status(400).json({ message: "No clients found!" });
         }
     } catch (error) {
         return res.status(500).json({ message: "Server Error!" });

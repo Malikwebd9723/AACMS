@@ -17,19 +17,7 @@ const casesSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    totalCases: {
-        type: String,
-        required: true,
-    },
-    filedDate: {
-        type: String,
-        required: true,
-    },
-    judgeName: {
-        type: String,
-        required: true,
-    },
-    courtName: {
+    judge: {
         type: String,
         required: true,
     },
@@ -54,14 +42,10 @@ const casesSchema = new mongoose.Schema({
         required: true,
     },
     paidFeeDate: {
-        type: String,
-        required: true,
+        type: Date,
+        default:Date.now()
     },
     hearingDate: {
-        type: String,
-        required: true,
-    },
-    reminderDate: {
         type: String,
         required: true,
     },
