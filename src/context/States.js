@@ -8,7 +8,28 @@ const States = ({ children }) => {
     const [user, setUser] = useState([]);
     const [clients, setClients] = useState([]);
     const [cases, setCases] = useState([]);
+    const[fee,setFee] = useState(0);
+    const[totalFee,setTotalFee] = useState(0)
     const host = "http://localhost:8002";
+
+    const fullDate = new Date();
+    const today = fullDate.getDate();
+    const month = fullDate.getMonth() + 1;
+    const year = fullDate.getFullYear();
+    const date = `${year}-${month < 10 ? '0' + month : month}-${today}`;
+
+
+    const feeRecieved =async()=>{
+        let amount = 0
+        let totalAmount = 0
+        await cases.map((item)=>{
+            amount = amount + item.paidFee
+            const feeAfterDiscount = item.totalFee-item.discount
+            totalAmount = totalAmount + feeAfterDiscount
+        })
+        setFee(amount);
+        setTotalFee(totalAmount);
+    }
 
     const handleRegister = async ({ firstname, lastname, email }) => {
         try {
@@ -162,6 +183,31 @@ const States = ({ children }) => {
         }
     };
 
+    const handleUpdateClient = async ({id, name, email, address, phone }) => {
+        try {
+            const response = await fetch(`${host}/updateClient`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({id,name, email, address, phone })
+            });
+            const json = await response.json();
+            if (json.success) {
+                alert(json.message)
+                handleGetClients()
+            } else {
+                alert(json.message)
+
+            }
+
+        } catch (error) {
+            alert("Server Error. Registeration failed!")
+        }
+    };
+
+
+
     const handleGetClients = async () => {
         try {
             const lawyerId = await localStorage.getItem("userId");
@@ -245,8 +291,54 @@ const States = ({ children }) => {
     }
 
 
+    const handleDeleteUser = async (id) => {
+        try {
+            const response = await fetch(`${host}/deleteClient`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ id })
+            });
+            const json = await response.json();
+            if (json.success) {
+                alert(json.message);
+                handleGetClients();
+                handleGetCases()
+            } else {
+                console.log(json.message);
+
+            }
+
+        } catch (error) {
+            alert("Server Error. Registeration failed!")
+        }
+    }
+
+    const handleAddFee = async ({id,fee}) => {
+        try {
+            const response = await fetch(`${host}/addFee`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ id,fee,date })
+            });
+            const json = await response.json();
+            if(json.success){
+                handleGetCases()
+            }
+            else{
+                alert(json.message)
+            }
+        } catch (error) {
+            alert("Server Error!")
+        }
+    }
+
+
     return (
-        <Context.Provider value={{ handleRegister, handleLogin, getProfileData, user, checkLoggedInStatus, handleLogout, handleUpdateProfile, handleUpdatePass, handleRegisterClient, handleGetClients, clients, handleAddRecord,handleGetCases,cases }}>
+        <Context.Provider value={{ handleRegister, handleLogin, getProfileData, user, checkLoggedInStatus, handleLogout, handleUpdateProfile, handleUpdatePass, handleRegisterClient, handleGetClients, clients, handleAddRecord,handleGetCases,cases,handleUpdateClient,handleDeleteUser,handleAddFee,fee,feeRecieved,totalFee}}>
             {children}
         </Context.Provider>
     );

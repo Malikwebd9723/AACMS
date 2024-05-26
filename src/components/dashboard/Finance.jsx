@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -6,6 +6,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Context } from '../../context/States';
 const MainContainer = styled.section`
 background:#F5F5F5;
 flex:4;
@@ -75,7 +76,7 @@ const ButtonActionContainer = styled.section`
   align-items: center;
 
 `
-  const StyledButton = styled.button`
+const StyledButton = styled.button`
   display: flex;
   align-items: center;
   border: none; 
@@ -101,227 +102,98 @@ const Input = styled.input`
 `
 
 const Finance = () => {
-    const [show, setShow] = useState(false);
+  const context = useContext(Context);
+  const { cases, handleAddFee } = context;
+  const [show, setShow] = useState(false);
+  const [fee, setFee] = useState({amount:0})
+  const [id, setId] = useState("")
+  const handleClose = () => setShow(false);
 
-    const handleClose = () => setShow(false);
-  
-       
-          
+  const handleSetShow = (id)=>{
+    setId(id)
+    setShow(true);
+  }
+  const callAddFee = async () => {
+    await handleAddFee({id,fee:fee.amount});
+    setShow(false);
+  }
+  const settingFee=(e)=>{
+    setFee({amount:parseInt(e.target.value)})
+  }
+
   return (
     <>
 
-     <Modal show={show} onHide={handleClose}>
-      <Modal.Header closeButton>
-        <Modal.Title>Add Fee</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <ContainerForm>
-          <Label htmlFor="text">Paid Fee</Label>
-          <Input />
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add Fee</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <ContainerForm>
+            <Label htmlFor="text">Add Fee</Label>
+            <Input name='amount' onChange={settingFee} type='number'/>
           </ContainerForm>
-          </Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-          Close
-        </Button>
-        <Button variant="primary" onClick={handleClose}>
-          Save Changes
-        </Button>
-      </Modal.Footer>
-    </Modal>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={()=>callAddFee()}>
+            Update Fee
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <MainContainer>
         <SubContainer>
           <HamLeft>
-          <H4>Manage Finance Record</H4> 
+            <H4>Manage Finance Record</H4>
           </HamLeft>
-       
-          {/* <ButtonContainer>
-          <AddCircleOutlineIcon/>
-          <Addbtn>Add New Client</Addbtn>
-        </ButtonContainer> */}
         </SubContainer>
-        
-        <ActivitiesContainer>
-                <Table>
-                    <Thead>
-                        <Tr>
-                            <Th>Client#</Th>
-                            <Th>Total Case Fee</Th>
-                            <Th>Discount</Th>
-                            <Th>Paid Fee</Th>
-                            <Th>Paid Fee Date</Th>
-                            <Th>Action</Th>
-                        </Tr>
-                    </Thead>
-                    <Tbody>
-                        <Tr>
-                            <Td>John</Td>
-                            <Td>1</Td>
-                            <Td>u</Td>
-                            <Td>30/10/2024</Td>
-                            <Td>Due</Td>
-                            
-                            <Td>
-                            <ButtonActionContainer>
-                            <StyledButton>
-                            <DeleteIcon />
-                            </StyledButton>
-                            <StyledButton>
-                            <EditIcon/>
-                            </StyledButton>
-                            <StyledButton onClick={()=>{setShow(!show)}}>
-                                <AddCircleOutlineIcon/>
-                            </StyledButton >
-                            </ButtonActionContainer>
-                            </Td>
-                           
-                            
-                           
-                           
-                            
-                        
-                        </Tr>
-                    </Tbody>
-                    <Tbody>
-                        <Tr>
-                            <Td>John</Td>
-                            <Td>1</Td>
-                            <Td>4</Td>
-                            <Td>30/10/2024</Td>
-                            <Td>Due</Td>
-                            <Td>
-                            <ButtonActionContainer>
-                            <StyledButton>
-                            <DeleteIcon />
-                            </StyledButton>
-                            <StyledButton>
-                            <EditIcon/>
-                            </StyledButton>
-                            <StyledButton onClick={()=>{setShow(!show)}}>
-                                <AddCircleOutlineIcon/>
-                            </StyledButton>
-                            </ButtonActionContainer>
-                            </Td>
-                        </Tr>
-                    </Tbody>
-                    <Tbody>
-                        <Tr>
-                            <Td>John</Td>
-                            <Td>1</Td>
-                            <Td>4</Td>
-                            <Td>30/10/2024</Td>
-                            <Td>Due</Td>
-                            <Td>
-                            <ButtonActionContainer>
-                            <StyledButton>
-                            <DeleteIcon />
-                            </StyledButton>
-                            <StyledButton>
-                            <EditIcon/>
-                            </StyledButton>
-                            <StyledButton onClick={()=>{setShow(!show)}}>
-                                <AddCircleOutlineIcon/>
-                            </StyledButton>
-                            </ButtonActionContainer>
-                            </Td>
-                        </Tr>
-                    </Tbody>
-                    <Tbody>
-                        <Tr>
-                            <Td>John</Td>
-                            <Td>1</Td>
-                            <Td>4</Td>
-                            <Td>30/10/2024</Td>
-                            <Td>Due</Td>
-                            <Td>
-                            <ButtonActionContainer>
-                            <StyledButton>
-                            <DeleteIcon />
-                            </StyledButton>
-                            <StyledButton>
-                            <EditIcon/>
-                            </StyledButton>
-                            <StyledButton onClick={()=>{setShow(!show)}}>
-                                <AddCircleOutlineIcon/>
-                            </StyledButton>
-                            </ButtonActionContainer>
-                            </Td>
-                        </Tr>
-                    </Tbody>
-                    <Tbody>
-                        <Tr>
-                            <Td>John</Td>
-                            <Td>1</Td>
-                            <Td>4</Td>
-                            <Td>30/10/2024</Td>
-                            <Td>Due</Td>
-                            <Td>
-                            <ButtonActionContainer>
-                            <StyledButton>
-                            <DeleteIcon />
-                            </StyledButton>
-                            <StyledButton>
-                            <EditIcon/>
-                            </StyledButton>
-                            <StyledButton onClick={()=>{setShow(!show)}}>
-                                <AddCircleOutlineIcon/>
-                            </StyledButton>
-                            </ButtonActionContainer>
-                            </Td>
-                        </Tr>
-                    </Tbody>
-                    <Tbody>
-                        <Tr>
-                            <Td>John</Td>
-                            <Td>1</Td>
-                            <Td>4</Td>
-                            <Td>30/10/2024</Td>
-                            <Td>Due</Td>
-                            <Td>
-                            <ButtonActionContainer>
-                            <StyledButton>
-                            <DeleteIcon />
-                            </StyledButton>
-                            <StyledButton>
-                            <EditIcon/>
-                            </StyledButton>
-                            <StyledButton onClick={()=>{setShow(!show)}}>
-                                <AddCircleOutlineIcon/>
-                            </StyledButton>
-                            </ButtonActionContainer>
-                            </Td>
-                        </Tr>
-                    </Tbody>
-                    <Tbody>
-                        <Tr>
-                            <Td>John</Td>
-                            <Td>1</Td>
-                            <Td>4</Td>
-                            <Td>30/10/2024</Td>
-                            <Td>Due</Td>
-                            <Td>
-                            <ButtonActionContainer>
-                            <StyledButton>
-                            <DeleteIcon />
-                            </StyledButton>
-                            <StyledButton>
-                            <EditIcon/>
-                            </StyledButton>
-                            <StyledButton onClick={()=>{setShow(!show)}}>
-                                <AddCircleOutlineIcon/>
-                            </StyledButton>
-                            </ButtonActionContainer>
-                            </Td>
-                        </Tr>
-                    </Tbody>
 
-                </Table>
-            </ActivitiesContainer>
- 
+        <ActivitiesContainer>
+          <Table>
+            <Thead>
+              <Tr>
+                <Th>Client Number</Th>
+                <Th>Total Case Fee</Th>
+                <Th>Discount</Th>
+                <Th>Paid Fee</Th>
+                <Th>Paid Fee Date</Th>
+                <Th>Dues</Th>
+                <Th>Add Fee</Th>
+              </Tr>
+            </Thead>
+            {cases.length !== 0 ?
+              cases.map((item) => {
+                return (
+                  <Tbody>
+                    <Tr>
+                      <Td>{item.userId}</Td>
+                      <Td>{item.totalFee}</Td>
+                      <Td>{item.discount}</Td>
+                      <Td>{item.paidFee}</Td>
+                      <Td>{item.paidFeeDate.split("T")[0]}</Td>
+                      <Td>{(item.totalFee - item.paidFee) - item.discount}</Td>
+
+                      <Td>
+                        <ButtonActionContainer>
+                          <StyledButton onClick={() => handleSetShow(item.userId)}>
+                            <AddCircleOutlineIcon />
+                          </StyledButton >
+                        </ButtonActionContainer>
+                      </Td>
+                    </Tr>
+                  </Tbody>
+                )
+              }) : <h3>No record to display!</h3>
+            }
+          </Table>
+        </ActivitiesContainer>
+
       </MainContainer>
-      
-       
-    
+
+
+
     </>
   );
 };

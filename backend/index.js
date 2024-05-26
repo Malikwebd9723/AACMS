@@ -31,7 +31,8 @@ app.listen(port, () => {
 
 const Lawyer = require("./models/lawyer");
 const User = require("./models/users");
-const Case = require("./models/cases")
+const Case = require("./models/cases");
+const { Cases } = require("@mui/icons-material");
 
 // to verify user email
 const handleSendEmail = async (email, subject, text) => {
@@ -118,13 +119,13 @@ app.post("/login", async (req, res) => {
 //endpoint to login user
 app.post("/profileData", async (req, res) => {
     try {
-        const {id} = req.body;
+        const { id } = req.body;
 
         // Check if user already exists based on email or roll
-        const existingLawyer = await Lawyer.findOne({ _id:id })
+        const existingLawyer = await Lawyer.findOne({ _id: id })
 
         if (existingLawyer) {
-            return res.status(500).json({ success: true,user:existingLawyer});
+            return res.status(500).json({ success: true, user: existingLawyer });
         } else {
             return res.status(201).json({ message: "No user found!" });
         }
@@ -136,16 +137,16 @@ app.post("/profileData", async (req, res) => {
 //endpoint to login user
 app.post("/updateProfile", async (req, res) => {
     try {
-        const {id,firstname,lastname} = req.body;
+        const { id, firstname, lastname } = req.body;
 
         // Check if user already exists based on email or roll
-        const existingLawyer = await Lawyer.findOne({_id:id})
+        const existingLawyer = await Lawyer.findOne({ _id: id })
 
         if (existingLawyer) {
             existingLawyer.firstname = firstname;
             existingLawyer.lastname = lastname;
             await existingLawyer.save();
-            return res.status(500).json({ success: true,message:"Profile updated successfully!"});
+            return res.status(500).json({ success: true, message: "Profile updated successfully!" });
         } else {
             return res.status(201).json({ message: "Faild to update profile,Try other email!" });
         }
@@ -157,15 +158,15 @@ app.post("/updateProfile", async (req, res) => {
 //endpoint to login user
 app.post("/updatePass", async (req, res) => {
     try {
-        const {id,oldPass ,newPass} = req.body;
+        const { id, oldPass, newPass } = req.body;
 
         // Check if user already exists based on email or roll
-        const existingLawyer = await Lawyer.findOne({_id:id})
+        const existingLawyer = await Lawyer.findOne({ _id: id })
 
         if (existingLawyer && existingLawyer.password == oldPass) {
             existingLawyer.password = newPass
             await existingLawyer.save();
-            return res.status(500).json({ success: true,message:"Password updated!"});
+            return res.status(500).json({ success: true, message: "Password updated!" });
         } else {
             return res.status(201).json({ message: "Current password is incorrect!" });
         }
@@ -179,7 +180,7 @@ app.post("/updatePass", async (req, res) => {
 //endpoint to register user
 app.post("/registerClient", async (req, res) => {
     try {
-        const {lawyer,name,email,address,cnic,phone} = req.body;
+        const { lawyer, name, email, address, cnic, phone } = req.body;
 
         // Check if user already exists based on email or roll
         const existingUser = await User.findOne({ cnic })
@@ -187,7 +188,7 @@ app.post("/registerClient", async (req, res) => {
         if (existingUser) {
             return res.status(400).json({ message: "User already registered with this CNIC!" });
         } else {
-            const newUser = await new User({ lawyer,name,email,address,cnic,phone });
+            const newUser = await new User({ lawyer, name, email, address, cnic, phone });
 
             // Save the new user to the database
             newUser.save();
@@ -199,15 +200,41 @@ app.post("/registerClient", async (req, res) => {
     }
 });
 
+//endpoint to update user
+app.post("/updateClient", async (req, res) => {
+    try {
+        const { id, name, email, address, phone } = req.body;
+
+        // Check if user already exists based on email or roll
+        const existingUser = await User.findOne({ _id: id })
+
+        if (!existingUser) {
+            return res.status(400).json({ message: "No user!" });
+        } else {
+            existingUser.name = name
+            existingUser.email = email
+            existingUser.address = address
+            existingUser.phone = phone
+
+            // Save the new user to the database
+            await existingUser.save();
+
+            return res.status(201).json({ success: true, message: "User updated successfully!" });
+        }
+    } catch (error) {
+        return res.status(500).json({ message: "Server Error!" });
+    }
+});
+
 //endpoint to get register user
 app.post("/getClients", async (req, res) => {
     try {
-        const {lawyerId} = req.body;
+        const { lawyerId } = req.body;
 
-        const users = await User.find({lawyer:lawyerId})
+        const users = await User.find({ lawyer: lawyerId })
 
         if (users) {
-            return res.status(200).json({ success: true,clients:users});
+            return res.status(200).json({ success: true, clients: users });
         } else {
             return res.status(400).json({ message: "No clients found!" });
         }
@@ -219,15 +246,15 @@ app.post("/getClients", async (req, res) => {
 //endpoint to get register user
 app.post("/addRecord", async (req, res) => {
     try {
-        const { userId,lawyerId, judge, courtNumber, courtAction, caseTitle, caseStatus, caseType, totalFee, discount, paidFee,hearingDate } = req.body;
-        const user = await User.findOne({_id:userId})
+        const { userId, lawyerId, judge, courtNumber, courtAction, caseTitle, caseStatus, caseType, totalFee, discount, paidFee, hearingDate } = req.body;
+        const user = await User.findOne({ _id: userId })
 
         if (user) {
-            user.totalCases = user.totalCases+1;
+            user.totalCases = user.totalCases + 1;
             await user.save();
-            const newRecord = await new Case({userId,lawyerId, judge, courtNumber, courtAction, caseTitle, caseStatus, caseType, totalFee, discount, paidFee,hearingDate});
+            const newRecord = await new Case({ userId, lawyerId, judge, courtNumber, courtAction, caseTitle, caseStatus, caseType, totalFee, discount, paidFee, hearingDate });
             await newRecord.save();
-            return res.status(201).json({success:true,message:"case field"})
+            return res.status(201).json({ success: true, message: "case field" })
         } else {
             return res.status(400).json({ message: "No clients found!" });
         }
@@ -239,16 +266,51 @@ app.post("/addRecord", async (req, res) => {
 //endpoint to get register user
 app.post("/getCases", async (req, res) => {
     try {
-        const {lawyerId} = req.body;
+        const { lawyerId } = req.body;
 
-        const cases = await Case.find({lawyerId})
+        const cases = await Case.find({ lawyerId })
 
         if (cases) {
-            return res.status(200).json({ success: true,cases});
+            return res.status(200).json({ success: true, cases });
         } else {
             return res.status(400).json({ message: "No clients found!" });
         }
     } catch (error) {
         return res.status(500).json({ message: "Server Error. Registration failed!" });
+    }
+});
+
+
+//endpoint to get register user
+app.delete("/deleteClient", async (req, res) => {
+    try {
+        const { id } = req.body;
+
+        await User.deleteOne({ _id: id })
+        await Case.deleteMany({ userId: id })
+        return res.status(200).json({ success: true, message: "Deleted successfully!" });
+    } catch (error) {
+        return res.status(500).json({ message: "Server Error!" });
+    }
+});
+
+
+//endpoint to add fee
+app.post("/addFee", async (req, res) => {
+    try {
+        const { id, fee, date } = req.body;
+
+        const existingCase = await Case.findOne({ userId: id });
+        if (existingCase && existingCase.totalFee>existingCase.paidFee+existingCase.discount) {
+            existingCase.paidFee = existingCase.paidFee + fee
+            existingCase.paidFeeDate = Date.now()
+            await existingCase.save()
+            return res.status(200).json({ success: true });
+        }
+        else{
+            return res.status(401).json({message:"No dues left!"})
+        }
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
     }
 });

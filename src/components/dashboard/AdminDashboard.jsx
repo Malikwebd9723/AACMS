@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styled from "styled-components"
 import Footer from '../Footer';
 import GroupsIcon from '@mui/icons-material/Groups';
@@ -86,11 +86,14 @@ const AdminDashboard = () => {
     const month = fullDate.getMonth() + 1;
     const year = fullDate.getFullYear();
     const date = `${year}-${month < 10 ? '0' + month : month}-${today}`;
-    console.log(date);
-
     const context = useContext(Context);
-    const { cases, clients } = context;
-    return (
+    const { cases, clients,fee,feeRecieved,totalFee} = context;
+
+    useEffect(()=>{
+        feeRecieved()
+        const percentage = (fee/totalFee)*100
+    })
+    return (                
         <>
             <Main>
                 <CardContainer>
@@ -101,12 +104,11 @@ const AdminDashboard = () => {
                         </CardIcon>
                         <H2>Total Clients</H2>
                         <CardContainerInner>
-                            <H2>50</H2>
+                            <H2>{clients.length}</H2>
                             <ProgressContainer>
-                                <CircularProgressbar value={50} styles={{ height: 30 }} text='50%' />
+                                <CircularProgressbar value={clients.length} styles={{ height: 30 }} text={clients.length} />
                             </ProgressContainer>
                         </CardContainerInner>
-                        <H6>Last 24 Hours</H6>
                     </Card>
 
                     <Card>
@@ -115,12 +117,11 @@ const AdminDashboard = () => {
                         </CardIcon>
                         <H2>Total Cases</H2>
                         <CardContainerInner>
-                            <H2>70</H2>
+                            <H2>{cases.length}</H2>
                             <ProgressContainer>
-                                <CircularProgressbar value={70} styles={{ height: 30 }} text='70%' />
+                                <CircularProgressbar value={cases.length} styles={{ height: 30 }} text={cases.length} />
                             </ProgressContainer>
                         </CardContainerInner>
-                        <H6>Last 24 Hours</H6>
                     </Card>
 
                     <Card>
@@ -129,12 +130,11 @@ const AdminDashboard = () => {
                         </CardIcon>
                         <H2>Fee Received</H2>
                         <CardContainerInner>
-                            <H2>40</H2>
+                            <H2>{fee}/{totalFee}</H2>
                             <ProgressContainer>
-                                <CircularProgressbar value={90} styles={{ height: 30 }} text='90%' />
+                                <CircularProgressbar value={((fee/totalFee)*100).toFixed(2)} styles={{ height: 30 }} text={((fee/totalFee)*100).toFixed(2)} />
                             </ProgressContainer>
                         </CardContainerInner>
-                        <H6>Last 24 Hours</H6>
                     </Card>
 
                 </CardContainer>
@@ -169,7 +169,7 @@ const AdminDashboard = () => {
                                             <Td>{item.paidFee}</Td>
                                             <Td>{item.caseStatus}</Td>
                                         </Tr>
-                                    </Tbody> : "No Activities!"
+                                    </Tbody> : ""
                                 )
                             })}
                         </Table> : <h3>No Record to display!</h3>}

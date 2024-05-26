@@ -160,7 +160,6 @@ const HearingDates = () => {
               <Tr>
                 <Th>Client Number</Th>
                 <Th>Date Of Hearing</Th>
-                <Th>Action</Th>
               </Tr>
             </Thead>
             {cases.length !== 0 ?
@@ -170,21 +169,11 @@ const HearingDates = () => {
                     <Tr>
                       <Td>{item.userId}</Td>
                       <Td>{item.hearingDate}</Td>
-                      <Td>
-                        <ButtonActionContainer>
-                          <StyledButton>
-                            <DeleteIcon />
-                          </StyledButton>
-                          <StyledButton>
-                            <EditIcon />
-                          </StyledButton>
-                        </ButtonActionContainer>
-                      </Td>
                     </Tr>
                   </Tbody>
                 )
               })
-:""}
+:<h3>No record to display!</h3>}
           </Table>
         </ActivitiesContainer>
 

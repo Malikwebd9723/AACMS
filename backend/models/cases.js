@@ -1,3 +1,4 @@
+const { type } = require("@testing-library/user-event/dist/type");
 const mongoose = require("mongoose");
 
 const casesSchema = new mongoose.Schema({
@@ -34,16 +35,16 @@ const casesSchema = new mongoose.Schema({
         required: true,
     },
     totalFee: {
-        type: String,
-        required: true,
+        type: Number,
+        deafault:0
     },
     discount: {
-        type: String,
-        required: true,
+        type:Number,
+        default:0,
     },
     paidFee: {
-        type: String,
-        required: true,
+        type:Number,
+        default:0,
     },
     paidFeeDate: {
         type: Date,

@@ -109,10 +109,13 @@ const ActionContainer = styled.section`
 const ActionBtn = styled.button`
 `
 const ClientManagement = () => {
-
-
+  
+  const context = useContext(Context);
+  const { handleRegisterClient, clients, handleAddRecord, handleUpdateClient,handleDeleteUser } = context;
+  
   const [show, setShow] = useState(false);
   const [showRecord, setShowRecord] = useState(false);
+  const [showUpdate, setShowUpdate] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -124,19 +127,24 @@ const ClientManagement = () => {
     setRecord({ ...record, userId: id })
   };
 
-  const confirmDeletion = () => {
+  const handleCloseUpdate = () => setShowUpdate(false);
+  const handleShowUpdate = (item) => {
+    setShowUpdate(true);
+    setUpdateCred({ userId: item._id, name: item.name, email: item.email, address: item.address, phone: item.phone })
+  };
+
+  const confirmDeletion = (id) => {
 
     confirmAlert({
       title: 'Confirm to Delete',
-      message: 'Are you sure to delete ?.',
+      message: 'User and record realted to user will wash out permenatly!',
       buttons: [
         {
           label: 'Yes',
-          onClick: () => console.log('Click Yes')
+          onClick: () => handleDeleteUser(id)
         },
         {
           label: 'No',
-          onClick: () => console.log('Click No')
         }
       ]
     });
@@ -151,8 +159,6 @@ const ClientManagement = () => {
     phone: "",
   })
 
-  const context = useContext(Context);
-  const { handleRegisterClient, clients, handleAddRecord } = context;
 
   const callRegisterClient = async (e) => {
     e.preventDefault();
@@ -197,10 +203,10 @@ const ClientManagement = () => {
       record.caseType !== "" &&
       record.totalFee !== "" &&
       record.discount !== "" &&
-      record.paidFee !== "" && 
+      record.paidFee !== "" &&
       record.hearingDate !== "") {
 
-      await handleAddRecord({ userId: record.userId, judge: record.judge, courtNumber: record.courtNumber, courtAction: record.courtAction, caseTitle: record.caseTitle, caseStatus: record.caseStatus, caseType: record.caseType, totalFee: record.totalFee, discount: record.discount, paidFee: record.paidFee,hearingDate:record.hearingDate });
+      await handleAddRecord({ userId: record.userId, judge: record.judge, courtNumber: record.courtNumber, courtAction: record.courtAction, caseTitle: record.caseTitle, caseStatus: record.caseStatus, caseType: record.caseType, totalFee: record.totalFee, discount: record.discount, paidFee: record.paidFee, hearingDate: record.hearingDate });
 
       handleCloseRecord();
     } else {
@@ -208,8 +214,31 @@ const ClientManagement = () => {
     }
   }
 
+
+
+  const [updateCred, setUpdateCred] = useState({
+    userId: "",
+    name: "",
+    email: "",
+    address: "",
+    phone: "",
+  })
+
+  const callUpdateClient = async (e) => {
+    e.preventDefault();
+    if (updateCred.name !== "" && updateCred.email !== "" && updateCred.address !== "" && updateCred.phone !== "") {
+      await handleUpdateClient({ id: updateCred.userId, name: updateCred.name, email: updateCred.email, address: updateCred.address, phone: updateCred.phone });
+      handleCloseUpdate();
+    } else {
+      alert("Fill all the fields correctly!")
+    }
+  }
+  const setUpdateCredentials = (e) => {
+    setUpdateCred({ ...updateCred, [e.target.name]: e.target.value })
+  }
   return (
     <>
+      {/* add new client modal */}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add New Clients</Modal.Title>
@@ -274,8 +303,10 @@ const ClientManagement = () => {
       {/* add new record modal */}
       <Modal show={showRecord} onHide={handleCloseRecord}>
         <Modal.Header closeButton>
-          <Modal.Title>Add New Clients</Modal.Title>
+          <Modal.Title>Add Client Record</Modal.Title>
         </Modal.Header>
+
+        {/* add new record modal */}
         <Modal.Body>
           <ContainerForm>
             <Label htmlFor="text">Judge Name</Label>
@@ -315,6 +346,36 @@ const ClientManagement = () => {
             Close
           </Button>
           <Button variant="primary" onClick={callAddRecord}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* update client modal */}
+      <Modal show={showUpdate} onHide={handleCloseUpdate}>
+        <Modal.Header closeButton>
+          <Modal.Title>Update Clients</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <ContainerForm>
+            <Label htmlFor="name">FullName:</Label>
+            <Input value={updateCred.name} onChange={setUpdateCredentials} id='name' name='name' type='text' />
+
+            <Label htmlFor="email">Email</Label>
+            <Input value={updateCred.email} onChange={setUpdateCredentials} id='email' name='email' type='email' />
+
+            <Label htmlFor="address">Address</Label>
+            <Input value={updateCred.address} onChange={setUpdateCredentials} id='address' name='address' type='text' />
+
+            <Label htmlFor="phone">Phone#</Label>
+            <Input value={updateCred.phone} onChange={setUpdateCredentials} id='phone' name='phone' type='number' />
+          </ContainerForm>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseUpdate}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={callUpdateClient}>
             Save Changes
           </Button>
         </Modal.Footer>
@@ -363,10 +424,10 @@ const ClientManagement = () => {
                           <StyledButton onClick={() => handleShowRecord(item._id)}>
                             <AddCircleOutlineIcon />
                           </StyledButton >
-                          <StyledButton onClick={() => { setShow(!show) }}>
+                          <StyledButton onClick={() => handleShowUpdate(item)}>
                             <EditIcon />
                           </StyledButton>
-                          <StyledButton onClick={() => { confirmDeletion() }}>
+                          <StyledButton onClick={() => { confirmDeletion(item._id) }}>
                             <DeleteIcon />
                           </StyledButton>
                         </ButtonActionContainer>
@@ -376,7 +437,7 @@ const ClientManagement = () => {
                 )
               })}
             </Table>
-            : <h3>No clietnts to display</h3>}
+            : <h3>No clients to display</h3>}
         </ActivitiesContainer>
 
       </MainContainer>
