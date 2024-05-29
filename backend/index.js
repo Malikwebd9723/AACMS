@@ -32,7 +32,6 @@ app.listen(port, () => {
 const Lawyer = require("./models/lawyer");
 const User = require("./models/users");
 const Case = require("./models/cases");
-const { Cases } = require("@mui/icons-material");
 
 // to verify user email
 const handleSendEmail = async (email, subject, text) => {
