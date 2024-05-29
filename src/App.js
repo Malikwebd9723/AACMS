@@ -3,10 +3,10 @@ import { States } from "./context/States";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Menu from "./components/dashboard/Menu";
-import ClientManagement from "./components/dashboard/ClientManagement"
 import AdminDashboard from "./components/dashboard/AdminDashboard"
 import JudgesDatails from "./components/dashboard/JugesDetails";
 import HearingDates from "./components/dashboard/HearingDates";
+import ClientManagement from "./components/dashboard/ClientManagement"
 import CasesDetails from "./components/dashboard/CasesDetails";
 import Finance from "./components/dashboard/Finance";
 import Settings from "./components/dashboard/Settings";
@@ -33,5 +33,4 @@ function App() {
     </>
   );
 }
-
 export default App;

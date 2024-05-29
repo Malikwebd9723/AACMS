@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import styled from "styled-components";
 import logo from "../assets/logo.jpg"
 import { NavLink } from 'react-router-dom';
+import { Context } from '../context/States';
 const Main = styled.section`
 min-height:100vh;
 display:flex;
@@ -102,6 +103,26 @@ color:white;
 text-decoration:none;
 `
 const SignUp = () => {
+  const [cred, setCred] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+  })
+
+  const context = useContext(Context);
+  const { handleRegister } = context;
+
+  const callRegister = (e) => {
+    e.preventDefault();
+    if (cred.firstname!=="" && cred.lastname!=="" && cred.email!=="") {
+      handleRegister({firstname:cred.firstname,lastname:cred.lastname,email:cred.email});
+    } else {
+      alert("Fill all the fields correctly!")
+    }
+  }
+  const setCredentials = (e) => {
+    setCred({ ...cred, [e.target.name]: e.target.value })
+  }
   return (
     <Main>
       {/* navbar section */}
@@ -126,10 +147,10 @@ const SignUp = () => {
   <SignupContainer>
       <Anchor as={NavLink} to={"/"}>Have an account? Login</Anchor>
       <H1>Sign Up</H1>
-      <Form onSubmit={"/"}>
-        <Input type="text" placeholder='First Name' />
-        <Input type="text" placeholder='Last Name' />
-        <Input type='text' placeholder='Username or Email'/>
+      <Form onSubmit={callRegister}>
+        <Input onChange={setCredentials} name='firstname' type="text" placeholder='First Name' />
+        <Input onChange={setCredentials} name='lastname' type="text" placeholder='Last Name' />
+        <Input onChange={setCredentials} name='email' type='text' placeholder='Username or Email'/>
         {/* <Input type='password' placeholder='Password'/> */}
         <SubmitBtn>Register</SubmitBtn>
       </Form>

@@ -1,8 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
-// import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
+import { Context } from '../../context/States';
 const MainContainer = styled.section`
 background:#F5F5F5;
 flex:4;
@@ -26,22 +24,6 @@ font-size:17px;
 color:white;
 font-weight:400;
 `
-// const ButtonContainer = styled.section`
-// display:flex;
-// justify-content:space-between;
-// align-items: center;
-// text-transform: uppercase;
-// text-align:center;
-// padding: 7px 12px 7px 5px;
-// background:#28A745;
-// border-radius:3px;
-// color:white;
-// `
-// const Addbtn = styled.section`
-
-// font-size:12px;
-// font-weight:600;
-// `
 const ActivitiesContainer = styled.section`
 margin:20px 0px
 `
@@ -65,215 +47,49 @@ const Td = styled.td`
 text-align:center;
 padding:10px;
 `
-
-const ButtonActionContainer = styled.section`
-  display: flex;
-  justify-content:center;
-  align-items: center;
-
-`
-  const StyledButton = styled.button`
-  display: flex;
-  align-items: center;
-  border: none; 
-  background-color: transparent; 
-cursor: pointer; 
-color:#4A5263;
-`
-
 const CasesDetails = () => {
-  return (
-    <>
-      <MainContainer>
-        <SubContainer>
-          <HamLeft>
-          <H4>Manage Your Clients Cases Record</H4>
-          </HamLeft>
-          {/* <ButtonContainer>
-          <AddCircleOutlineIcon/>
-          <Addbtn>Add New Record</Addbtn>
-        </ButtonContainer> */}
-        </SubContainer>
-        
-        <ActivitiesContainer>
-                <Table>
-                    <Thead>
-                        <Tr>
-                            <Th>Client#</Th>
-                            <Th>Case Title</Th>
-                            <Th>Case Type</Th>
-                            <Th>Case Status</Th>
-                            <Th>Total Cases</Th>
-                            <Th>Date Filed</Th>
-                           
-                           
-                            <Th>Action</Th>
-                        </Tr>
-                    </Thead>
-                    <Tbody>
-                        <Tr>
-                            <Td>1</Td>
-                            <Td>Uzair vs Muneeb</Td>
-                            <Td>Criminal</Td>
-                            <Td>pre-trial</Td>
-                            <Td>1</Td>
-                            <Td>10/5/2024</Td>
-                          
-                            
-                            <Td>
-                            <ButtonActionContainer>
-                            <StyledButton>
-                            <DeleteIcon />
-                            </StyledButton>
-                            <StyledButton>
-                            <EditIcon/>
-                            </StyledButton>
-                            </ButtonActionContainer>
-                            </Td>
-                           
-                            
-                           
-                           
-                            
-                        
-                        </Tr>
-                    </Tbody>
-                    <Tbody>
-                        <Tr>
-                            <Td>2</Td>
-                            <Td>Hamza vs Uzair</Td>
-                            <Td>Faujdari </Td>
-                            <Td>trial</Td>
-                            <Td>2</Td>
-                            <Td>30/10/2024</Td>
-                           
-                            <Td>
-                            <ButtonActionContainer>
-                            <StyledButton>
-                            <DeleteIcon />
-                            </StyledButton>
-                            <StyledButton>
-                            <EditIcon/>
-                            </StyledButton>
-                            </ButtonActionContainer>
-                            </Td>
-                        </Tr>
-                    </Tbody>
-                    <Tbody>
-                        <Tr>
-                            <Td>3</Td>
-                            <Td>Muneeb vs Taj</Td>
-                            <Td>dewani </Td>
-                            <Td>settlement negotiations</Td>
-                            <Td>1</Td>
-                            <Td>30/10/2024</Td>
-                           
-                            <Td>
-                            <ButtonActionContainer>
-                            <StyledButton>
-                            <DeleteIcon />
-                            </StyledButton>
-                            <StyledButton>
-                            <EditIcon/>
-                            </StyledButton>
-                            </ButtonActionContainer>
-                            </Td>
-                        </Tr>
-                    </Tbody>
-                    <Tbody>
-                        <Tr>
-                            <Td>4</Td>
-                            <Td>hira vs Gul Zaman</Td>
-                            <Td>Family Case</Td>
-                            <Td>pre-trial</Td>
-                            <Td>3</Td>
-                            <Td>30/10/2024</Td>
-                           
-                            <Td>
-                            <ButtonActionContainer>
-                            <StyledButton>
-                            <DeleteIcon />
-                            </StyledButton>
-                            <StyledButton>
-                            <EditIcon/>
-                            </StyledButton>
-                            </ButtonActionContainer>
-                            </Td>
-                        </Tr>
-                    </Tbody>
-                    <Tbody>
-                        <Tr>
-                            <Td>5</Td>
-                            <Td>hira vs Gul Zaman</Td>
-                            <Td>Family Case</Td>
-                            <Td>pre-trial</Td>
-                            <Td>3</Td>
-                            <Td>30/10/2024</Td>
-                        
-                            <Td>
-                            <ButtonActionContainer>
-                            <StyledButton>
-                            <DeleteIcon />
-                            </StyledButton>
-                            <StyledButton>
-                            <EditIcon/>
-                            </StyledButton>
-                            </ButtonActionContainer>
-                            </Td>
-                        </Tr>
-                    </Tbody>
-                    <Tbody>
-                        <Tr>
-                            <Td>6</Td>
-                            <Td>Hamza vs Uzair</Td>
-                            <Td>Faujdari </Td>
-                            <Td>trial</Td>
-                            <Td>2</Td>
-                            <Td>30/10/2024</Td>
-                        
-                            <Td>
-                            <ButtonActionContainer>
-                            <StyledButton>
-                            <DeleteIcon />
-                            </StyledButton>
-                            <StyledButton>
-                            <EditIcon/>
-                            </StyledButton>
-                            </ButtonActionContainer>
-                            </Td>
-                        </Tr>
-                    </Tbody>
-                    <Tbody>
-                        <Tr>
-                            <Td>7</Td>
-                            <Td>Hamza vs Uzair</Td>
-                            <Td>Faujdari </Td>
-                            <Td>trial</Td>
-                            <Td>2</Td>
-                            <Td>30/10/2024</Td>
-                            
-                            <Td>
-                            <ButtonActionContainer>
-                            <StyledButton>
-                            <DeleteIcon />
-                            </StyledButton>
-                            <StyledButton>
-                            <EditIcon/>
-                            </StyledButton>
-                            </ButtonActionContainer>
-                            </Td>
-                        </Tr>
-                    </Tbody>
 
-                </Table>
-            </ActivitiesContainer>
- 
-      </MainContainer>
-      
-       
-    
-    </>
-  );
+    const context = useContext(Context);
+    const { cases } = context;
+
+    return (
+        <>
+            <MainContainer>
+                <SubContainer>
+                    <HamLeft>
+                        <H4>Manage Your Clients Cases Record</H4>
+                    </HamLeft>
+                </SubContainer>
+
+                <ActivitiesContainer>
+                    <Table>
+                        <Thead>
+                            <Tr>
+                                <Th>Client Number</Th>
+                                <Th>Case Title</Th>
+                                <Th>Case Type</Th>
+                                <Th>Case Status</Th>
+                                <Th>Date Filed</Th>
+                            </Tr>
+                        </Thead>
+                        {cases.length !== 0 ?
+                            cases.map((item) => {
+                                return (<Tbody>
+                                    <Tr>
+                                        <Td>{item.userId}</Td>
+                                        <Td>{item.caseTitle}</Td>
+                                        <Td>{item.caseType}</Td>
+                                        <Td>{item.caseStatus}</Td>
+                                        <Td>{item.createdAt.split("T")[0]}</Td>
+                                    </Tr>
+                                </Tbody>)
+                            })
+                            : <h3>No record to display!</h3>}
+                    </Table>
+                </ActivitiesContainer>
+            </MainContainer>
+        </>
+    );
 };
 
 export default CasesDetails;

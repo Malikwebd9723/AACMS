@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
-// import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import { Context } from "../../context/States";
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 const MainContainer = styled.section`
   background: #f5f5f5;
   flex: 4;
@@ -26,21 +31,6 @@ const H4 = styled.h4`
   color: white;
   font-weight: 400;
 `;
-// const ButtonContainer = styled.section`
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   text-transform: uppercase;
-//   text-align: center;
-//   padding: 7px 12px 7px 5px;
-//   background: #28a745;
-//   border-radius: 3px;
-//   color: white;
-// `;
-// const Addbtn = styled.section`
-//   font-size: 12px;
-//   font-weight: 600;
-// `;
 const ActivitiesContainer = styled.section`
   margin: 20px 0px;
 `;
@@ -76,175 +66,180 @@ const StyledButton = styled.button`
   cursor: pointer;
   color: #4a5263;
 `;
+const ContainerForm = styled.form`
+display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  
+`
+const Label = styled.label`
+font-weight:500;
+padding-bottom:10px;
+`
+const Input = styled.input`
+`
 const JudgesDatails = () => {
+  const context = useContext(Context);
+  const { cases, handleUpdateRecord,handleDeleteRecord } = context;
+  const [showUpdate, setShowUpdate] = useState(false);
+  const [updateCred, setUpdateCred] = useState({
+    id: "",
+    judge: "",
+    courtNumber: "",
+    courtAction: "",
+    caseTitle: "",
+    caseStatus: "",
+    caseType: "",
+    hearingDate: "",
+    reminderDate: "",
+  })
+
+  const handleCloseUpdate = () => setShowUpdate(false);
+  const handleShowUpdate = (item) => {
+    setShowUpdate(true);
+    setUpdateCred({ id: item._id, judge: item.judge, courtNumber: item.courtNumber, courtAction: item.courtAction, caseTitle: item.caseTitle, caseStatus: item.caseStatus, caseType: item.caseType, hearingDate: item.hearingDate, reminderDate: item.reminderDate })
+  };
+
+
+  const callUpdateRecord = async (e) => {
+    e.preventDefault();
+    if (
+      updateCred.courtNumber !== "" &&
+      updateCred.courtAction !== "" &&
+      updateCred.caseTitle !== "" &&
+      updateCred.caseStatus !== "" &&
+      updateCred.caseType !== "" &&
+      updateCred.hearingDate !== "" &&
+      updateCred.reminderDate !== "") {
+      await handleUpdateRecord({
+        id: updateCred.id,
+        judge: updateCred.judge,
+        courtNumber: updateCred.courtNumber,
+        courtAction: updateCred.courtAction,
+        caseTitle: updateCred.caseTitle,
+        caseStatus: updateCred.caseStatus,
+        caseType: updateCred.caseType,
+        hearingDate: updateCred.hearingDate,
+        reminderDate: updateCred.reminderDate
+      });
+      handleCloseUpdate();
+    } else {
+      alert("Fill all the fields correctly!")
+    }
+  }
+  const setUpdateCredentials = (e) => {
+    setUpdateCred({ ...updateCred, [e.target.name]: e.target.value })
+  }
+
+  const confirmDeletion = (id) => {
+    confirmAlert({
+      title: 'Confirm to Delete',
+      message: 'Record will wash out permanently!',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => handleDeleteRecord(id)
+        },
+        {
+          label: 'No',
+        }
+      ]
+    });
+  }
+
   return (
     <>
+      {/* add new record modal */}
+      <Modal show={showUpdate} onHide={handleCloseUpdate}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add Client Record</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <ContainerForm>
+            <Label htmlFor="text">Judge Name</Label>
+            <Input value={updateCred.judge} onChange={setUpdateCredentials} name='judge' />
+
+            <Label htmlFor="number">Court Number</Label>
+            <Input value={updateCred.courtNumber} onChange={setUpdateCredentials} name='courtNumber' />
+
+            <Label htmlFor="number">Court Actions</Label>
+            <Input value={updateCred.courtAction} onChange={setUpdateCredentials} name='courtAction' />
+
+            <Label htmlFor="text">Case Title </Label>
+            <Input value={updateCred.caseTitle} onChange={setUpdateCredentials} name='caseTitle' />
+
+            <Label htmlFor="text"> Case Status</Label>
+            <Input value={updateCred.caseStatus} onChange={setUpdateCredentials} name='caseStatus' />
+
+            <Label htmlFor="text">Case Type</Label>
+            <Input value={updateCred.caseType} onChange={setUpdateCredentials} name='caseType' />
+
+            <Label htmlFor="text">Hearing Date</Label>
+            <Input value={updateCred.hearingDate} onChange={setUpdateCredentials} name='hearingDate' type='date' />
+
+            <Label htmlFor="text">Reminder Date</Label>
+            <Input value={updateCred.reminderDate} onChange={setUpdateCredentials} name='reminderDate' type='date' />
+
+          </ContainerForm>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseUpdate}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={callUpdateRecord}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
       <MainContainer>
         <SubContainer>
           <HamLeft>
             <H4>Manage Your Client Court Details</H4>
           </HamLeft>
-          {/* <ButtonContainer>
-            <AddCircleOutlineIcon />
-            <Addbtn>Add New Record</Addbtn>
-          </ButtonContainer> */}
         </SubContainer>
 
         <ActivitiesContainer>
-          <Table>
-            <Thead>
-              <Tr>
-                <Th>Client Number</Th>
-                <Th>Judge Name</Th>
-                <Th>Court Name</Th>
-                <Th>Court Number</Th>
-                {/* <Th>Current Case No</Th> */}
-                <Th>Court Actions</Th>
-
-                <Th>Action</Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              <Tr>
-                <Td>1</Td>
-                <Td>Qazi Adnan</Td>
-                <Td>additonal judge</Td>
-                <Td>4</Td>
-                {/* <Td>Due</Td> */}
-                <Td>Pending</Td>
-                <Td>
-                  <ButtonActionContainer>
-                    <StyledButton>
-                      <DeleteIcon />
-                    </StyledButton>
-                    <StyledButton>
-                      <EditIcon />
-                    </StyledButton>
-                  </ButtonActionContainer>
-                </Td>
-              </Tr>
-            </Tbody>
-            <Tbody>
-              <Tr>
-                <Td>2</Td>
-                <Td>Qazi Adnan</Td>
-                <Td>2</Td>
-                <Td>4</Td>
-                {/* <Td>Due</Td> */}
-                <Td>Pending</Td>
-                <Td>
-                  <ButtonActionContainer>
-                    <StyledButton>
-                      <DeleteIcon />
-                    </StyledButton>
-                    <StyledButton>
-                      <EditIcon />
-                    </StyledButton>
-                  </ButtonActionContainer>
-                </Td>
-              </Tr>
-            </Tbody>
-            <Tbody>
-              <Tr>
-                <Td>3</Td>
-                <Td>Qazi Adnan</Td>
-                <Td>2</Td>
-                <Td>3</Td>
-                {/* <Td>Due</Td> */}
-                <Td>Order</Td>
-                <Td>
-                  <ButtonActionContainer>
-                    <StyledButton>
-                      <DeleteIcon />
-                    </StyledButton>
-                    <StyledButton>
-                      <EditIcon />
-                    </StyledButton>
-                  </ButtonActionContainer>
-                </Td>
-              </Tr>
-            </Tbody>
-            <Tbody>
-              <Tr>
-                <Td>4</Td>
-                <Td>Qazi Adnan</Td>
-                <Td>1</Td>
-                <Td>5</Td>
-               {/* <Td>Due</Td> */}
-                <Td>Proceding</Td>
-                <Td>
-                  <ButtonActionContainer>
-                    <StyledButton>
-                      <DeleteIcon />
-                    </StyledButton>
-                    <StyledButton>
-                      <EditIcon />
-                    </StyledButton>
-                  </ButtonActionContainer>
-                </Td>
-              </Tr>
-            </Tbody>
-            <Tbody>
-              <Tr>
-                <Td>5</Td>
-                <Td>Qazi Adnan</Td>
-                <Td>1</Td>
-                <Td>8</Td>
-                {/* <Td>Due</Td> */}
-                <Td>None</Td>
-                <Td>
-                  <ButtonActionContainer>
-                    <StyledButton>
-                      <DeleteIcon />
-                    </StyledButton>
-                    <StyledButton>
-                      <EditIcon />
-                    </StyledButton>
-                  </ButtonActionContainer>
-                </Td>
-              </Tr>
-            </Tbody>
-            <Tbody>
-              <Tr>
-                <Td>6</Td>
-                <Td>Qazi Adnan</Td>
-                <Td>3</Td>
-                <Td>2</Td>
-                {/* <Td>Due</Td> */}
-                <Td>Pending</Td>
-                <Td>
-                  <ButtonActionContainer>
-                    <StyledButton>
-                      <DeleteIcon />
-                    </StyledButton>
-                    <StyledButton>
-                      <EditIcon />
-                    </StyledButton>
-                  </ButtonActionContainer>
-                </Td>
-              </Tr>
-            </Tbody>
-            <Tbody>
-              <Tr>
-                <Td>7</Td>
-                <Td>Qazi Adnan</Td>
-                <Td>4</Td>
-                <Td>9</Td>
-                {/* <Td>Due</Td> */}
-                <Td>Pending</Td>
-                <Td>
-                  <ButtonActionContainer>
-                    <StyledButton>
-                      <DeleteIcon />
-                    </StyledButton>
-                    <StyledButton>
-                      <EditIcon />
-                    </StyledButton>
-                  </ButtonActionContainer>
-                </Td>
-              </Tr>
-            </Tbody>
-          </Table>
+          {cases.length !== 0 ?
+            <Table>
+              <Thead>
+                <Tr>
+                  <Th>Client Number</Th>
+                  <Th>Judge Name</Th>
+                  <Th>Court Number</Th>
+                  <Th>Court Actions</Th>
+                  <Th>Case Status</Th>
+                  <Th>Action</Th>
+                </Tr>
+              </Thead>
+              {cases.map((item) => {
+                return (
+                  <Tbody>
+                    <Tr>
+                      <Td>{item.userId}</Td>
+                      <Td>{item.judge}</Td>
+                      <Td>{item.courtNumber}</Td>
+                      <Td>{item.courtAction}</Td>
+                      <Td>{item.caseStatus}</Td>
+                      <Td>
+                        <ButtonActionContainer>
+                          <StyledButton>
+                            <DeleteIcon onClick={() => { confirmDeletion(item._id) }}/>
+                          </StyledButton>
+                          <StyledButton>
+                            <EditIcon onClick={() => handleShowUpdate(item)} />
+                          </StyledButton>
+                        </ButtonActionContainer>
+                      </Td>
+                    </Tr>
+                  </Tbody>
+                )
+              })}
+            </Table> : <h3>No Record to display!</h3>}
         </ActivitiesContainer>
       </MainContainer>
     </>

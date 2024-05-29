@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+const { type } = require("@testing-library/user-event/dist/type");
+>>>>>>> 2868027d7ebda3f6a4b6cd845d1e4cd3e099208c
 const mongoose = require("mongoose");
 
 const casesSchema = new mongoose.Schema({
@@ -5,6 +9,13 @@ const casesSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+<<<<<<< HEAD
+=======
+    lawyerId: {
+        type: String,
+        required: true,
+    },
+>>>>>>> 2868027d7ebda3f6a4b6cd845d1e4cd3e099208c
     caseTitle: {
         type: String,
         required: true,
@@ -17,6 +28,7 @@ const casesSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+<<<<<<< HEAD
     totalCases: {
         type: String,
         required: true,
@@ -30,6 +42,9 @@ const casesSchema = new mongoose.Schema({
         required: true,
     },
     courtName: {
+=======
+    judge: {
+>>>>>>> 2868027d7ebda3f6a4b6cd845d1e4cd3e099208c
         type: String,
         required: true,
     },
@@ -42,6 +57,7 @@ const casesSchema = new mongoose.Schema({
         required: true,
     },
     totalFee: {
+<<<<<<< HEAD
         type: String,
         required: true,
     },
@@ -56,6 +72,22 @@ const casesSchema = new mongoose.Schema({
     paidFeeDate: {
         type: String,
         required: true,
+=======
+        type: Number,
+        deafault:0
+    },
+    discount: {
+        type:Number,
+        default:0,
+    },
+    paidFee: {
+        type:Number,
+        default:0,
+    },
+    paidFeeDate: {
+        type: Date,
+        default:Date.now
+>>>>>>> 2868027d7ebda3f6a4b6cd845d1e4cd3e099208c
     },
     hearingDate: {
         type: String,
@@ -65,6 +97,7 @@ const casesSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+<<<<<<< HEAD
     //   password: {
     //     type: String,
     //     default: "",
@@ -108,6 +141,8 @@ const casesSchema = new mongoose.Schema({
     //          ref: "Order",
     //        },
     //    ],
+=======
+>>>>>>> 2868027d7ebda3f6a4b6cd845d1e4cd3e099208c
     createdAt: {
         type: Date,
         default: Date.now,
@@ -116,4 +151,8 @@ const casesSchema = new mongoose.Schema({
 
 const Cases = mongoose.model("Cases", casesSchema);
 
+<<<<<<< HEAD
 module.exports = Cases;
+=======
+module.exports = Cases;
+>>>>>>> 2868027d7ebda3f6a4b6cd845d1e4cd3e099208c

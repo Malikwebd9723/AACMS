@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -8,6 +8,7 @@ import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+import { Context } from '../../context/States';
 const MainContainer = styled.section`
 background:#F5F5F5;
 flex:4;
@@ -104,272 +105,308 @@ padding-bottom:10px;
 const Input = styled.input`
 `
 const ClientManagement = () => {
-
+  
+  const context = useContext(Context);
+  const { handleRegisterClient, clients, handleAddRecord, handleUpdateClient,handleDeleteUser } = context;
+  
   const [show, setShow] = useState(false);
+  const [showRecord, setShowRecord] = useState(false);
+  const [showUpdate, setShowUpdate] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
 
-const confirmDeletion = ()=>{
+  const handleCloseRecord = () => setShowRecord(false);
+  const handleShowRecord = (id) => {
+    setShowRecord(true);
+    setRecord({ ...record, userId: id })
+  };
 
-  confirmAlert({
-    title: 'Confirm to Delete',
-    message: 'Are you sure to delete ?.',
-    buttons: [
-      {
-        label: 'Yes',
-        onClick: () => console.log('Click Yes')
-          },
-    {
-      label: 'No',
-      onClick: () => console.log('Click No')
-          }
-        ]
-      });
+  const handleCloseUpdate = () => setShowUpdate(false);
+  const handleShowUpdate = (item) => {
+    setShowUpdate(true);
+    setUpdateCred({ userId: item._id, name: item.name, email: item.email, address: item.address, phone: item.phone })
+  };
 
-}
+  const confirmDeletion = (id) => {
+    confirmAlert({
+      title: 'Confirm to Delete',
+      message: 'User and record realted to user will wash out permanently!',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => handleDeleteUser(id)
+        },
+        {
+          label: 'No',
+        }
+      ]
+    });
+  }
 
-return (
-  <>
-    <Modal show={show} onHide={handleClose}>
-      <Modal.Header closeButton>
-        <Modal.Title>Add New Clients</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <ContainerForm>
-          <Label htmlFor="name">FullName:</Label>
-          <Input />
-          <Label htmlFor="number">Client#</Label>
-          <Input />
-          <Label htmlFor="number">CNIC</Label>
-          <Input />
-          <Label htmlFor="Email">Email</Label>
-          <Input />
-          <Label htmlFor="text">Address</Label>
-          <Input />
-          <Label htmlFor="text">Phone#</Label>
-          <Input />
-          <Label htmlFor="text">Judge Name</Label>
-          <Input />
-          <Label htmlFor="number">Number of Cases</Label>
-          <Input />
-          <Label htmlFor="number">Court Number</Label>
-          <Input />
-          <Label htmlFor="number">Court Actions</Label>
-          <Input />
-          <Label htmlFor="text">Case Title </Label>
-          <Input />
-          <Label htmlFor="text"> Case Statuss</Label>
-          <Input />
-          <Label htmlFor="text">Total Cases</Label>
-          <Input />
-          <Label htmlFor="text">Case Type</Label>
-          <Input />
-          <Label htmlFor="text">Date Filed</Label>
-          <Input type="date" id="dateInput" />
-          <Label htmlFor="text">Total Case Fee</Label>
-          <Input />
-          <Label htmlFor="text">Discount</Label>
-          <Input />
-          <Label htmlFor="text">Paid Fee</Label>
-          <Input />
-          <Label htmlFor="text">Paid Fee Date</Label>
-          <Input type="date" id="dateinput" />
-
-        </ContainerForm>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-          Close
-        </Button>
-        <Button variant="primary" onClick={handleClose}>
-          Save Changes
-        </Button>
-      </Modal.Footer>
-    </Modal>
-
-    <MainContainer>
-      <SubContainer>
-        <HamLeft>
-          <H4>Manage Law Office Details</H4>
-        </HamLeft>
-        <ButtonContainer>
-
-          <Addbtn onClick={handleShow}><AddCircleOutlineIcon />Add New Client</Addbtn>
-        </ButtonContainer>
-      </SubContainer>
-
-      <ActivitiesContainer>
-        <Table>
-          <Thead>
-            <Tr>
-              <Th>Name</Th>
-              <Th>Client#</Th>
-              <Th>Email</Th>
-              <Th>Adresss</Th>
-              <Th>CNIC</Th>
-              <Th>Phone</Th>
-              <Th>Action</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            <Tr>
-              <Td>Uzair</Td>
-              <Td>1</Td>
-              <Td>Uzair@gmail.com</Td>
-              <Td>Abbottabd</Td>
-              <Td>123-312312-3213-1</Td>
-              <Td>03174323123</Td>
-
-              <Td>
-                <ButtonActionContainer>
-                  <StyledButton onClick={() => { confirmDeletion() }}>
-                    <DeleteIcon />
-                  </StyledButton>
-                  <StyledButton onClick={()=>{setShow(!show)}}>
-                    <EditIcon />
-                  </StyledButton>
-                </ButtonActionContainer>
-              </Td>
+  const [cred, setCred] = useState({
+    name: "",
+    email: "",
+    address: "",
+    cnic: "",
+    phone: "",
+  })
 
 
+  const callRegisterClient = async (e) => {
+    e.preventDefault();
+    if (cred.name !== "" && cred.email !== "" && cred.address !== "" && cred.cnic !== "" && cred.phone !== "") {
+      await handleRegisterClient({ name: cred.name, email: cred.email, address: cred.address, cnic: cred.cnic, phone: cred.phone });
+      handleClose();
+    } else {
+      alert("Fill all the fields correctly!")
+    }
+  }
+  const setCredentials = (e) => {
+    setCred({ ...cred, [e.target.name]: e.target.value })
+  }
+
+  const [record, setRecord] = useState({
+    userId: "",
+    judge: "",
+    courtNumber: "",
+    courtAction: "",
+    caseTitle: "",
+    caseStatus: "",
+    caseType: "",
+    totalFee: "",
+    discount: "",
+    paidFee: "",
+    hearingDate: "",
+    reminderDate: "",
+  });
+
+  const setRecordDetails = (e) => {
+    setRecord({ ...record, [e.target.name]: e.target.value })
+  }
+
+  const callAddRecord = async (e) => {
+    e.preventDefault();
+    if (record.judge !== "" &&
+      record.courtNumber !== "" &&
+      record.courtAction !== "" &&
+      record.caseTitle !== "" &&
+      record.caseStatus !== "" &&
+      record.caseType !== "" &&
+      record.totalFee !== "" &&
+      record.discount !== "" &&
+      record.paidFee !== "" &&
+      record.hearingDate !== "" &&
+      record.reminderDate !== "") {
+
+      await handleAddRecord({ userId: record.userId, judge: record.judge, courtNumber: record.courtNumber, courtAction: record.courtAction, caseTitle: record.caseTitle, caseStatus: record.caseStatus, caseType: record.caseType, totalFee: record.totalFee, discount: record.discount, paidFee: record.paidFee, hearingDate: record.hearingDate, reminderDate:record.reminderDate });
+
+      handleCloseRecord();
+    } else {
+      alert("Fill all the fields correctly!")
+    }
+  }
+
+  const [updateCred, setUpdateCred] = useState({
+    userId: "",
+    name: "",
+    email: "",
+    address: "",
+    phone: "",
+  })
+
+  const callUpdateClient = async (e) => {
+    e.preventDefault();
+    if (updateCred.name !== "" && updateCred.email !== "" && updateCred.address !== "" && updateCred.phone !== "") {
+      await handleUpdateClient({ id: updateCred.userId, name: updateCred.name, email: updateCred.email, address: updateCred.address, phone: updateCred.phone });
+      handleCloseUpdate();
+    } else {
+      alert("Fill all the fields correctly!")
+    }
+  }
+  const setUpdateCredentials = (e) => {
+    setUpdateCred({ ...updateCred, [e.target.name]: e.target.value })
+  }
+  return (
+    <>
+      {/* add new client modal */}
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add New Clients</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <ContainerForm>
+            <Label htmlFor="name">FullName:</Label>
+            <Input onChange={setCredentials} id='name' name='name' type='text' />
+
+            <Label htmlFor="cnic">CNIC</Label>
+            <Input onChange={setCredentials} id='cnic' name='cnic' type='text' />
+
+            <Label htmlFor="email">Email</Label>
+            <Input onChange={setCredentials} id='email' name='email' type='email' />
+
+            <Label htmlFor="address">Address</Label>
+            <Input onChange={setCredentials} id='address' name='address' type='text' />
+
+            <Label htmlFor="phone">Phone#</Label>
+            <Input onChange={setCredentials} id='phone' name='phone' type='number' />
+          </ContainerForm>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={callRegisterClient}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
 
 
+      {/* add new record modal */}
+      <Modal show={showRecord} onHide={handleCloseRecord}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add Client Record</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <ContainerForm>
+            <Label htmlFor="text">Judge Name</Label>
+            <Input onChange={setRecordDetails} name='judge' />
 
+            <Label htmlFor="number">Court Number</Label>
+            <Input onChange={setRecordDetails} name='courtNumber' />
 
-            </Tr>
-          </Tbody>
-          <Tbody>
-            <Tr>
-              <Td>Ahmed</Td>
-              <Td>2</Td>
-              <Td>Ahmed@gmail.com</Td>
-              <Td>Mansehra</Td>
-              <Td>123-3213-433-1</Td>
-              <Td>02312313</Td>
-              <Td>
-                <ButtonActionContainer>
-                  <StyledButton onClick={() => { confirmDeletion() }}>
-                    <DeleteIcon />
-                  </StyledButton>
-                  <StyledButton onClick={()=>{setShow(!show)}}>
-                    <EditIcon />
-                  </StyledButton>
-                </ButtonActionContainer>
-              </Td>
-            </Tr>
-          </Tbody>
-          <Tbody>
-            <Tr>
-              <Td>Khuram</Td>
-              <Td>3</Td>
-              <Td>Khuram@gmail.com</Td>
-              <Td>swabi</Td>
-              <Td>1231-3123-3123-1</Td>
-              <Td>03231312312</Td>
-              <Td>
-                <ButtonActionContainer>
-                  <StyledButton onClick={() => { confirmDeletion() }}>
-                    <DeleteIcon />
-                  </StyledButton>
-                  <StyledButton onClick={()=>{setShow(!show)}}>
-                    <EditIcon />
-                  </StyledButton>
-                </ButtonActionContainer>
-              </Td>
-            </Tr>
-          </Tbody>
-          <Tbody>
-            <Tr>
-              <Td>Hamza</Td>
-              <Td>4</Td>
-              <Td>hamza@gmail.com</Td>
-              <Td>College Doraha</Td>
-              <Td>1312-123-3123-2</Td>
-              <Td>0331231432</Td>
-              <Td>
-                <ButtonActionContainer>
-                  <StyledButton onClick={() => { confirmDeletion() }}>
-                    <DeleteIcon />
-                  </StyledButton>
-                  <StyledButton onClick={()=>{setShow(!show)}}>
-                    <EditIcon />
-                  </StyledButton>
-                </ButtonActionContainer>
-              </Td>
-            </Tr>
-          </Tbody>
-          <Tbody>
-            <Tr>
-              <Td>Amir</Td>
-              <Td>5</Td>
-              <Td>Amir@gmail.com</Td>
-              <Td>Khaki road</Td>
-              <Td>1231-313-123-1</Td>
-              <Td>031231231</Td>
-              <Td>
-                <ButtonActionContainer>
-                  <StyledButton onClick={() => { confirmDeletion() }}>
-                    <DeleteIcon />
-                  </StyledButton>
-                  <StyledButton onClick={()=>{setShow(!show)}}>
-                    <EditIcon />
-                  </StyledButton>
-                </ButtonActionContainer>
-              </Td>
-            </Tr>
-          </Tbody>
-          <Tbody>
-            <Tr>
-              <Td>Khazir</Td>
-              <Td>6</Td>
-              <Td>khazir@gmail.com</Td>
-              <Td>Haripur</Td>
-              <Td>13123-31231-231-1</Td>
-              <Td>031231231</Td>
-              <Td>
-                <ButtonActionContainer>
-                  <StyledButton onClick={() => { confirmDeletion() }}>
-                    <DeleteIcon />
-                  </StyledButton>
-                  <StyledButton onClick={()=>{setShow(!show)}}>
-                    <EditIcon />
-                  </StyledButton>
-                </ButtonActionContainer>
-              </Td>
-            </Tr>
-          </Tbody>
-          <Tbody>
-            <Tr>
-              <Td>John</Td>
-              <Td>7</Td>
-              <Td>john@gmail.com</Td>
-              <Td>uk</Td>
-              <Td>-123312-21131-13</Td>
-              <Td>+72313123</Td>
-              <Td>
-                <ButtonActionContainer>
-                  <StyledButton onClick={() => { confirmDeletion() }}> 
-                    <DeleteIcon />
-                  </StyledButton>
-                  <StyledButton onClick={()=>{setShow(!show)}}>
-                    <EditIcon />
-                  </StyledButton>
-                </ButtonActionContainer>
-              </Td>
-            </Tr>
-          </Tbody>
+            <Label htmlFor="number">Court Actions</Label>
+            <Input onChange={setRecordDetails} name='courtAction' />
 
-        </Table>
-      </ActivitiesContainer>
+            <Label htmlFor="text">Case Title </Label>
+            <Input onChange={setRecordDetails} name='caseTitle' />
 
-    </MainContainer>
+            <Label htmlFor="text"> Case Status</Label>
+            <Input onChange={setRecordDetails} name='caseStatus' />
 
+            <Label htmlFor="text">Case Type</Label>
+            <Input onChange={setRecordDetails} name='caseType' />
 
+            <Label htmlFor="text">Total Case Fee</Label>
+            <Input onChange={setRecordDetails} name='totalFee' />
 
-  </>
-);
+            <Label htmlFor="text">Discount</Label>
+            <Input onChange={setRecordDetails} name='discount' />
+
+            <Label htmlFor="text">Paid Fee</Label>
+            <Input onChange={setRecordDetails} name='paidFee' />
+
+            <Label htmlFor="text">Hearing Date</Label>
+            <Input onChange={setRecordDetails} name='hearingDate' type='date' />
+            
+            <Label htmlFor="text">Reminder Date</Label>
+            <Input onChange={setRecordDetails} name='reminderDate' type='date' />
+
+          </ContainerForm>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseRecord}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={callAddRecord}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* update client modal */}
+      <Modal show={showUpdate} onHide={handleCloseUpdate}>
+        <Modal.Header closeButton>
+          <Modal.Title>Update Clients</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <ContainerForm>
+            <Label htmlFor="name">FullName:</Label>
+            <Input value={updateCred.name} onChange={setUpdateCredentials} id='name' name='name' type='text' />
+
+            <Label htmlFor="email">Email</Label>
+            <Input value={updateCred.email} onChange={setUpdateCredentials} id='email' name='email' type='email' />
+
+            <Label htmlFor="address">Address</Label>
+            <Input value={updateCred.address} onChange={setUpdateCredentials} id='address' name='address' type='text' />
+
+            <Label htmlFor="phone">Phone#</Label>
+            <Input value={updateCred.phone} onChange={setUpdateCredentials} id='phone' name='phone' type='number' />
+          </ContainerForm>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseUpdate}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={callUpdateClient}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      <MainContainer>
+        <SubContainer>
+          <HamLeft>
+            <H4>Manage Law Office Details</H4>
+          </HamLeft>
+          <ButtonContainer>
+
+            <Addbtn onClick={handleShow}><AddCircleOutlineIcon />Add New Client</Addbtn>
+          </ButtonContainer>
+        </SubContainer>
+
+        <ActivitiesContainer>
+          {clients.length !== 0 ?
+            <Table>
+              <Thead>
+                <Tr>
+                  <Th>Name</Th>
+                  <Th>Client Number</Th>
+                  <Th>Email</Th>
+                  <Th>Adresss</Th>
+                  <Th>CNIC</Th>
+                  <Th>Phone</Th>
+                  <Th>Total Cases</Th>
+                  <Th>Action</Th>
+                </Tr>
+              </Thead>
+              {clients.map((item) => {
+                return (
+                  <Tbody key={item._id}>
+                    <Tr>
+                      <Td>{item.name}</Td>
+                      <Td>{item._id}</Td>
+                      <Td>{item.email}</Td>
+                      <Td>{item.address}</Td>
+                      <Td>{item.cnic}</Td>
+                      <Td>{item.phone}</Td>
+                      <Td>{item.totalCases}</Td>
+
+                      <Td>
+                        <ButtonActionContainer>
+                          <StyledButton onClick={() => handleShowRecord(item._id)}>
+                            <AddCircleOutlineIcon />
+                          </StyledButton >
+                          <StyledButton onClick={() => handleShowUpdate(item)}>
+                            <EditIcon />
+                          </StyledButton>
+                          <StyledButton onClick={() => { confirmDeletion(item._id) }}>
+                            <DeleteIcon />
+                          </StyledButton>
+                        </ButtonActionContainer>
+                      </Td>
+                    </Tr>
+                  </Tbody>
+                )
+              })}
+            </Table>
+            : <h3>No clients to display</h3>}
+        </ActivitiesContainer>
+      </MainContainer>
+    </>
+  );
 };
 
 

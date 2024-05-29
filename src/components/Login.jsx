@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom';
 import styled from "styled-components";
-import logo from "../assets/logo.jpg"
+import logo from "../assets/logo.jpg";
+import { Context } from '../context/States';
+
 const Main = styled.section`
 min-height:100vh;
 display:flex;
@@ -21,7 +23,7 @@ filter;blur(5px);
 `
 const NavLeft = styled.section`
 flex:1;
-` 
+`
 const Logo = styled.section`
 height:100%;
 width:55%;
@@ -59,7 +61,7 @@ const RegisterBtn = styled.button`
 
 // login section styling starts here
 
-const  LoginContainer = styled.section`
+const LoginContainer = styled.section`
 flex:3;
 display:flex;
 flex-direction:column;
@@ -105,41 +107,69 @@ const Anchor = styled.a`
 color:white;
 text-decoration:none;
 `
+
+
+
+
 const Login = () => {
+  const context = useContext(Context);
+  const { checkLoggedInStatus, handleLogin } = context;
+  useEffect(() => {
+    checkLoggedInStatus()
+  })
+
+  const [cred, setCred] = useState({
+    email: "",
+    password: "",
+  })
+
+  const callLogin = (e) => {
+    e.preventDefault();
+    if (cred.email!=="" && cred.password!=="") {
+      handleLogin({ email: cred.email, password: cred.password });
+    }
+    else{
+      alert("Fill all the fields correctly!")
+    }
+  }
+  const setCredentials = (e) => {
+    setCred({ ...cred, [e.target.name]: e.target.value })
+  }
+
   return (
     <Main>
       {/* navbar section */}
       <Navbar>
         <NavLeft>
           <Logo>
-            <LogoImg/>
+            <LogoImg />
           </Logo>
         </NavLeft>
         <NavRight>
           <BtnContainer>
             <Anchor as={NavLink} to={'/'}>
-            <LoginBtn>Sign In</LoginBtn>
+              <LoginBtn>Sign In</LoginBtn>
             </Anchor>
             <Anchor as={NavLink} to={'SignUp'}>
-            <RegisterBtn>Sign Up</RegisterBtn>
+              <RegisterBtn>Sign Up</RegisterBtn>
             </Anchor>
           </BtnContainer>
         </NavRight>
       </Navbar>
 
 
-    {/* log in form start */}
-    <LoginContainer>
-      <Anchor as={NavLink} to={"/signup"}>Don`t have an account? Sign Up</Anchor>
-      <H1>Login</H1>
-      <Form onSubmit={"/"}>
-  
-        <Input type='text' placeholder='Username or Email'/>
-        <Input type='password' placeholder='Password'/>
-        <SubmitBtn>Login</SubmitBtn>
-      </Form>
-      <H6>Forgot password?</H6>
-    </LoginContainer>
+      {/* log in form start */}
+      <LoginContainer>
+        <Anchor as={NavLink} to={"/signup"}>Don`t have an account? Sign Up</Anchor>
+        <H1>Login</H1>
+        <Form onSubmit={callLogin}>
+
+          <Input onChange={setCredentials} name='email' type='text' placeholder='Email' />
+          <Input onChange={setCredentials} name='password' type='password' placeholder='Password' />
+          <SubmitBtn>Login</SubmitBtn>
+        </Form>
+        <H6>Forgot password?</H6>
+      </LoginContainer>
 
     </Main>
   )

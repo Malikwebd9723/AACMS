@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
+import { Context } from "../../context/States";
 
 const MainContainer = styled.section`
   background: #f5f5f5;
@@ -22,15 +23,6 @@ const Label = styled.label`
 `;
 
 const Input = styled.input`
-  width: 100%;
-  max-width: 100%;
-  padding: 0.375rem 0.75rem;
-  margin-bottom: 0.5rem;
-  border: 1px solid #ced4da;
-  border-radius: 0.25rem;
-`;
-
-const Textarea = styled.textarea`
   width: 100%;
   max-width: 100%;
   padding: 0.375rem 0.75rem;
@@ -87,6 +79,47 @@ font-size: 20px;
 `
 
 const Settings = () => {
+  const context = useContext(Context);
+  const { user, handleUpdateProfile, handleUpdatePass } = context;
+
+  const [cred, setCred] = useState({
+    firstname: (user.firstname),
+    lastname: (user.lastname)
+  })
+
+  const setCredentials = (e) => {
+    setCred({ ...cred, [e.target.name]: e.target.value })
+  }
+
+  const callUpdateProfile = (e) => {
+    e.preventDefault();
+    if (cred.firstname !== "" && cred.lastname !== "" && cred.email !== "") {
+      handleUpdateProfile({ firstname: cred.firstname, lastname: cred.lastname });
+    } else {
+      alert("Fill all the fields correctly!")
+    }
+  }
+
+  const [passCred, setPassCred] = useState({
+    oldPass: "",
+    newPass: "",
+    confirmPass: "",
+  })
+
+  const setPassCredentials = (e) => {
+    setPassCred({ ...passCred, [e.target.name]: e.target.value })
+  }
+
+  const callUpdatePass = (e) => {
+    e.preventDefault();
+    if (passCred.oldPass !== "" && passCred.newPass !== "" && passCred.newPass === passCred.confirmPass) {
+      handleUpdatePass({ oldPass: passCred.oldPass, newPass: passCred.newPass });
+    } else {
+      alert("Fill all the fields correctly!")
+    }
+  }
+
+
   return (
     <MainContainer>
       <CardContainer>
@@ -95,53 +128,32 @@ const Settings = () => {
             <H4>Settings</H4>
           </Row>
           <Label>Current Password</Label>
-          <Input type="password" id="password" />
+          <Input onChange={setPassCredentials} type="password" id="oldPass" name="oldPass" />
 
           <Label>New Password</Label>
-          <Input type="password" id="password" />
+          <Input onChange={setPassCredentials} type="password" id="newPass" name="newPass" />
+
           <Label>Confirm Password</Label>
-          <Input type="password" id="password" />
-            <ButtonWrapper>
-            <ButtonSubmit type="submit">Reset Password</ButtonSubmit>
+          <Input onChange={setPassCredentials} type="password" id="confirmPass" name="confirmPass" />
+          <ButtonWrapper>
+            <ButtonSubmit onClick={callUpdatePass}>Reset Password</ButtonSubmit>
           </ButtonWrapper>
         </Card>
         <Card>
-          <Form>
-            
+          <Form onSubmit={callUpdateProfile}>
+
             <Row><H4>Edit Profile</H4></Row>
             <Row>
-              <Label htmlFor="fullName">Full Name</Label>
-              <Input type="text" id="fullName" placeholder="Enter Your Full Name" />
+              <Label htmlFor="firstname">First Name</Label>
+              <Input onChange={setCredentials} type="text" id="firstname" name="firstname" defaultValue={user.firstname} />
             </Row>
 
             <Row>
-              <Label htmlFor="about">About</Label>
-              <Textarea
-                id="about"
-                placeholder="Tell Me About Us"
-              />
-            </Row>
-
-            <Row>
-              <Label htmlFor="Country">Country</Label>
-              <Input type="text" id="Country" placeholder="Enter Your Country" />
-            </Row>
-
-            <Row>
-              <Label htmlFor="Address">Address</Label>
-              <Input
-                type="text"
-                id="Address"
-                placeholder="Enter Your Address"
-              />
-            </Row>
-
-            <Row>
-              <Label htmlFor="Phone">Phone</Label>
-              <Input
-                type="text"
-                id="Phone"
-                placeholder="Enter Your Phone Number"
+              <Label htmlFor="lastname">Last Name</Label>
+              <Input onChange={setCredentials}
+                id="lastname"
+                name="lastname"
+                defaultValue={user.lastname}
               />
             </Row>
 
@@ -150,7 +162,8 @@ const Settings = () => {
               <Input
                 type="email"
                 id="Email"
-                placeholder="Enter your Email"
+                name="email"
+                value={user.email}
               />
             </Row>
 
