@@ -1,24 +1,37 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
+<<<<<<< HEAD
+    fullname: {
+=======
     lawyer: {
         type: String,
         required: true,
     },
     name: {
+>>>>>>> 2868027d7ebda3f6a4b6cd845d1e4cd3e099208c
         type: String,
         required: true,
     },
     email: {
         type: String,
         required: true,
+<<<<<<< HEAD
+        unique: true,
+=======
+>>>>>>> 2868027d7ebda3f6a4b6cd845d1e4cd3e099208c
     },
     cnic: {
         type: String,
         unique: true,
+<<<<<<< HEAD
+    },
+    contact: {
+=======
         unique: true,
     },
     phone: {
+>>>>>>> 2868027d7ebda3f6a4b6cd845d1e4cd3e099208c
         type: String,
         required: true,
     },
@@ -26,10 +39,13 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+<<<<<<< HEAD
+=======
     totalCases:{
         type:Number,
         default:0,
     },
+>>>>>>> 2868027d7ebda3f6a4b6cd845d1e4cd3e099208c
     //   password: {
     //     type: String,
     //     default: "",

@@ -69,6 +69,28 @@ const Profile = () => {
         <Card>
       <H4>Overview</H4>
       <Row>
+<<<<<<< HEAD
+        <Label>About</Label>
+        <Value>Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. 
+          Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</Value>
+      </Row>
+      <Row>
+        <Label>Full Name</Label>
+        <Value>Zain / Uzair</Value>
+      </Row>
+      
+      <Row>
+        <Label>Country</Label>
+        <Value>Pakistan</Value>
+      </Row>
+      <Row>
+        <Label>Address</Label>
+        <Value>A108 Adam Street, New York, NY 535022</Value>
+      </Row>
+      <Row>
+        <Label>Phone</Label>
+        <Value>(436) 486-3538 x29071</Value>
+=======
         <Label>First Name</Label>
         <Value>{user.firstname}</Value>
       </Row>
@@ -76,6 +98,7 @@ const Profile = () => {
       <Row>
         <Label>Last Name</Label>
         <Value>{user.lastname}</Value>
+>>>>>>> 2868027d7ebda3f6a4b6cd845d1e4cd3e099208c
       </Row>
       <Row>
         <Label>Email</Label>
