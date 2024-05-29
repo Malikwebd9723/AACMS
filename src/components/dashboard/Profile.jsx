@@ -72,12 +72,12 @@ const Profile = () => {
       </Row>
       <Row>
         <Label>Full Name</Label>
-        <Value>Kevin Anderson</Value>
+        <Value>Zain / Uzair</Value>
       </Row>
       
       <Row>
         <Label>Country</Label>
-        <Value>USA</Value>
+        <Value>Pakistan</Value>
       </Row>
       <Row>
         <Label>Address</Label>
