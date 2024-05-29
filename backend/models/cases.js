@@ -48,55 +48,16 @@ const casesSchema = new mongoose.Schema({
     },
     paidFeeDate: {
         type: Date,
-        default:Date.now()
+        default:Date.now
     },
     hearingDate: {
         type: String,
         required: true,
     },
-    //   password: {
-    //     type: String,
-    //     default: "",
-    //   },
-    //   dutyPlace: {
-    //     type: String,
-    //     default: "",
-    //   },
-    //   lastattendance: {
-    //     type: Array,
-    //     default:[{status:"",date:""}]
-    //   },
-    //   attendance: {
-    //     type: Array,
-    //     default:[{status:"",date:""}]
-    //   },
-    //   checkIn:{
-    //     type:Array,
-    //     default:[{date:"",latitude:"",longitude:""}]
-    //   },
-    //   checkOut:{
-    //     type:Array,
-    //     default:[{date:"",latitude:"",longitude:""}]
-    //   },
-    //   emailVerified: {
-    //     type: Boolean,
-    //     default: false,
-    //   },
-    //   userVerified: {
-    //     type: Boolean,
-    //     default: false,
-    //   },
-    //   verificationToken: {
-    //     type: String,
-    //     default: "",
-    //   },
-
-    //    orders: [
-    //        {
-    //          type: mongoose.Schema.Types.ObjectId,
-    //          ref: "Order",
-    //        },
-    //    ],
+    reminderDate: {
+        type: String,
+        required: true,
+    },
     createdAt: {
         type: Date,
         default: Date.now,

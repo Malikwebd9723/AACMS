@@ -7,9 +7,11 @@ const States = ({ children }) => {
     const navigation = useNavigate()
     const [user, setUser] = useState([]);
     const [clients, setClients] = useState([]);
+    const [filterClients, setFilterClients] = useState([])
     const [cases, setCases] = useState([]);
-    const[fee,setFee] = useState(0);
-    const[totalFee,setTotalFee] = useState(0)
+    const [fee, setFee] = useState(0);
+    const [reminder, setReminder] = useState(false);
+    const [totalFee, setTotalFee] = useState(0)
     const host = "http://localhost:8002";
 
     const fullDate = new Date();
@@ -19,12 +21,12 @@ const States = ({ children }) => {
     const date = `${year}-${month < 10 ? '0' + month : month}-${today}`;
 
 
-    const feeRecieved =async()=>{
+    const feeRecieved = async () => {
         let amount = 0
         let totalAmount = 0
-        await cases.map((item)=>{
+        await cases.map((item) => {
             amount = amount + item.paidFee
-            const feeAfterDiscount = item.totalFee-item.discount
+            const feeAfterDiscount = item.totalFee - item.discount
             totalAmount = totalAmount + feeAfterDiscount
         })
         setFee(amount);
@@ -49,7 +51,7 @@ const States = ({ children }) => {
             }
 
         } catch (error) {
-            alert("Server Error. Registeration failed!")
+            console.log(error.message);
         }
     }
 
@@ -63,6 +65,24 @@ const States = ({ children }) => {
     }
 
 
+
+    const handleReminder = async () => {
+        try {
+            const response = await fetch(`${host}/sendReminder`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ date })
+            });
+            const json = await response.json();
+            if (json.success) {
+                setReminder(true)
+            }
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
     const handleLogin = async ({ email, password }) => {
         try {
             const response = await fetch(`${host}/login`, {
@@ -81,7 +101,7 @@ const States = ({ children }) => {
             }
 
         } catch (error) {
-            alert("Server Error. Faild to logged in!")
+            console.log(error.message);
         }
     }
 
@@ -108,7 +128,7 @@ const States = ({ children }) => {
             }
 
         } catch (error) {
-            console.log("Server Error. Faild to logged in!")
+            console.log(error.message);
         }
 
     }
@@ -132,7 +152,7 @@ const States = ({ children }) => {
             }
 
         } catch (error) {
-            alert("Server Error. Faild to logged in!")
+            console.log(error.message);
         }
     }
 
@@ -154,7 +174,7 @@ const States = ({ children }) => {
             }
 
         } catch (error) {
-            alert("Server Error. Faild to logged in!")
+            console.log(error.message);
         }
     }
 
@@ -179,18 +199,18 @@ const States = ({ children }) => {
             }
 
         } catch (error) {
-            alert("Server Error. Registeration failed!")
+            console.log(error.message);
         }
     };
 
-    const handleUpdateClient = async ({id, name, email, address, phone }) => {
+    const handleUpdateClient = async ({ id, name, email, address, phone }) => {
         try {
             const response = await fetch(`${host}/updateClient`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({id,name, email, address, phone })
+                body: JSON.stringify({ id, name, email, address, phone })
             });
             const json = await response.json();
             if (json.success) {
@@ -202,7 +222,7 @@ const States = ({ children }) => {
             }
 
         } catch (error) {
-            alert("Server Error. Registeration failed!")
+            console.log(error.message);
         }
     };
 
@@ -221,13 +241,14 @@ const States = ({ children }) => {
             const json = await response.json();
             if (json.success) {
                 await setClients(json.clients)
+                await setFilterClients(json.clients)
             } else {
                 console.log(json.message);
 
             }
 
         } catch (error) {
-            alert("Server Error. Registeration failed!")
+            console.log(error.message);
         }
     }
 
@@ -251,7 +272,7 @@ const States = ({ children }) => {
             }
 
         } catch (error) {
-            alert("Server Error. Registeration failed!")
+            console.log(error.message);
         }
     }
 
@@ -266,7 +287,8 @@ const States = ({ children }) => {
         totalFee,
         discount,
         paidFee,
-        hearingDate }) => {
+        hearingDate,
+        reminderDate }) => {
         try {
             const lawyerId = await localStorage.getItem("userId");
             const response = await fetch(`${host}/addRecord`, {
@@ -274,11 +296,10 @@ const States = ({ children }) => {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ userId,lawyerId, judge, courtNumber, courtAction, caseTitle, caseStatus, caseType, totalFee, discount, paidFee, hearingDate })
+                body: JSON.stringify({ userId, lawyerId, judge, courtNumber, courtAction, caseTitle, caseStatus, caseType, totalFee, discount, paidFee, hearingDate, reminderDate })
             });
             const json = await response.json();
             if (json.success) {
-                console.log("add record done");
                 handleGetCases()
             } else {
                 console.log(json.message);
@@ -290,6 +311,58 @@ const States = ({ children }) => {
         }
     }
 
+    const handleUpdateRecord = async ({
+        id,
+        judge,
+        courtNumber,
+        courtAction,
+        caseTitle,
+        caseStatus,
+        caseType,
+        hearingDate,
+        reminderDate }) => {
+        try {
+            const response = await fetch(`${host}/updateRecord`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ id, judge, courtNumber, courtAction, caseTitle, caseStatus, caseType, hearingDate, reminderDate })
+            });
+            const json = await response.json();
+            if (json.success) {
+                handleGetCases()
+            } else {
+                console.log(json.message);
+            }
+
+        } catch (error) {
+            alert("Server Error. Registeration failed!")
+        }
+    }
+
+
+    const handleDeleteRecord = async (id) => {
+        try {
+            const response = await fetch(`${host}/deleteRecord`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ id })
+            });
+            const json = await response.json();
+            if (json.success) {
+                alert(json.message);
+                handleGetCases()
+            } else {
+                console.log(json.message);
+            }
+
+        } catch (error) {
+            alert("Server Error. Registeration failed!")
+        }
+    }
 
     const handleDeleteUser = async (id) => {
         try {
@@ -315,30 +388,43 @@ const States = ({ children }) => {
         }
     }
 
-    const handleAddFee = async ({id,fee}) => {
+    const handleAddFee = async ({ id, fee }) => {
         try {
             const response = await fetch(`${host}/addFee`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ id,fee,date })
+                body: JSON.stringify({ id, fee })
             });
             const json = await response.json();
-            if(json.success){
+            if (json.success) {
                 handleGetCases()
             }
-            else{
+            else {
                 alert(json.message)
             }
         } catch (error) {
-            alert("Server Error!")
+            console.log(error.message);
         }
     }
 
+        // search user function
+        const searchUser = (text) => {
+            if (text !== "") {
+                const filtered = filterClients.filter((user) =>
+                    user.cnic === text
+                );
+                setClients(filtered);
+            }
+            else (
+                handleGetClients()
+            )
+        };
+
 
     return (
-        <Context.Provider value={{ handleRegister, handleLogin, getProfileData, user, checkLoggedInStatus, handleLogout, handleUpdateProfile, handleUpdatePass, handleRegisterClient, handleGetClients, clients, handleAddRecord,handleGetCases,cases,handleUpdateClient,handleDeleteUser,handleAddFee,fee,feeRecieved,totalFee}}>
+        <Context.Provider value={{ handleRegister, handleLogin, getProfileData, user, checkLoggedInStatus, handleLogout, handleUpdateProfile, handleUpdatePass, handleRegisterClient, handleGetClients, clients, handleAddRecord, handleGetCases, cases, handleUpdateClient, handleDeleteUser, handleAddFee, fee, feeRecieved, totalFee, handleReminder, reminder, handleUpdateRecord,handleDeleteRecord,searchUser }}>
             {children}
         </Context.Provider>
     );

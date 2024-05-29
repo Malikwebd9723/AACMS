@@ -87,13 +87,12 @@ const AdminDashboard = () => {
     const year = fullDate.getFullYear();
     const date = `${year}-${month < 10 ? '0' + month : month}-${today}`;
     const context = useContext(Context);
-    const { cases, clients,fee,feeRecieved,totalFee} = context;
+    const { cases, clients, fee, feeRecieved, totalFee } = context;
 
-    useEffect(()=>{
+    useEffect(() => {
         feeRecieved()
-        const percentage = (fee/totalFee)*100
     })
-    return (                
+    return (
         <>
             <Main>
                 <CardContainer>
@@ -130,9 +129,9 @@ const AdminDashboard = () => {
                         </CardIcon>
                         <H2>Fee Received</H2>
                         <CardContainerInner>
-                            <H2>{fee}/{totalFee}</H2>
+                            <H2>{((fee / totalFee) * 100).toFixed(0)}%</H2>
                             <ProgressContainer>
-                                <CircularProgressbar value={((fee/totalFee)*100).toFixed(2)} styles={{ height: 30 }} text={((fee/totalFee)*100).toFixed(2)} />
+                                <CircularProgressbar value={((fee / totalFee) * 100).toFixed(0)} styles={{ height: 30 }} text={((fee / totalFee) * 100).toFixed(0) + '%'} />
                             </ProgressContainer>
                         </CardContainerInner>
                     </Card>

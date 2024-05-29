@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { Context } from "../../context/States";
 
 const MainContainer = styled.section`
   background: #f5f5f5;
@@ -57,6 +58,8 @@ box-shadow: 0px 2rem 3rem rgba(132, 139, 200, 0.18);
 const Value = styled.section`
 `
 const Profile = () => {
+  const context = useContext(Context);
+  const { user } = context;
   return (
     <MainContainer>
       <CardContainer>
@@ -66,34 +69,20 @@ const Profile = () => {
         <Card>
       <H4>Overview</H4>
       <Row>
-        <Label>About</Label>
-        <Value>Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. 
-          Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</Value>
-      </Row>
-      <Row>
-        <Label>Full Name</Label>
-        <Value>Kevin Anderson</Value>
+        <Label>First Name</Label>
+        <Value>{user.firstname}</Value>
       </Row>
       
       <Row>
-        <Label>Country</Label>
-        <Value>USA</Value>
-      </Row>
-      <Row>
-        <Label>Address</Label>
-        <Value>A108 Adam Street, New York, NY 535022</Value>
-      </Row>
-      <Row>
-        <Label>Phone</Label>
-        <Value>(436) 486-3538 x29071</Value>
+        <Label>Last Name</Label>
+        <Value>{user.lastname}</Value>
       </Row>
       <Row>
         <Label>Email</Label>
-        <Value>k.anderson@example.com</Value>
+        <Value>{user.email}</Value>
       </Row>
     </Card>
         <RightCard>
-
         </RightCard>
       </CardContainer>
     </MainContainer>

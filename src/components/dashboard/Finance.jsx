@@ -1,12 +1,11 @@
 import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Context } from '../../context/States';
+
 const MainContainer = styled.section`
 background:#F5F5F5;
 flex:4;
@@ -30,22 +29,6 @@ font-size:17px;
 color:white;
 font-weight:400;
 `
-// const ButtonContainer = styled.section`
-// display:flex;
-// justify-content:space-between;
-// align-items: center;
-// text-transform: uppercase;
-// text-align:center;
-// padding: 7px 12px 7px 5px;
-// background:#28A745;
-// border-radius:3px;
-// color:white;
-// `
-// const Addbtn = styled.section`
-
-// font-size:12px;
-// font-weight:600;
-// `
 const ActivitiesContainer = styled.section`
 margin:20px 0px
 `
@@ -105,20 +88,20 @@ const Finance = () => {
   const context = useContext(Context);
   const { cases, handleAddFee } = context;
   const [show, setShow] = useState(false);
-  const [fee, setFee] = useState({amount:0})
+  const [fee, setFee] = useState({ amount: 0 })
   const [id, setId] = useState("")
   const handleClose = () => setShow(false);
 
-  const handleSetShow = (id)=>{
+  const handleSetShow = (id) => {
     setId(id)
     setShow(true);
   }
   const callAddFee = async () => {
-    await handleAddFee({id,fee:fee.amount});
+    await handleAddFee({ id, fee: fee.amount });
     setShow(false);
   }
-  const settingFee=(e)=>{
-    setFee({amount:parseInt(e.target.value)})
+  const settingFee = (e) => {
+    setFee({ amount: parseInt(e.target.value) })
   }
 
   return (
@@ -131,14 +114,14 @@ const Finance = () => {
         <Modal.Body>
           <ContainerForm>
             <Label htmlFor="text">Add Fee</Label>
-            <Input name='amount' onChange={settingFee} type='number'/>
+            <Input name='amount' onChange={settingFee} type='number' />
           </ContainerForm>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={()=>callAddFee()}>
+          <Button variant="primary" onClick={() => callAddFee()}>
             Update Fee
           </Button>
         </Modal.Footer>
@@ -149,7 +132,6 @@ const Finance = () => {
             <H4>Manage Finance Record</H4>
           </HamLeft>
         </SubContainer>
-
         <ActivitiesContainer>
           <Table>
             <Thead>
@@ -177,7 +159,7 @@ const Finance = () => {
 
                       <Td>
                         <ButtonActionContainer>
-                          <StyledButton onClick={() => handleSetShow(item.userId)}>
+                          <StyledButton onClick={() => handleSetShow(item._id)}>
                             <AddCircleOutlineIcon />
                           </StyledButton >
                         </ButtonActionContainer>
@@ -189,11 +171,7 @@ const Finance = () => {
             }
           </Table>
         </ActivitiesContainer>
-
       </MainContainer>
-
-
-
     </>
   );
 };

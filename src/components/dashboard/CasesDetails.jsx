@@ -1,8 +1,5 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-// import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
 import { Context } from '../../context/States';
 const MainContainer = styled.section`
 background:#F5F5F5;
@@ -27,22 +24,6 @@ font-size:17px;
 color:white;
 font-weight:400;
 `
-// const ButtonContainer = styled.section`
-// display:flex;
-// justify-content:space-between;
-// align-items: center;
-// text-transform: uppercase;
-// text-align:center;
-// padding: 7px 12px 7px 5px;
-// background:#28A745;
-// border-radius:3px;
-// color:white;
-// `
-// const Addbtn = styled.section`
-
-// font-size:12px;
-// font-weight:600;
-// `
 const ActivitiesContainer = styled.section`
 margin:20px 0px
 `
@@ -66,22 +47,6 @@ const Td = styled.td`
 text-align:center;
 padding:10px;
 `
-
-const ButtonActionContainer = styled.section`
-  display: flex;
-  justify-content:center;
-  align-items: center;
-
-`
-const StyledButton = styled.button`
-  display: flex;
-  align-items: center;
-  border: none; 
-  background-color: transparent; 
-cursor: pointer; 
-color:#4A5263;
-`
-
 const CasesDetails = () => {
 
     const context = useContext(Context);
@@ -94,10 +59,6 @@ const CasesDetails = () => {
                     <HamLeft>
                         <H4>Manage Your Clients Cases Record</H4>
                     </HamLeft>
-                    {/* <ButtonContainer>
-          <AddCircleOutlineIcon/>
-          <Addbtn>Add New Record</Addbtn>
-        </ButtonContainer> */}
                 </SubContainer>
 
                 <ActivitiesContainer>
@@ -124,15 +85,9 @@ const CasesDetails = () => {
                                 </Tbody>)
                             })
                             : <h3>No record to display!</h3>}
-
-
                     </Table>
                 </ActivitiesContainer>
-
             </MainContainer>
-
-
-
         </>
     );
 };

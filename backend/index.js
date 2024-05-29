@@ -63,6 +63,21 @@ const handleSendEmail = async (email, subject, text) => {
     }
 };
 
+app.post("/sendReminder", async (req, res) => {
+    try {
+        const { date } = req.body;
+        const matchCase = await Case.find({ reminderDate: date });
+        const matchUser = await User.find({ _id: matchCase.map((e) => e.userId) });
+        await matchUser.map((e)=>{
+            handleSendEmail(e.email, "Reminder by Lawyer",`Hy dear ${e.name} we remind you for your hearing.
+            For more detail contact with your lawyer.
+            Thanks!`)
+        })
+        return res.status(200).json({ success:true,users: matchUser })
+    } catch (error) {
+        console.log(error.message);
+    }
+})
 //endpoint to register user
 app.post("/register", async (req, res) => {
     try {
@@ -246,18 +261,53 @@ app.post("/getClients", async (req, res) => {
 //endpoint to get register user
 app.post("/addRecord", async (req, res) => {
     try {
-        const { userId, lawyerId, judge, courtNumber, courtAction, caseTitle, caseStatus, caseType, totalFee, discount, paidFee, hearingDate } = req.body;
+        const { userId, lawyerId, judge, courtNumber, courtAction, caseTitle, caseStatus, caseType, totalFee, discount, paidFee, hearingDate, reminderDate } = req.body;
         const user = await User.findOne({ _id: userId })
 
         if (user) {
             user.totalCases = user.totalCases + 1;
             await user.save();
-            const newRecord = await new Case({ userId, lawyerId, judge, courtNumber, courtAction, caseTitle, caseStatus, caseType, totalFee, discount, paidFee, hearingDate });
+            const newRecord = await new Case({ userId, lawyerId, judge, courtNumber, courtAction, caseTitle, caseStatus, caseType, totalFee, discount, paidFee, hearingDate, reminderDate });
             await newRecord.save();
             return res.status(201).json({ success: true, message: "case field" })
         } else {
             return res.status(400).json({ message: "No clients found!" });
         }
+    } catch (error) {
+        return res.status(500).json({ message: "Server Error!" });
+    }
+});
+
+//endpoint to get register user
+app.post("/updateRecord", async (req, res) => {
+    try {
+        const { id, judge, courtNumber, courtAction, caseTitle, caseStatus, caseType, hearingDate, reminderDate } = req.body;
+        const item = await Case.findOne({_id:id})
+        if (item) {
+            item.judge = judge;
+            item.courtNumber=courtNumber;
+            item.courtAction = courtAction
+            item.caseTitle=caseTitle
+            item.caseStatus = caseStatus
+            item.caseType=caseType
+            item.hearingDate = hearingDate
+            item.reminderDate = reminderDate
+            await item.save();
+            return res.status(201).json({ success: true, message: "record updated" })
+        } else {
+            return res.status(400).json({ message: "No record found!" });
+        }
+    } catch (error) {
+        return res.status(500).json({ message: "Server Error!" });
+    }
+});
+
+//endpoint to get register user
+app.delete("/deleteRecord", async (req, res) => {
+    try {
+        const { id } = req.body;
+        await Case.deleteOne({ _id: id })
+        return res.status(200).json({ success: true, message: "Deleted successfully!" });
     } catch (error) {
         return res.status(500).json({ message: "Server Error!" });
     }
@@ -298,17 +348,17 @@ app.delete("/deleteClient", async (req, res) => {
 //endpoint to add fee
 app.post("/addFee", async (req, res) => {
     try {
-        const { id, fee, date } = req.body;
+        const { id, fee } = req.body;
 
-        const existingCase = await Case.findOne({ userId: id });
-        if (existingCase && existingCase.totalFee>existingCase.paidFee+existingCase.discount) {
+        const existingCase = await Case.findOne({ _id: id });
+        if (existingCase && existingCase.totalFee >= existingCase.paidFee + existingCase.discount + fee) {
             existingCase.paidFee = existingCase.paidFee + fee
             existingCase.paidFeeDate = Date.now()
             await existingCase.save()
             return res.status(200).json({ success: true });
         }
-        else{
-            return res.status(401).json({message:"No dues left!"})
+        else {
+            return res.status(400).json({ message: "No dues left!" })
         }
     } catch (error) {
         return res.status(500).json({ message: error.message });

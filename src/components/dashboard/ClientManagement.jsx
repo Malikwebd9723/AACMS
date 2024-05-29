@@ -104,10 +104,6 @@ padding-bottom:10px;
 `
 const Input = styled.input`
 `
-const ActionContainer = styled.section`
-`
-const ActionBtn = styled.button`
-`
 const ClientManagement = () => {
   
   const context = useContext(Context);
@@ -134,10 +130,9 @@ const ClientManagement = () => {
   };
 
   const confirmDeletion = (id) => {
-
     confirmAlert({
       title: 'Confirm to Delete',
-      message: 'User and record realted to user will wash out permenatly!',
+      message: 'User and record realted to user will wash out permanently!',
       buttons: [
         {
           label: 'Yes',
@@ -148,7 +143,6 @@ const ClientManagement = () => {
         }
       ]
     });
-
   }
 
   const [cred, setCred] = useState({
@@ -173,8 +167,6 @@ const ClientManagement = () => {
     setCred({ ...cred, [e.target.name]: e.target.value })
   }
 
-
-
   const [record, setRecord] = useState({
     userId: "",
     judge: "",
@@ -187,6 +179,7 @@ const ClientManagement = () => {
     discount: "",
     paidFee: "",
     hearingDate: "",
+    reminderDate: "",
   });
 
   const setRecordDetails = (e) => {
@@ -204,17 +197,16 @@ const ClientManagement = () => {
       record.totalFee !== "" &&
       record.discount !== "" &&
       record.paidFee !== "" &&
-      record.hearingDate !== "") {
+      record.hearingDate !== "" &&
+      record.reminderDate !== "") {
 
-      await handleAddRecord({ userId: record.userId, judge: record.judge, courtNumber: record.courtNumber, courtAction: record.courtAction, caseTitle: record.caseTitle, caseStatus: record.caseStatus, caseType: record.caseType, totalFee: record.totalFee, discount: record.discount, paidFee: record.paidFee, hearingDate: record.hearingDate });
+      await handleAddRecord({ userId: record.userId, judge: record.judge, courtNumber: record.courtNumber, courtAction: record.courtAction, caseTitle: record.caseTitle, caseStatus: record.caseStatus, caseType: record.caseType, totalFee: record.totalFee, discount: record.discount, paidFee: record.paidFee, hearingDate: record.hearingDate, reminderDate:record.reminderDate });
 
       handleCloseRecord();
     } else {
       alert("Fill all the fields correctly!")
     }
   }
-
-
 
   const [updateCred, setUpdateCred] = useState({
     userId: "",
@@ -259,34 +251,6 @@ const ClientManagement = () => {
 
             <Label htmlFor="phone">Phone#</Label>
             <Input onChange={setCredentials} id='phone' name='phone' type='number' />
-
-            {/* <Label htmlFor="text">Judge Name</Label>
-          <Input />
-          <Label htmlFor="number">Number of Cases</Label>
-          <Input />
-          <Label htmlFor="number">Court Number</Label>
-          <Input />
-          <Label htmlFor="number">Court Actions</Label>
-          <Input />
-          <Label htmlFor="text">Case Title </Label>
-          <Input />
-          <Label htmlFor="text"> Case Statuss</Label>
-          <Input />
-          <Label htmlFor="text">Total Cases</Label>
-          <Input />
-          <Label htmlFor="text">Case Type</Label>
-          <Input />
-          <Label htmlFor="text">Date Filed</Label>
-          <Input type="date" id="dateInput" />
-          <Label htmlFor="text">Total Case Fee</Label>
-          <Input />
-          <Label htmlFor="text">Discount</Label>
-          <Input />
-          <Label htmlFor="text">Paid Fee</Label>
-          <Input />
-          <Label htmlFor="text">Paid Fee Date</Label>
-          <Input type="date" id="dateinput" /> */}
-
           </ContainerForm>
         </Modal.Body>
         <Modal.Footer>
@@ -305,8 +269,6 @@ const ClientManagement = () => {
         <Modal.Header closeButton>
           <Modal.Title>Add Client Record</Modal.Title>
         </Modal.Header>
-
-        {/* add new record modal */}
         <Modal.Body>
           <ContainerForm>
             <Label htmlFor="text">Judge Name</Label>
@@ -338,6 +300,9 @@ const ClientManagement = () => {
 
             <Label htmlFor="text">Hearing Date</Label>
             <Input onChange={setRecordDetails} name='hearingDate' type='date' />
+            
+            <Label htmlFor="text">Reminder Date</Label>
+            <Input onChange={setRecordDetails} name='reminderDate' type='date' />
 
           </ContainerForm>
         </Modal.Body>
@@ -398,7 +363,7 @@ const ClientManagement = () => {
               <Thead>
                 <Tr>
                   <Th>Name</Th>
-                  <Th>Client#</Th>
+                  <Th>Client Number</Th>
                   <Th>Email</Th>
                   <Th>Adresss</Th>
                   <Th>CNIC</Th>
@@ -439,11 +404,7 @@ const ClientManagement = () => {
             </Table>
             : <h3>No clients to display</h3>}
         </ActivitiesContainer>
-
       </MainContainer>
-
-
-
     </>
   );
 };

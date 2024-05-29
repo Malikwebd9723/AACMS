@@ -4,6 +4,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import TvIcon from '@mui/icons-material/Tv';
 import GroupsIcon from '@mui/icons-material/Groups';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
+import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import GavelIcon from '@mui/icons-material/Gavel';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
@@ -24,10 +25,7 @@ min-height: 90vh;
     }
 
 `
-
 const Navbar = styled.section`
-
-
 overflow:auto;
 font-weight:600;
 transition:all 0.1s;
@@ -36,15 +34,13 @@ box-shadow:0 0 30px 0 rgba(200 200 200 / 20%);
 flex:1;
 color:var(--white);
 border-top: 2px solid white;
-    position: sticky;
-    left: 0;
-    flex: 1;
-   
-    @media (max-width:800px){
-     display: none;
-    }
+position: sticky;
+left: 0;
+flex: 1;
+@media (max-width:800px){
+    display: none;
+}
 `
-
 const HamNav = styled.section`
   display: flex;
   text-align: center;
@@ -168,30 +164,33 @@ padding:3px;
 `
 
 
-
-
 const Menu = () => {
     const [show, setShow] = useState(true);
     const [navShow, setNavShow] = useState(false);
     const [head, setHead] = useState("Dashboard");
 
     const context = useContext(Context);
-    const { handleLogout, getProfileData,handleGetClients,handleGetCases } = context;
+    const { handleLogout, getProfileData, handleGetClients, handleGetCases, handleReminder, searchUser } = context;
     useEffect(() => {
         getProfileData()
         handleGetClients()
         handleGetCases()
-    },[])
+    }, [])
+
+    const handleSearchUser = (e) => {
+        searchUser(e.target.value)
+    }
     return (
         <>
             <HamNav>
                 <HamLeft>
-                    <MenuIcon style={{ cursor: "pointer" }} onClick={() => setNavShow(!navShow)} />
-                    <SearchContainer>
-                        <Searchbar placeholder="Search Here" />
-                        <SearchBtn>GO</SearchBtn>
-
-                    </SearchContainer>
+                    <MenuIcon style={{ cursor: "pointer", color: "white" }} onClick={() => setNavShow(!navShow)} />
+                    {head == "Clients Management" ? <SearchContainer>
+                        <Searchbar style={{ outline: "none", color: "white" }} onChange={handleSearchUser} placeholder="Search by CNIC" type="number" />
+                    </SearchContainer> : ""}
+                    <SearchBtn>
+                        <NotificationsActiveIcon onClick={() => handleReminder()} size="large" style={{ color: "white", marginLeft: 10 }} />
+                    </SearchBtn>
                 </HamLeft>
                 <HamCenter>
                     <H4>{head}</H4>
@@ -284,9 +283,6 @@ const Menu = () => {
                                 <Link as={NavLink} to="/admin/settings" onClick={() => setHead("Setting")}>Setting</Link>
                             </LinksContainer>
                         </IconLinksContainer>
-
-
-
                     </Links>
                 </Navbar>
                 <Outlet />

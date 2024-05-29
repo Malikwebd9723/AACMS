@@ -80,7 +80,7 @@ font-size: 20px;
 
 const Settings = () => {
   const context = useContext(Context);
-  const { user,handleUpdateProfile,handleUpdatePass } = context;
+  const { user, handleUpdateProfile, handleUpdatePass } = context;
 
   const [cred, setCred] = useState({
     firstname: (user.firstname),
@@ -93,8 +93,8 @@ const Settings = () => {
 
   const callUpdateProfile = (e) => {
     e.preventDefault();
-    if (cred.firstname!=="" && cred.lastname!=="" && cred.email!=="") {
-      handleUpdateProfile({firstname:cred.firstname,lastname:cred.lastname});
+    if (cred.firstname !== "" && cred.lastname !== "" && cred.email !== "") {
+      handleUpdateProfile({ firstname: cred.firstname, lastname: cred.lastname });
     } else {
       alert("Fill all the fields correctly!")
     }
@@ -103,7 +103,7 @@ const Settings = () => {
   const [passCred, setPassCred] = useState({
     oldPass: "",
     newPass: "",
-    confirmPass:"",
+    confirmPass: "",
   })
 
   const setPassCredentials = (e) => {
@@ -112,8 +112,8 @@ const Settings = () => {
 
   const callUpdatePass = (e) => {
     e.preventDefault();
-    if (passCred.oldPass!=="" && passCred.newPass!=="" && passCred.newPass === passCred.confirmPass) {
-      handleUpdatePass({oldPass:passCred.oldPass, newPass:passCred.newPass});
+    if (passCred.oldPass !== "" && passCred.newPass !== "" && passCred.newPass === passCred.confirmPass) {
+      handleUpdatePass({ oldPass: passCred.oldPass, newPass: passCred.newPass });
     } else {
       alert("Fill all the fields correctly!")
     }
@@ -131,17 +131,17 @@ const Settings = () => {
           <Input onChange={setPassCredentials} type="password" id="oldPass" name="oldPass" />
 
           <Label>New Password</Label>
-          <Input onChange={setPassCredentials} type="password" id="newPass" name="newPass"/>
+          <Input onChange={setPassCredentials} type="password" id="newPass" name="newPass" />
 
           <Label>Confirm Password</Label>
-          <Input onChange={setPassCredentials} type="password" id="confirmPass" name="confirmPass"/>
-            <ButtonWrapper>
+          <Input onChange={setPassCredentials} type="password" id="confirmPass" name="confirmPass" />
+          <ButtonWrapper>
             <ButtonSubmit onClick={callUpdatePass}>Reset Password</ButtonSubmit>
           </ButtonWrapper>
         </Card>
         <Card>
           <Form onSubmit={callUpdateProfile}>
-            
+
             <Row><H4>Edit Profile</H4></Row>
             <Row>
               <Label htmlFor="firstname">First Name</Label>
