@@ -1,19 +1,9 @@
-<<<<<<< HEAD
-import { createContext } from "react";
-=======
 import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
->>>>>>> 2868027d7ebda3f6a4b6cd845d1e4cd3e099208c
 
 const Context = createContext();
 
 const States = ({ children }) => {
-<<<<<<< HEAD
-
-    const host = "http://localhost:8002";
-
-    const handleRegister = async ({firstname, lastname, email}) => {
-=======
     const navigation = useNavigate()
     const [user, setUser] = useState([]);
     const [clients, setClients] = useState([]);
@@ -44,24 +34,16 @@ const States = ({ children }) => {
     }
 
     const handleRegister = async ({ firstname, lastname, email }) => {
->>>>>>> 2868027d7ebda3f6a4b6cd845d1e4cd3e099208c
         try {
             const response = await fetch(`${host}/register`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-<<<<<<< HEAD
-                body: JSON.stringify({firstname, lastname, email} )
-            });
-            const json = await response.json();
-            if (json.success == true) {
-=======
                 body: JSON.stringify({ firstname, lastname, email })
             });
             const json = await response.json();
             if (json.success) {
->>>>>>> 2868027d7ebda3f6a4b6cd845d1e4cd3e099208c
                 alert(json.message)
             } else {
                 alert(json.message)
@@ -69,14 +51,6 @@ const States = ({ children }) => {
             }
 
         } catch (error) {
-<<<<<<< HEAD
-            alert(error.message)
-        }
-    }
-
-    return (
-        <Context.Provider value={{handleRegister}}>
-=======
             console.log(error.message);
         }
     }
@@ -451,7 +425,6 @@ const States = ({ children }) => {
 
     return (
         <Context.Provider value={{ handleRegister, handleLogin, getProfileData, user, checkLoggedInStatus, handleLogout, handleUpdateProfile, handleUpdatePass, handleRegisterClient, handleGetClients, clients, handleAddRecord, handleGetCases, cases, handleUpdateClient, handleDeleteUser, handleAddFee, fee, feeRecieved, totalFee, handleReminder, reminder, handleUpdateRecord,handleDeleteRecord,searchUser }}>
->>>>>>> 2868027d7ebda3f6a4b6cd845d1e4cd3e099208c
             {children}
         </Context.Provider>
     );

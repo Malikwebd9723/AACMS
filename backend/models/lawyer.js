@@ -69,8 +69,6 @@ const lawyerSchema = new mongoose.Schema({
 
 const Lawyer = mongoose.model("Lawyer", lawyerSchema);
 
-<<<<<<< HEAD
+
 module.exports = Lawyer;
-=======
-module.exports = Lawyer;
->>>>>>> 2868027d7ebda3f6a4b6cd845d1e4cd3e099208c
+
