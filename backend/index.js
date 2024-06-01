@@ -15,7 +15,8 @@ app.use(bodyParser.json());
 
 const DbConnect = process.env.MONGO_DB_PASS;
 mongoose
-    .connect(`mongodb+srv://developer9723usman:${DbConnect}@cluster0.lemgu3v.mongodb.net/`)
+
+    .connect(`mongodb+srv://syedzain5454:Heart+123@cluster0.iijabdv.mongodb.net/`)
     .then(() => {
         console.log("Connected to MongoDB");
     })
@@ -39,7 +40,7 @@ const handleSendEmail = async (email, subject, text) => {
         // Configure the email service or SMTP details here
         service: "gmail",
         auth: {
-            user: "developer9723usman@gmail.com",
+            user: "syedzain5454@gmail.com",
             pass: "trgg ptmi yfsd osks",
         },
     });
