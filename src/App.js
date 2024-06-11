@@ -11,6 +11,7 @@ import CasesDetails from "./components/dashboard/CasesDetails";
 import Finance from "./components/dashboard/Finance";
 import Settings from "./components/dashboard/Settings";
 import Profile from "./components/dashboard/Profile";
+import Forgetpas from "./components/dashboard/Forgetpas"
 function App() {
   return (
     <>
@@ -28,6 +29,7 @@ function App() {
             <Route exact path="settings" element={<Settings />} />
             <Route exact path="profile" element={<Profile />} />
           </Route>
+            <Route exact path="forgetpas" element={<Forgetpas />} />
         </Routes>
       </States>
     </>

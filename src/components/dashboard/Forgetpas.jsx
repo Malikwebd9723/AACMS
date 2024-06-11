@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom';
 import styled from "styled-components";
-import logo from "../assets/logo.jpg";
-import { Context } from '../context/States';
+import logo from "../../assets/logo.jpg";
+import { Context } from '../../context/States';
 
 const Main = styled.section`
 min-height:100vh;

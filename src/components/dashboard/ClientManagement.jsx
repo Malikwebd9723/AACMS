@@ -72,6 +72,9 @@ text-align:center;
 const Td = styled.td`
 text-align:center;
 padding:10px;
+max-width: 130px;
+overflow: scroll;
+scrollbar-width: none;
 `
 
 const ButtonActionContainer = styled.section`

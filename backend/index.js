@@ -41,7 +41,7 @@ const handleSendEmail = async (email, subject, text) => {
         service: "gmail",
         auth: {
             user: "syedzain5454@gmail.com",
-            pass: "trgg ptmi yfsd osks",
+            pass: "udtw dary pair edru",
         },
     });
 

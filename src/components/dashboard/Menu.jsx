@@ -23,10 +23,8 @@ min-height: 90vh;
 @media (max-width:800px){
       flex-direction: column;
     }
-
 `
 const Navbar = styled.section`
-overflow:auto;
 font-weight:600;
 transition:all 0.1s;
 background-color:#fff;
@@ -283,6 +281,7 @@ const Menu = () => {
                                 <Link as={NavLink} to="/admin/settings" onClick={() => setHead("Setting")}>Setting</Link>
                             </LinksContainer>
                         </IconLinksContainer>
+
                     </Links>
                 </Navbar>
                 <Outlet />
