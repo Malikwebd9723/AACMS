@@ -130,6 +130,33 @@ app.post("/login", async (req, res) => {
     }
 });
 
+app.post("/forgotPassword", async (req, res) => {
+    try {
+        const { email } = req.body;
+
+        // Check if user already exists based on email or roll
+        const existingLawyer = await Lawyer.findOne({ email })
+
+        if (existingLawyer) {
+            const digits = "123456789aacms";
+            let password = "";
+
+            // Generate 7 random digits
+            for (let i = 0; i < 7; i++) {
+                password += digits[Math.floor(Math.random() * digits.length)];
+            }
+            existingLawyer.password = password;
+            await existingLawyer.save()
+            await handleSendEmail(existingLawyer.email, "Password Updated!", `your password for AACMS is: ${password}`);
+            return res.status(200).json({ success: true, message: "Password send to email!"});
+        } else {
+            return res.status(401).json({ message: "No user found!" });
+        }
+    } catch (error) {
+        return res.status(500).json({ message: "Server Error. Faild to change password!" });
+    }
+});
+
 //endpoint to login user
 app.post("/profileData", async (req, res) => {
     try {

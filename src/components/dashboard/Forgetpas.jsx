@@ -113,20 +113,16 @@ text-decoration:none;
 
 const Login = () => {
   const context = useContext(Context);
-  const { checkLoggedInStatus, handleLogin } = context;
-  useEffect(() => {
-    checkLoggedInStatus()
-  })
+  const { handleForgotPassword} = context;
 
   const [cred, setCred] = useState({
     email: "",
-    password: "",
   })
 
-  const callLogin = (e) => {
+  const callForgot = (e) => {
     e.preventDefault();
-    if (cred.email!=="" && cred.password!=="") {
-      handleLogin({ email: cred.email, password: cred.password });
+    if (cred.email!=="") {
+      handleForgotPassword({ email: cred.email });
     }
     else{
       alert("Fill all the fields correctly!")
@@ -160,15 +156,12 @@ const Login = () => {
 
       {/* log in form start */}
       <LoginContainer>
-        <Anchor as={NavLink} to={"/signup"}>Don`t have an account? Sign Up</Anchor>
-        <H1>Login</H1>
-        <Form onSubmit={callLogin}>
+        <H1>Forgot Password</H1>
+        <Form onSubmit={callForgot}>
 
           <Input onChange={setCredentials} name='email' type='text' placeholder='Email' />
-          <Input onChange={setCredentials} name='password' type='password' placeholder='Password' />
-          <SubmitBtn>Login</SubmitBtn>
+          <SubmitBtn>Update</SubmitBtn>
         </Form>
-        <Anchor as={NavLink} to={"/forgetpas"}>Forgot password?</Anchor>
       </LoginContainer>
 
     </Main>

@@ -409,6 +409,28 @@ const States = ({ children }) => {
         }
     }
 
+    const handleForgotPassword = async ({ email }) => {
+        try {
+            const response = await fetch(`${host}/forgotPassword`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ email})
+            });
+            const json = await response.json();
+            if (json.success) {
+                alert(json.message)
+                navigation("/")
+            }
+            else {
+                alert(json.message)
+            }
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+
         // search user function
         const searchUser = (text) => {
             if (text !== "") {
@@ -424,7 +446,7 @@ const States = ({ children }) => {
 
 
     return (
-        <Context.Provider value={{ handleRegister, handleLogin, getProfileData, user, checkLoggedInStatus, handleLogout, handleUpdateProfile, handleUpdatePass, handleRegisterClient, handleGetClients, clients, handleAddRecord, handleGetCases, cases, handleUpdateClient, handleDeleteUser, handleAddFee, fee, feeRecieved, totalFee, handleReminder, reminder, handleUpdateRecord,handleDeleteRecord,searchUser }}>
+        <Context.Provider value={{handleForgotPassword, handleRegister, handleLogin, getProfileData, user, checkLoggedInStatus, handleLogout, handleUpdateProfile, handleUpdatePass, handleRegisterClient, handleGetClients, clients, handleAddRecord, handleGetCases, cases, handleUpdateClient, handleDeleteUser, handleAddFee, fee, feeRecieved, totalFee, handleReminder, reminder, handleUpdateRecord,handleDeleteRecord,searchUser }}>
             {children}
         </Context.Provider>
     );
